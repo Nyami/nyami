@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title>Nyami</title>
+		<link>https://www.nyami.uk/</link>
+		<description>Something interesting for sure...</description>
+		<copyright>2019</copyright>
+		<pubDate>Fri, 01 Mar 2019 22:46:24 GMT</pubDate>
+		<lastBuildDate>Fri, 01 Mar 2019 22:46:24 GMT</lastBuildDate>
+		<item>
+			<title>dotnet sln add</title>
+			<link>https://www.nyami.uk/posts/2018-08-17-dotnet-sln-add</link>
+			<description>&lt;p&gt;It's been a while since I'd created a number dotnet projects and supporting solution using the command line so I had to refer to the &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet"&gt;documentation&lt;/a&gt; to keep me right. As I had just created a number of projects adding each one to the solution is a little tedious so when I'd spotted I could use &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;globbing patterns&lt;/a&gt; I thought this would save time and a few key presses.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2018-08-17-dotnet-sln-add</guid>
+			<pubDate>Fri, 17 Aug 2018 09:02:03 GMT</pubDate>
+			<content:encoded>&lt;p&gt;It's been a while since I'd created a number dotnet projects and supporting solution using the command line so I had to refer to the &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet"&gt;documentation&lt;/a&gt; to keep me right. As I had just created a number of projects adding each one to the solution is a little tedious so when I'd spotted I could use &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;globbing patterns&lt;/a&gt; I thought this would save time and a few key presses.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;However, when I ran &lt;code&gt;dotnet sln Foo.sln add **/*.csproj&lt;/code&gt; I was presented with the error &lt;code&gt;Could not find project or directory **/*.csproj&lt;/code&gt;. It turns out that globbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn't expanding the glob. Luckly as dotnet is cross platform and I have &lt;a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10"&gt;Windows Subsystem for Linux&lt;/a&gt; installed with all the dotnet goodness I could switch to &lt;code&gt;bash&lt;/code&gt;, ensure globbing was enabled using &lt;code&gt;shopt -s globstar&lt;/code&gt;, and then run &lt;code&gt;dotnet sln Foo.sln add **/*.csproj&lt;/code&gt; to add all my new projects, job done...&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>RGUHack 2018</title>
+			<link>https://www.nyami.uk/posts/2018-04-10-rguhack-2018</link>
+			<description>&lt;p&gt;I'll be helping out at &lt;a href="https://rguhack.uk"&gt;RGUHack&lt;/a&gt; this coming weekend so I thought I'd pull together a few links from &lt;a href="https://docs.microsoft.com/en-gb/azure/index#pivot=products&amp;amp;panel=all"&gt;some of the Azure services&lt;/a&gt; available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github's &lt;a href="https://education.github.com/pack"&gt;Student Developer Pack&lt;/a&gt; to pick up some free Azure credit, but if they haven't, its easy to get started for free at &lt;a href="https://azure.microsoft.com/en-us/free/"&gt;https://azure.microsoft.com/en-us/free/&lt;/a&gt;&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2018-04-10-rguhack-2018</guid>
+			<pubDate>Tue, 10 Apr 2018 18:21:49 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I'll be helping out at &lt;a href="https://rguhack.uk"&gt;RGUHack&lt;/a&gt; this coming weekend so I thought I'd pull together a few links from &lt;a href="https://docs.microsoft.com/en-gb/azure/index#pivot=products&amp;amp;panel=all"&gt;some of the Azure services&lt;/a&gt; available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github's &lt;a href="https://education.github.com/pack"&gt;Student Developer Pack&lt;/a&gt; to pick up some free Azure credit, but if they haven't, its easy to get started for free at &lt;a href="https://azure.microsoft.com/en-us/free/"&gt;https://azure.microsoft.com/en-us/free/&lt;/a&gt;&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h2 id="hosting"&gt;Hosting&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://docs.microsoft.com/azure/app-service/"&gt;Azure Web Apps&lt;/a&gt; will let you host your web application without having to manage infrastructure and you can be live in minuets. As you might expect Azure Web supports web applications created using &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet-framework"&gt;.NET&lt;/a&gt; (including &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet"&gt;Core&lt;/a&gt;) and &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-html"&gt;Static HTML&lt;/a&gt; but it also supports &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-php"&gt;PHP&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-nodejs"&gt;Node.js&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-python"&gt;Python&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-java"&gt;Java&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="compute"&gt;Compute&lt;/h2&gt;
+&lt;p&gt;One of the great features of Azure are &lt;a href="https://docs.microsoft.com/en-gb/azure/azure-functions/"&gt;Azure Functions&lt;/a&gt;, these allow you run your code on demand without having to consider the infrastructure, coupled with &lt;a href="https://docs.microsoft.com/en-us/azure/logic-apps/"&gt;Logic Apps&lt;/a&gt; Azure Functions can help build powerful workflows to solve many problems.&lt;/p&gt;
+&lt;p&gt;If you need a little more power or require to be a little closer to the actual OS you can spin up a virtual machine or two. Options include various flavours of &lt;a href="https://docs.microsoft.com/en-gb/azure/virtual-machines/linux/tutorial-create-vmss"&gt;Linux&lt;/a&gt; and of course &lt;a href="https://docs.microsoft.com/en-gb/azure/virtual-machines/windows/"&gt;Windows&lt;/a&gt;, alternatively you could create and use &lt;a href="https://docs.microsoft.com/en-gb/azure/container-instances/"&gt;Containers&lt;/a&gt; to get something up and running.&lt;/p&gt;
+&lt;h2 id="storage"&gt;Storage&lt;/h2&gt;
+&lt;p&gt;There are &lt;a href="https://docs.microsoft.com/en-us/azure/#pivot=products&amp;amp;panel=storage"&gt;lots of solutions&lt;/a&gt; for storing data in Azure, most commonly used are &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#blob-storage"&gt;Blob&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#azure-files"&gt;File&lt;/a&gt; storage, &lt;a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction"&gt;Cosmos DB&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview"&gt;SQL&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-us/azure/redis-cache/"&gt;Redis Cache&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="cognitive-services"&gt;Cognitive Services&lt;/h2&gt;
+&lt;p&gt;This is where things get interesting, the smart people at Microsoft have created a huge range of services that I have no doubt will help accelerate just about any idea at a Hackathon!&lt;/p&gt;
+&lt;h3 id="text"&gt;Text&lt;/h3&gt;
+&lt;p&gt;The internet is full of text, be it tweets, Facebook posts, news articles, emails, or much more. Azure have a range of services that can help analyze text content, so if any of the challenges call for some text analysis like detecting fake news, one of these features are going to make things a whole lot easier! &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/bing-spell-check/proof-text"&gt;Spell check&lt;/a&gt;; &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis"&gt;Sentiment Analysis&lt;/a&gt;; &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction"&gt;Key Phrase Extraction&lt;/a&gt;; &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection"&gt;Language Detection&lt;/a&gt;; &lt;a href="https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/"&gt;Text Translate Services&lt;/a&gt;;&lt;/p&gt;
+&lt;h3 id="images"&gt;Images&lt;/h3&gt;
+&lt;p&gt;Cameras are just about everywhere, web cams, phones, drones, dash cams and even door bells! If any of the challenges require you analyse the images from any of those devices Cognitive Services has a series of APIs and tools to help. You can &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/emotion/home"&gt;Detect Emotions&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/"&gt;Recognise Faces&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Custom-Vision-Service/home"&gt;Create a Custom Image Classifier&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/content-moderator/overview"&gt;Moderate Content&lt;/a&gt;,  &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#optical-character-recognition-ocr-with-computer-vision-api-using-ca-nameocr-a"&gt;Extract Text from images&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail"&gt;Generate Image Thumbnails&lt;/a&gt;, or even &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#analyze-an-image-with-computer-vision-api-using-c-a-nameanalyzeimage-a"&gt;Extract Visual Features&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="speech"&gt;Speech&lt;/h3&gt;
+&lt;p&gt;Microsoft Azure provides &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speaker-recognition/home"&gt;Speaker Recognition&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#speech-to-text-speech-recognition"&gt;Speech to Text&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#text-to-speech-speech-synthesis"&gt;Text to Speech&lt;/a&gt; and &lt;a href="https://azure.microsoft.com/en-us/services/cognitive-services/translator-speech-api/"&gt;Translation to and from 10 languages&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="video"&gt;Video&lt;/h3&gt;
+&lt;p&gt;You are not limited to analysing images or speech, you can analyse video as well. Cognitive Services includes &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Vision APIs for videos&lt;/a&gt;. With these APIs you can perform face detection and tracking, motion detection, image stabilisation and video thumbnail generation. It's also possible to use the &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Video Indexer&lt;/a&gt; to get an audio transcript, track faces, map and understand which speaker spoke which words and when, determine when a scene changes and a whole lot more!&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Simple ping Middleware</title>
+			<link>https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware</link>
+			<description>&lt;p&gt;If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware</guid>
+			<pubDate>Fri, 09 Feb 2018 16:18:39 GMT</pubDate>
+			<content:encoded>&lt;p&gt;If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;The ASP.NET Core request pipeline consists of a sequence of request delegates, these delegates are configured using &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RunExtensions?view=aspnetcore-2.0"&gt;Run&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.MapExtensions?view=aspnetcore-2.0"&gt;Map&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.UseExtensions?view=aspnetcore-2.0"&gt;Use&lt;/a&gt;, and for our simple ping endpoint Map is a perfect fit. Map will create a branch in the pipeline allowing you to break out of the normal flow which could have the advantage as it can keep this as lightweight as you need. The following can be used to return a 200 response to indicate our site should be good to go, if you need to add some health checks or additional logic you could create more complex middleware.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;app.Map(&amp;quot;/ping&amp;quot;,
+  ping =&amp;gt; ping.Run(async conext =&amp;gt; await conext.Response.WriteAsync(&amp;quot;ok&amp;quot;)));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For more information on Middleware check out &lt;a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#writing-middleware"&gt;ASP.NET Core Middleware&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Creating a Self-Signed Certificate for Identity Provider</title>
+			<link>https://www.nyami.uk/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider</link>
+			<description>&lt;p&gt;I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options with New-SelfSignedCertificate PS module.&lt;/p&gt;
+&lt;p&gt;Identity Server was throwing "CryptographicException: Invalid provider type specified" and I had ensured the user account had access so it should have been all good. After a little bit of digging it turned out the private keys were not accessible from .NET. David Christiansen’s &lt;a href="http://blog.davidchristiansen.com/2016/05/521/"&gt;blog post&lt;/a&gt; helped me track down the issue but with a little more research I ended up with the following PowerShell to create a working certificate avoiding additional steps I didnt understand ;).&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider</guid>
+			<pubDate>Sat, 18 Nov 2017 09:54:16 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options with New-SelfSignedCertificate PS module.&lt;/p&gt;
+&lt;p&gt;Identity Server was throwing &amp;quot;CryptographicException: Invalid provider type specified&amp;quot; and I had ensured the user account had access so it should have been all good. After a little bit of digging it turned out the private keys were not accessible from .NET. David Christiansen’s &lt;a href="http://blog.davidchristiansen.com/2016/05/521/"&gt;blog post&lt;/a&gt; helped me track down the issue but with a little more research I ended up with the following PowerShell to create a working certificate avoiding additional steps I didnt understand ;).&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;pre&gt;&lt;code&gt;$idSrvCertificate = New-SelfSignedCertificate `
+    -Subject &amp;quot;CN=MyIdentityProviderCert&amp;quot; `
+    -FriendlyName &amp;quot;Identity Server Token Signing&amp;quot; `
+    -CertStoreLocation &amp;quot;cert:LocalMachine\My&amp;quot; `
+    -KeyAlgorithm RSA `
+    -KeySpec Signature `
+    -KeyLength 2048 `
+    -KeyUsage DigitalSignature, KeyEncipherment, DataEncipherment, CertSign `
+    -NotBefore (Get-Date) `
+    -NotAfter (Get-Date).AddYears(5);
+
+$username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name;
+
+$keyname = (((Get-ChildItem cert:\LocalMachine\my | Where-Object {$_.thumbprint -like $idSrvCertificate.ThumbPrint}).PrivateKey).CspKeyContainerInfo).UniqueKeyContainerName;
+
+$keypath = $env:ProgramData + &amp;quot;\Microsoft\Crypto\RSA\MachineKeys\&amp;quot;;
+$fullpath = $keypath + $keyname;
+icacls $fullpath /grant $username`:RX;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In addition to creating the certificate it will also ensure the current user has read access to the private keys avoiding the need to run VS elevated when developing, this last part could obviously be extracted and reused for your application pool if running Identity Server in IIS.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Bash - I forgot sudo</title>
+			<link>https://www.nyami.uk/posts/2016-10-06-bash-i-forgot-sudo</link>
+			<description>&lt;p&gt;If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2016-10-06-bash-i-forgot-sudo</guid>
+			<pubDate>Thu, 06 Oct 2016 08:16:59 GMT</pubDate>
+			<content:encoded>&lt;p&gt;If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Edit bashrc (vi .bashrc)&lt;/li&gt;
+&lt;li&gt;Add the alias “ffs='sudo $(history -p !!)'”&lt;/li&gt;
+&lt;li&gt;Restart/open bash console&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And in case you struggle with vi here is a handy &lt;a href="http://www.lagmonster.org/docs/vi.html"&gt;cheat sheet&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>RadButton Single Click</title>
+			<link>https://www.nyami.uk/posts/2016-07-13-radbutton-single-click</link>
+			<description>&lt;p&gt;A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the &lt;a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx"&gt;SingleClick&lt;/a&gt; property of the RadButton.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2016-07-13-radbutton-single-click</guid>
+			<pubDate>Wed, 13 Jul 2016 20:55:47 GMT</pubDate>
+			<content:encoded>&lt;p&gt;A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the &lt;a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx"&gt;SingleClick&lt;/a&gt; property of the RadButton.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;telerik:RadButton runat=&amp;quot;server&amp;quot; ID=&amp;quot;btnSend&amp;quot; Text=&amp;quot;Send&amp;quot; OnClick=&amp;quot;btnSend_Click&amp;quot; SingleClick=&amp;quot;true&amp;quot; SingleClickText=&amp;quot;Sending...&amp;quot;&amp;gt;
+&amp;lt;/telerik:RadButton&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I've no idea how I've not encountered this RadButton setting before now, saves wiring up custom OnClientClick events...&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>A Blog Is Reborn</title>
+			<link>https://www.nyami.uk/posts/2016-07-09-a-blog-is-reborn</link>
+			<description>&lt;p&gt;Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in ["A Blog Is Born"] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2016-07-09-a-blog-is-reborn</guid>
+			<pubDate>Sat, 09 Jul 2016 20:08:33 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in [&amp;quot;A Blog Is Born&amp;quot;] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h2 id="bash-on-windows"&gt;Bash on Windows&lt;/h2&gt;
+&lt;p&gt;This year at Build Microsoft announced the ability to run native Bash on Ubuntu on Windows! Apart the obvious advantages of being able to use cmatrix or cowsay I was at first a little indifferent about the announcement until I realised that this might actually mean I could get Octopress working on Windows, so if all goes to plan this will be my fool proof guide to setting up Octopress using Bash in Windows 10.&lt;/p&gt;
+&lt;h3 id="installing-bash"&gt;Installing Bash&lt;/h3&gt;
+&lt;p&gt;In order to run Bash on Windows you’ll need to be running the Windows 10 Anniversary Update (currently available to Insiders) and then you will need to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Turn-on Developer Mode&lt;/li&gt;
+&lt;li&gt;Enable the &amp;quot;Windows Subsystem for Linux (beta)&amp;quot; feature&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And that’s it, for more information and a more in-depth guide check out &lt;a href="https://msdn.microsoft.com/en-us/commandline/wsl/about"&gt;https://msdn.microsoft.com/en-us/commandline/wsl/about&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="install-the-basics"&gt;Install the basics&lt;/h3&gt;
+&lt;p&gt;Once you are up and running with bash you’ll need to install the basic tools using apt-get, here’s the list that I used to get started:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;make&lt;/li&gt;
+&lt;li&gt;rake&lt;/li&gt;
+&lt;li&gt;nodejs&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;ruby1.9.1-dev&lt;/li&gt;
+&lt;li&gt;bundler&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I then pulled down everything from Github and picked up the usual Octopress workflow, and if all goes to plan this should be live within the hour.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>TFVC and NuGet Updates</title>
+			<link>https://www.nyami.uk/posts/2015-01-07-tfvc-and-nuget-updates</link>
+			<description>&lt;p&gt;At some point, for no obvious reason, I kept encountering an error when updating some NuGet packages, the error (TF14092) was basically telling me a file could not be modified as there was a pending delete. Experience has taught me that there is generally a reason for sudden changes in behaviour and after a little analysis I eventually worked it out.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2015-01-07-tfvc-and-nuget-updates</guid>
+			<pubDate>Wed, 07 Jan 2015 12:00:04 GMT</pubDate>
+			<content:encoded>&lt;p&gt;At some point, for no obvious reason, I kept encountering an error when updating some NuGet packages, the error (TF14092) was basically telling me a file could not be modified as there was a pending delete. Experience has taught me that there is generally a reason for sudden changes in behaviour and after a little analysis I eventually worked it out.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;We currently use TFS2013 for version control, our main solution uses Visual Studio 2013 and we rely on a number of packages from &lt;a href="http://www.nuget.org/"&gt;NuGet&lt;/a&gt; as well as an internal repository for internal or licensed 3rd libraries. Historically this has not always been the case, we've upgraded the solution through various versions of Visual Studio and TFS has also been upgraded from TFS2010, but the occurrence of this problem didn't appear to tie in with either upgrade. What I eventually worked out was that I had been using a server workspace long after the primary project had been upgraded, it wasn't until I was free of some of our older projects that I upgraded to a &lt;a href="http://msdn.microsoft.com/en-us/library/bb892960.aspx"&gt;local workspace&lt;/a&gt; that had actually introduced this behaviour.&lt;/p&gt;
+&lt;p&gt;Once I realised the root cause the solution was simple, I created a new workspace on my PC but ensured it was a server workspace, opened the solution from this workspace and upgraded my NuGet packages, I could have alternatively changed the existing workspace from local to server but I think local workspaces work better for me.&lt;/p&gt;
+&lt;p&gt;For future reference the full error is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1 error(s) encountered attempting to perform the add operation on 1 item(s) First error encountered:
+TF14092: The item $/SOMEITEM cannot be changed. A parent of this item has a pending delete which must be checked in first.
+See output tool window for information on any other errors.
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>A Blog Is Born</title>
+			<link>https://www.nyami.uk/posts/2014-12-14-a-blog-is-born</link>
+			<description>&lt;p&gt;So I've decided to start a blog, not for the first time, I've had a few attempts on a couple of different platforms from a custom web app to &lt;a href="http://umbraco.com/"&gt;Umbraco&lt;/a&gt; and I've probably got stuff on Geeks with Blogs and Blogger too. This time I'm going for an Octopress and GitHub Pages combo and I know little of either! Thankfully both are fairly well documented and hopefully be able to learn a few things along the way.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2014-12-14-a-blog-is-born</guid>
+			<pubDate>Sun, 14 Dec 2014 11:23:47 GMT</pubDate>
+			<content:encoded>&lt;p&gt;So I've decided to start a blog, not for the first time, I've had a few attempts on a couple of different platforms from a custom web app to &lt;a href="http://umbraco.com/"&gt;Umbraco&lt;/a&gt; and I've probably got stuff on Geeks with Blogs and Blogger too. This time I'm going for an Octopress and GitHub Pages combo and I know little of either! Thankfully both are fairly well documented and hopefully be able to learn a few things along the way.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;This first post will hopefully detail how to get started, &lt;strong&gt;[SPOILER ALERT]&lt;/strong&gt; I guess if you are reading this then this has proven to be successful. I'm using my trusty Surface Pro running Windows 10 Tech Preview so a good starting point looks to be &lt;a href="http://thaiat.github.io/blog/2014/03/13/how-to-install-and-use-octopress-on-windows/"&gt;How to Install and Use Octopress on Windows&lt;/a&gt; so let's see how this goes.&lt;/p&gt;
+&lt;h2 id="getting-the-basics-installed"&gt;1. Getting the basics installed&lt;/h2&gt;
+&lt;p&gt;To get started we'll need a couple of things installed and &lt;a href="https://chocolatey.org"&gt;Chocolatey&lt;/a&gt; is the best place to start this process! Once installed (or updated in my case) the following packages should be installed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;choco install git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;choco install ruby -version 1.9.3.54500&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;choco install ruby.devkit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;choco install python&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="install-octopress"&gt;2. Install Octopress&lt;/h2&gt;
+&lt;p&gt;Once everything is installed and the command prompt is restarted lets get Octopress installed, configured and deployed.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone git://github.com/imathis/octopress.git nyami.github.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd nyami.github.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gem install bundler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bundle install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;notepad .\_config.yml&lt;/code&gt; and update properties and save&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;echo www.nyami.uk &amp;gt;&amp;gt; source/CNAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake new_post[&amp;quot;A Blog Is Born&amp;quot;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake generate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake preview&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake setup_github_pages[https://github.com/Nyami/nyami.github.io.git]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;at this point I got the following error:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Set the codepage to 65001 for Windows machines
+** Invoke setup_github_pages (first_time)
+** Execute setup_github_pages
+rake aborted!
+ArgumentError: invalid byte sequence in UTF-8
+C:/GitHub/nyami.github.io/Rakefile:393:in `strip'
+C:/GitHub/nyami.github.io/Rakefile:393:in `blog_url'
+C:/GitHub/nyami.github.io/Rakefile:344:in `block in &amp;lt;top (required)&amp;gt;'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;using the command &lt;code&gt;chcp 65001&lt;/code&gt; at this point didn't help so I had a quick peek at &amp;quot;Rakefile&amp;quot; not really knowing what it is but the problem looked to be around the CNAME file created above so I changed the encoding to ANSI and tried again and this time it was successful.&lt;/p&gt;
+&lt;p&gt;Now I'm going to try get this up on Github... lets see what happens...&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;
+So looks like everything worked using the following workflow:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git add .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git commit -m &amp;quot;first commit of Octopress blog&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake deploy&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin source&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This was surprisingly easy, hopefully over the next few months I'll get some new posts up...&lt;/p&gt;
+</content:encoded>
+		</item>
+	</channel>
+</rss>
