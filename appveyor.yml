@@ -34,8 +34,8 @@ on_success:
   - xcopy ..\output . /E
   # EDIT your domain name or remove if not using a custom domain
   #- echo www.nyami.uk > CNAME
-  # EDIT the origin of your repository - have to reset it here because AppVeyor pulls from SSH, but GitHub won't accept SSH pushes
-  - git remote set-url origin https://github.com/Wyamio/Wyam.Web.git
+
+  - git remote set-url origin https://github.com/Nyami/nyami.git
   - git add -A
   - git commit -a -m "Commit from AppVeyor"
   - git push
