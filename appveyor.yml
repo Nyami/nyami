@@ -33,7 +33,7 @@ on_success:
   - git rm -rf .
   - xcopy ..\output . /E
   # EDIT your domain name or remove if not using a custom domain
-  #- echo www.nyami.uk > CNAME
+  - echo www.nyami.uk > CNAME
 
   - git remote set-url origin https://github.com/Nyami/nyami.git
   - git add -A
