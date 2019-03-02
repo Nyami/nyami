@@ -5,8 +5,19 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>2019</copyright>
-		<pubDate>Sat, 02 Mar 2019 07:37:54 GMT</pubDate>
-		<lastBuildDate>Sat, 02 Mar 2019 07:37:54 GMT</lastBuildDate>
+		<pubDate>Sat, 02 Mar 2019 22:58:12 GMT</pubDate>
+		<lastBuildDate>Sat, 02 Mar 2019 22:58:12 GMT</lastBuildDate>
+		<item>
+			<title>Blog 2.0</title>
+			<link>https://www.nyami.uk/posts/2019-03-02-blog-2_0</link>
+			<description>&lt;p&gt;I think I have more blog post about setting up blogs than I have on anything else, and its been a while since the last one so I thought it about time for another one. I like the concept of static generation for blogs and first incarnations used Octopress, a blogging framework based on Jekyll, but the workflow and content produced wasn’t really working for me so it was time for a change.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2019-03-02-blog-2_0</guid>
+			<pubDate>Sat, 02 Mar 2019 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I think I have more blog post about setting up blogs than I have on anything else, and its been a while since the last one so I thought it about time for another one. I like the concept of static generation for blogs and first incarnations used Octopress, a blogging framework based on Jekyll, but the workflow and content produced wasn’t really working for me so it was time for a change.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;I decided to look at &lt;a href="https://wyam.io/"&gt;Wyam&lt;/a&gt;, I knew of a few folks using it and as it using .NET and Razor much of it had a familiar feel I was comfortable with. I’m not going to go into detail on setting it up, their site has comprehensive coverage on &lt;a href="https://wyam.io/docs/usage/"&gt;getting started&lt;/a&gt;, using &lt;a href="https://wyam.io/docs/deployment/appveyor"&gt;Github Pages and AppVeyor&lt;/a&gt; for deployment. I did start off trying to be smart and automate the markdown conversion but the reality was I didn’t have much so opted for the manual approach. Hopefully I’ll have a couple of useful posts before the next blog post and blogs posts.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>dotnet sln add</title>
 			<link>https://www.nyami.uk/posts/2018-08-17-dotnet-sln-add</link>
