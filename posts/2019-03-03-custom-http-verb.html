@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Nyami - tips</title>
+        <title>Nyami - Custom HTTP Verb</title>
         <meta name="description" content="Something interesting for sure..." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Nyami" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Nyami - tips" />
+        <meta property="og:title" content="Nyami - Custom HTTP Verb" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.nyami.uk/tags/tips" />
+        <meta property="og:url" content="https://www.nyami.uk/posts/2019-03-03-custom-http-verb" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -88,6 +88,17 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Custom HTTP Verb</h1>
+    <div class="meta">        
+Published on Sunday, March 3, 2019<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/aspnet" class="btn btn-default btn-xs">aspnet</a>
+                    <a role="button" href="/tags/dotnet" class="btn btn-default btn-xs">dotnet</a>
+        </div>     
+</div>
                                         </div>
                                 </div>
                         </div>
@@ -97,50 +108,29 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/2018-08-17-dotnet-sln-add">
-                <h3 class="post-title">dotnet sln add</h3>
-            </a>
-            <p class="post-meta">Posted on Friday, August 17, 2018</p>      
-        </div>   
+                                        
+
+<p>There are server reasons you might look to implement a custom HTTP Verb in you ASP.NET application, and thankfully with ASP.NET Core it’s incredibly simple.</p>
+<!--more-->
+<p>Here is a nice simple example of a WEBDAV inspired SEARCH verb, potentially useful if you’re encountering limitations of GET and obviously cant have a GET with body, or want to have consistent verb for whatever reason.</p>
+<pre><code>public class HttpSearchAttribute : HttpMethodAttribute {
+
+        private static readonly IEnumerable&lt;string&gt; SupportedMethods = new[] { &quot;SEARCH&quot; };
+
+        public HttpSearchAttribute() : base(SupportedMethods) {
+        }
+
+        public HttpSearchAttribute(string template) : base(SupportedMethods, template) {
+            if (string.IsNullOrWhiteSpace(template)) {
+                throw new ArgumentNullException(nameof(template));
+            }
+        }
+    }
+</code></pre>
+<p>A fully working, simple example is located over at <a href="https://github.com/Nyami/WebApiSearchMethod">GitHub</a></p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/Tips" class="btn btn-default btn-xs">Tips (3)</a>
-                <a role="button" href="/tags/HowTo" class="btn btn-default btn-xs">HowTo (2)</a>
-                <a role="button" href="/tags/ASPNET" class="btn btn-default btn-xs">ASP.NET (2)</a>
-                <a role="button" href="/tags/blog" class="btn btn-default btn-xs">blog (1)</a>
-                <a role="button" href="/tags/wyam" class="btn btn-default btn-xs">wyam (1)</a>
-                <a role="button" href="/tags/dotnet" class="btn btn-default btn-xs">dotnet (1)</a>
-                <a role="button" href="/tags/tips" class="btn btn-primary btn-xs">tips (1)</a>
-                <a role="button" href="/tags/Azure" class="btn btn-default btn-xs">Azure (1)</a>
-                <a role="button" href="/tags/RGUHack" class="btn btn-default btn-xs">RGUHack (1)</a>
-                <a role="button" href="/tags/dotnet-core" class="btn btn-default btn-xs">dotnet core (1)</a>
-                <a role="button" href="/tags/Middleware" class="btn btn-default btn-xs">Middleware (1)</a>
-                <a role="button" href="/tags/Identity-Provider" class="btn btn-default btn-xs">Identity Provider (1)</a>
-                <a role="button" href="/tags/PowerShell" class="btn btn-default btn-xs">PowerShell (1)</a>
-                <a role="button" href="/tags/Telerik" class="btn btn-default btn-xs">Telerik (1)</a>
-                <a role="button" href="/tags/Web" class="btn btn-default btn-xs">Web (1)</a>
-                <a role="button" href="/tags/Development" class="btn btn-default btn-xs">Development (1)</a>
-                <a role="button" href="/tags/TFS" class="btn btn-default btn-xs">TFS (1)</a>
-        </div>
-    </div>
-</div>
+
                                 </div>
                         </div>
                 </div>

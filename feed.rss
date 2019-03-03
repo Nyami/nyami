@@ -5,8 +5,34 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>2019</copyright>
-		<pubDate>Sun, 03 Mar 2019 16:01:17 GMT</pubDate>
-		<lastBuildDate>Sun, 03 Mar 2019 16:01:17 GMT</lastBuildDate>
+		<pubDate>Sun, 03 Mar 2019 21:40:49 GMT</pubDate>
+		<lastBuildDate>Sun, 03 Mar 2019 21:40:49 GMT</lastBuildDate>
+		<item>
+			<title>Custom HTTP Verb</title>
+			<link>https://www.nyami.uk/posts/2019-03-03-custom-http-verb</link>
+			<description>&lt;p&gt;There are server reasons you might look to implement a custom HTTP Verb in you ASP.NET application, and thankfully with ASP.NET Core it’s incredibly simple.&lt;/p&gt;</description>
+			<guid>https://www.nyami.uk/posts/2019-03-03-custom-http-verb</guid>
+			<pubDate>Sun, 03 Mar 2019 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;There are server reasons you might look to implement a custom HTTP Verb in you ASP.NET application, and thankfully with ASP.NET Core it’s incredibly simple.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;Here is a nice simple example of a WEBDAV inspired SEARCH verb, potentially useful if you’re encountering limitations of GET and obviously cant have a GET with body, or want to have consistent verb for whatever reason.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class HttpSearchAttribute : HttpMethodAttribute {
+
+        private static readonly IEnumerable&amp;lt;string&amp;gt; SupportedMethods = new[] { &amp;quot;SEARCH&amp;quot; };
+
+        public HttpSearchAttribute() : base(SupportedMethods) {
+        }
+
+        public HttpSearchAttribute(string template) : base(SupportedMethods, template) {
+            if (string.IsNullOrWhiteSpace(template)) {
+                throw new ArgumentNullException(nameof(template));
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A fully working, simple example is located over at &lt;a href="https://github.com/Nyami/WebApiSearchMethod"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Blog 2.0</title>
 			<link>https://www.nyami.uk/posts/2019-03-02-blog-2_0</link>
