@@ -5,8 +5,8 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>2019</copyright>
-		<pubDate>Sun, 03 Mar 2019 21:40:49 GMT</pubDate>
-		<lastBuildDate>Sun, 03 Mar 2019 21:40:49 GMT</lastBuildDate>
+		<pubDate>Mon, 04 Mar 2019 09:02:57 GMT</pubDate>
+		<lastBuildDate>Mon, 04 Mar 2019 09:02:57 GMT</lastBuildDate>
 		<item>
 			<title>Custom HTTP Verb</title>
 			<link>https://www.nyami.uk/posts/2019-03-03-custom-http-verb</link>
@@ -15,7 +15,7 @@
 			<pubDate>Sun, 03 Mar 2019 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;There are server reasons you might look to implement a custom HTTP Verb in you ASP.NET application, and thankfully with ASP.NET Core it’s incredibly simple.&lt;/p&gt;
 &lt;!--more--&gt;
-&lt;p&gt;Here is a nice simple example of a WEBDAV inspired SEARCH verb, potentially useful if you’re encountering limitations of GET and obviously cant have a GET with body, or want to have consistent verb for whatever reason.&lt;/p&gt;
+&lt;p&gt;Here is a nice simple example of a WEBDAV inspired SEARCH verb, potentially useful if you’re encountering limitations of GET, perhaps because you can't have a GET with body, hitting the URL length limit, or just want to have consistent verb.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public class HttpSearchAttribute : HttpMethodAttribute {
 
         private static readonly IEnumerable&amp;lt;string&amp;gt; SupportedMethods = new[] { &amp;quot;SEARCH&amp;quot; };
@@ -29,6 +29,13 @@
             }
         }
     }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once you have your custom attribute you can apply this to any controller action and start using your verb.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// SEARCH api/values
+[HttpSearch]
+public ActionResult&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt; Search([FromBody] string value) {
+    return values.Where(v =&amp;gt; v.Contains(value)).ToList();
+}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A fully working, simple example is located over at &lt;a href="https://github.com/Nyami/WebApiSearchMethod"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
 </content:encoded>

@@ -112,7 +112,7 @@ Published on Sunday, March 3, 2019<br>    </div>
 
 <p>There are server reasons you might look to implement a custom HTTP Verb in you ASP.NET application, and thankfully with ASP.NET Core it’s incredibly simple.</p>
 <!--more-->
-<p>Here is a nice simple example of a WEBDAV inspired SEARCH verb, potentially useful if you’re encountering limitations of GET and obviously cant have a GET with body, or want to have consistent verb for whatever reason.</p>
+<p>Here is a nice simple example of a WEBDAV inspired SEARCH verb, potentially useful if you’re encountering limitations of GET, perhaps because you can't have a GET with body, hitting the URL length limit, or just want to have consistent verb.</p>
 <pre><code>public class HttpSearchAttribute : HttpMethodAttribute {
 
         private static readonly IEnumerable&lt;string&gt; SupportedMethods = new[] { &quot;SEARCH&quot; };
@@ -126,6 +126,13 @@ Published on Sunday, March 3, 2019<br>    </div>
             }
         }
     }
+</code></pre>
+<p>Once you have your custom attribute you can apply this to any controller action and start using your verb.</p>
+<pre><code>// SEARCH api/values
+[HttpSearch]
+public ActionResult&lt;IEnumerable&lt;string&gt;&gt; Search([FromBody] string value) {
+    return values.Where(v =&gt; v.Contains(value)).ToList();
+}
 </code></pre>
 <p>A fully working, simple example is located over at <a href="https://github.com/Nyami/WebApiSearchMethod">GitHub</a></p>
 
