@@ -4,8 +4,30 @@
 	<title>Nyami</title>
 	<link rel="self" href="https://www.nyami.uk/" />
 	<rights>2019</rights>
-	<updated>2019-03-04T09:02:57Z</updated>
+	<updated>2019-05-03T11:44:37Z</updated>
 	<subtitle>Something interesting for sure...</subtitle>
+	<entry>
+		<id>https://www.nyami.uk/posts/2019-05-03-mics-camera-action</id>
+		<title>Mics, Camera, Action!</title>
+		<link href="https://www.nyami.uk/posts/2019-05-03-mics-camera-action" />
+		<link rel="enclosure" type="image" href="https://www.nyami.uk/images/BoxOfTricks.jpg" />
+		<updated>2019-05-03T00:00:00Z</updated>
+		<content>&lt;p&gt;At the end of last year we ran a successful &lt;a href="https://www.gofundme.com/aberdeen-developers-net-user-group"&gt;funding campaign&lt;/a&gt; at Aberdeen Developers .NET User Group to purchase some gear to allow us to record some of our sessions. We had a good idea of what we were wanting to achieve, essentially, we wanted to be able to publish recordings of our sessions and we weren’t wanting to spend hours processing the content after the recording. With a couple of events successfully in the bag I thought it might be worth sharing our setup, so here it is...&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;Most of the magic is done using &lt;a href="https://obsproject.com/"&gt;Open Broadcaster Software (OBS)&lt;/a&gt;, a free and open-source streaming and recording program, but before we dive into our config let’s run down our hardware.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Microphones, probably one of the most important things for me, personally I can’t follow any video with poor sound. We have a &lt;a href="https://www.amazon.co.uk/gp/product/B07F3KLX14"&gt;wireless lapel mic&lt;/a&gt; for the speaker and a &lt;a href="https://www.amazon.co.uk/gp/product/B07F3V3LD2"&gt;wireless handheld mic&lt;/a&gt; for the host&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.amazon.co.uk/gp/product/B01DRWCOGA"&gt;Elgato Game Capture HD60 S&lt;/a&gt;, this is an awesome bit of kit, it allows us to capture the output from the presenter's laptop without having to install anything on their laptop, we also have an HDMI splitter just in case any DRM protection interferes with the process, but we've not encountered this&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.amazon.co.uk/gp/product/B006A2Q81M"&gt;Logitech C920 HD Pro Webcam&lt;/a&gt; mounted on a tripod just to make things a little more interesting to watch&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.amazon.co.uk/gp/product/B06W2KLM3S"&gt;Elgato Stream Deck&lt;/a&gt; to make scene selection nice and simple&lt;/li&gt;
+&lt;li&gt;A good selection of cables, USB, HDMI and power cables as well as a USB hub to keep thing tidy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src="images/ADNUGRecordingGear.jpg" alt="A selection of stuff" style="width:250px;"/&gt;
+&lt;p&gt;As mentioned above OBS provides much of the magic, each of the input sources above can be toggled in OBS. We have 3 different scenes; presentation, web cam directed at the speaker, and a composite of the two, which we can cycle through depending on how the presentation is going, we can also toggle each of the microphones as required. OBS can record and stream via two separate controls within the application, we have OBS setup to stream to &lt;a href="https://www.twitch.tv/adnug"&gt;Twitch&lt;/a&gt; and record to disc, thankfully both have worked well on the night. Once recorded we only have to put the recording though ffmpeg trimming as required before uploading to our &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We'll hopefully get a few more sessions recorded so make sure subscribe to &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt; so you don't miss out. If you are interested in setting something similar up and have questions please reach out if I can be of any help.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;At the end of last year we ran a successful &lt;a href="https://www.gofundme.com/aberdeen-developers-net-user-group"&gt;funding campaign&lt;/a&gt; at Aberdeen Developers .NET User Group to purchase some gear to allow us to record some of our sessions. We had a good idea of what we were wanting to achieve, essentially, we wanted to be able to publish recordings of our sessions and we weren’t wanting to spend hours processing the content after the recording. With a couple of events successfully in the bag I thought it might be worth sharing our setup, so here it is...&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2019-03-03-custom-http-verb</id>
 		<title>Custom HTTP Verb</title>

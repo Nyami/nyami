@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Nyami - Azure</title>
+        <title>Nyami - Mics, Camera, Action!</title>
         <meta name="description" content="Something interesting for sure..." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Nyami" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Nyami - Azure" />
+        <meta property="og:title" content="Nyami - Mics, Camera, Action!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.nyami.uk/tags/Azure" />
+        <meta property="og:url" content="https://www.nyami.uk/posts/2019-05-03-mics-camera-action" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -84,10 +84,22 @@
                 </nav>
                 
                 <!-- Page Header -->
-                <header class="intro-header" id="intro-header">
+                <header class="intro-header" id="intro-header" style="background-image: url(&quot;images/BoxOfTricks.jpg&quot;)">
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Mics, Camera, Action!</h1>
+    <div class="meta">        
+Published on Friday, May 3, 2019<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/ADNUG" class="btn btn-default btn-xs">ADNUG</a>
+                    <a role="button" href="/tags/Twitch" class="btn btn-default btn-xs">Twitch</a>
+                    <a role="button" href="/tags/YouTube" class="btn btn-default btn-xs">YouTube</a>
+        </div>     
+</div>
                                         </div>
                                 </div>
                         </div>
@@ -97,54 +109,24 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/2018-04-10-rguhack-2018">
-                <h3 class="post-title">RGUHack 2018</h3>
-            </a>
-            <p class="post-meta">Posted on Tuesday, April 10, 2018</p>      
-        </div>   
+                                        
+
+<p>At the end of last year we ran a successful <a href="https://www.gofundme.com/aberdeen-developers-net-user-group">funding campaign</a> at Aberdeen Developers .NET User Group to purchase some gear to allow us to record some of our sessions. We had a good idea of what we were wanting to achieve, essentially, we wanted to be able to publish recordings of our sessions and we weren’t wanting to spend hours processing the content after the recording. With a couple of events successfully in the bag I thought it might be worth sharing our setup, so here it is...</p>
+<!--more-->
+<p>Most of the magic is done using <a href="https://obsproject.com/">Open Broadcaster Software (OBS)</a>, a free and open-source streaming and recording program, but before we dive into our config let’s run down our hardware.</p>
+<ul>
+<li>Microphones, probably one of the most important things for me, personally I can’t follow any video with poor sound. We have a <a href="https://www.amazon.co.uk/gp/product/B07F3KLX14">wireless lapel mic</a> for the speaker and a <a href="https://www.amazon.co.uk/gp/product/B07F3V3LD2">wireless handheld mic</a> for the host</li>
+<li><a href="https://www.amazon.co.uk/gp/product/B01DRWCOGA">Elgato Game Capture HD60 S</a>, this is an awesome bit of kit, it allows us to capture the output from the presenter's laptop without having to install anything on their laptop, we also have an HDMI splitter just in case any DRM protection interferes with the process, but we've not encountered this</li>
+<li><a href="https://www.amazon.co.uk/gp/product/B006A2Q81M">Logitech C920 HD Pro Webcam</a> mounted on a tripod just to make things a little more interesting to watch</li>
+<li><a href="https://www.amazon.co.uk/gp/product/B06W2KLM3S">Elgato Stream Deck</a> to make scene selection nice and simple</li>
+<li>A good selection of cables, USB, HDMI and power cables as well as a USB hub to keep thing tidy</li>
+</ul>
+<img src="images/ADNUGRecordingGear.jpg" alt="A selection of stuff" style="width:250px;"/>
+<p>As mentioned above OBS provides much of the magic, each of the input sources above can be toggled in OBS. We have 3 different scenes; presentation, web cam directed at the speaker, and a composite of the two, which we can cycle through depending on how the presentation is going, we can also toggle each of the microphones as required. OBS can record and stream via two separate controls within the application, we have OBS setup to stream to <a href="https://www.twitch.tv/adnug">Twitch</a> and record to disc, thankfully both have worked well on the night. Once recorded we only have to put the recording though ffmpeg trimming as required before uploading to our <a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw">YouTube channel</a>.</p>
+<p>We'll hopefully get a few more sessions recorded so make sure subscribe to <a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw">YouTube channel</a> so you don't miss out. If you are interested in setting something similar up and have questions please reach out if I can be of any help.</p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/Tips" class="btn btn-default btn-xs">Tips (3)</a>
-                <a role="button" href="/tags/dotnet" class="btn btn-default btn-xs">dotnet (2)</a>
-                <a role="button" href="/tags/HowTo" class="btn btn-default btn-xs">HowTo (2)</a>
-                <a role="button" href="/tags/ASPNET" class="btn btn-default btn-xs">ASP.NET (2)</a>
-                <a role="button" href="/tags/ADNUG" class="btn btn-default btn-xs">ADNUG (1)</a>
-                <a role="button" href="/tags/Twitch" class="btn btn-default btn-xs">Twitch (1)</a>
-                <a role="button" href="/tags/YouTube" class="btn btn-default btn-xs">YouTube (1)</a>
-                <a role="button" href="/tags/aspnet" class="btn btn-default btn-xs">aspnet (1)</a>
-                <a role="button" href="/tags/blog" class="btn btn-default btn-xs">blog (1)</a>
-                <a role="button" href="/tags/wyam" class="btn btn-default btn-xs">wyam (1)</a>
-                <a role="button" href="/tags/tips" class="btn btn-default btn-xs">tips (1)</a>
-                <a role="button" href="/tags/Azure" class="btn btn-primary btn-xs">Azure (1)</a>
-                <a role="button" href="/tags/RGUHack" class="btn btn-default btn-xs">RGUHack (1)</a>
-                <a role="button" href="/tags/dotnet-core" class="btn btn-default btn-xs">dotnet core (1)</a>
-                <a role="button" href="/tags/Middleware" class="btn btn-default btn-xs">Middleware (1)</a>
-                <a role="button" href="/tags/Identity-Provider" class="btn btn-default btn-xs">Identity Provider (1)</a>
-                <a role="button" href="/tags/PowerShell" class="btn btn-default btn-xs">PowerShell (1)</a>
-                <a role="button" href="/tags/Telerik" class="btn btn-default btn-xs">Telerik (1)</a>
-                <a role="button" href="/tags/Web" class="btn btn-default btn-xs">Web (1)</a>
-                <a role="button" href="/tags/Development" class="btn btn-default btn-xs">Development (1)</a>
-                <a role="button" href="/tags/TFS" class="btn btn-default btn-xs">TFS (1)</a>
-        </div>
-    </div>
-</div>
+
                                 </div>
                         </div>
                 </div>
@@ -202,20 +184,6 @@
 
                 <script>hljs.initHighlightingOnLoad();</script>
 
-                        <script type="text/javascript">                
-                                // Header background                        
-                                var colors = Please.make_color({
-                                        colors_returned: 3,
-                                        saturation: .6
-                                });
-                                var t = new Trianglify({
-                                        x_gradient: colors,
-                                        y_gradient: ["#FFFFFF"]
-                                });
-                                var header = document.getElementById("intro-header");
-                                var pattern = t.generate(header.clientWidth, header.clientHeight);
-                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
-                        </script>
 
                 <script>
                         BackgroundCheck.init({
