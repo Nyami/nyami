@@ -4,8 +4,78 @@
 	<title>Nyami</title>
 	<link rel="self" href="https://www.nyami.uk/" />
 	<rights>2019</rights>
-	<updated>2019-05-03T11:44:37Z</updated>
+	<updated>2019-05-10T11:57:18Z</updated>
 	<subtitle>Something interesting for sure...</subtitle>
+	<entry>
+		<id>https://www.nyami.uk/posts/2019-05-10-VueWithAspNetPart1</id>
+		<title>VueJs and ASP.NET Core - Part 1</title>
+		<link href="https://www.nyami.uk/posts/2019-05-10-VueWithAspNetPart1" />
+		<link rel="enclosure" type="image" href="https://www.nyami.uk/images/VueLogo.png" />
+		<updated>2019-05-10T00:00:00Z</updated>
+		<content>&lt;p&gt;Whilst it’s relatively easy to &lt;a href="http://lmgtfy.com/?q=asp.net+core+2+with+vue"&gt;find and follow a guide&lt;/a&gt; to get up and running with Vue and ASP.NET Core, you’ll probably find there are a number techniques, methods, and opinions and there isn’t really the ‘first class’ support and 'simple' method of getting started as there is with Angular. In the following series of posts we’ll take a look at repurposing and using some of Microsoft’s SpaServices to create better support for Vue.js within your new ASP.NET Core project.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h2 id="dotnet-new-angular"&gt;dotnet new angular&lt;/h2&gt;
+&lt;p&gt;Before we get started creating our own stuff for Vue lets look at creating an Angular project using the &lt;a href="https://www.nuget.org/packages/Microsoft.DotNet.Web.Spa.ProjectTemplates/"&gt;Microsoft's template&lt;/a&gt; and see what it gives us.&lt;/p&gt;
+&lt;p&gt;Assuming you have the &lt;a href="https://dotnet.microsoft.com/download"&gt;.NET Core SDK&lt;/a&gt; installed (tested with 2.2), at a location of your choosing, drop to your prefered terminal and type &lt;code&gt;dotnet new angular&lt;/code&gt;. We now have a fairly sparse, and if you've worked with ASP.NET, familiar, project created. Let's break it down a little:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ClientApp folder - a Hello World Angular app&lt;/li&gt;
+&lt;li&gt;Controllers folder - contains a simple api to 'fetch' weather data&lt;/li&gt;
+&lt;li&gt;Pages folder - not much here, just the Error page (MVC)&lt;/li&gt;
+&lt;li&gt;Properties folder - launchsettings used for debug/development&lt;/li&gt;
+&lt;li&gt;wwwroot folder - static assets for the side&lt;/li&gt;
+&lt;li&gt;appsettings.json - application setting, appsettings.development.json allows for development time settings&lt;/li&gt;
+&lt;li&gt;Foo.csproj - the aspnet project file, more information below&lt;/li&gt;
+&lt;li&gt;Program.cs - application entry point&lt;/li&gt;
+&lt;li&gt;Startup.cs - Configures services and application request pipeline&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to learn more about ASP.NET Core apps the &lt;a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-2.2"&gt;official documentation&lt;/a&gt; is the best place to head.&lt;/p&gt;
+&lt;h2 id="startup.cs"&gt;Startup.cs&lt;/h2&gt;
+&lt;p&gt;As with most ASP.NET applications the magic is coordinated in Startup.cs, there are typically two main parts, &lt;code&gt;ConfigureServices&lt;/code&gt;, where we configure and register services required by our application, and &lt;code&gt;Configure&lt;/code&gt;, where we configure the request handling pipeline. If you open Startup.cs you'll see the template has added some SPA related code to each of these methods.&lt;/p&gt;
+&lt;p&gt;In the first block of code, as well as adding MVC configuration, it adds configuration telling the middleware where to expect to find the files for the SPA application.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+    {
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+    // In production, the Angular files will be served from this directory
+    services.AddSpaStaticFiles(configuration =&amp;gt;
+    {
+        configuration.RootPath = &amp;quot;ClientApp/dist&amp;quot;;
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this next block we can see there are two points of interest for our application, &lt;code&gt;app.UseSpaStaticFiles()&lt;/code&gt;, which uses the configuration above to serve the static files for the SPA and &lt;code&gt;app.UseSpa&lt;/code&gt; which will return the default SPA page for any unhandled requests, its important this is the last middleware in our pipeline as it essentially acts as a 'catch all' on the assumption the route will be matched by our client side app. You can also see that when in development there is a call &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt;, this will call the npm script specified, wait for it to start successfully, and will 'proxy' calls in to the webpack web server started, and is what we'll go on to replicate for our Vue implementaion.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    // Code removed for brevity
+
+    app.UseSpaStaticFiles();
+
+    app.UseMvc(routes =&amp;gt; {
+        //Code removed for brevity
+    });
+
+    app.UseSpa(spa =&amp;gt;
+    {
+        // To learn more about options for serving an Angular SPA from ASP.NET Core,
+        // see https://go.microsoft.com/fwlink/?linkid=864501
+
+        spa.Options.SourcePath = &amp;quot;ClientApp&amp;quot;;
+
+        if (env.IsDevelopment())
+        {
+            spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;);
+        }
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="csproj-file"&gt;.csproj file&lt;/h2&gt;
+&lt;p&gt;The project file has a couple of extra targets when compared to a vanilla MVC project file, these are used to assert that npm has been installed when the project is being built and another target is used to add our Angular application to the published output. The project also ensures the ClientApp folder is not handled as part of the default build and publish behaviour.&lt;/p&gt;
+&lt;h2 id="but-what-about-vue"&gt;But what about Vue?&lt;/h2&gt;
+&lt;p&gt;Looking at what Microsoft's template provides this is the exact experience we are hoping to achieve but for Vue. There are really two parts to the Angular and ASP.NET Core story, the SPA middleware that hooks up Webpack at development time and serves the SPA’s static files, and the template getting us up and running ensuring a consistent experience. In the next part we'll take a look at the middleware and see how far it can take us for Vue.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;Whilst it’s relatively easy to &lt;a href="http://lmgtfy.com/?q=asp.net+core+2+with+vue"&gt;find and follow a guide&lt;/a&gt; to get up and running with Vue and ASP.NET Core, you’ll probably find there are a number techniques, methods, and opinions and there isn’t really the ‘first class’ support and 'simple' method of getting started as there is with Angular. In the following series of posts we’ll take a look at repurposing and using some of Microsoft’s SpaServices to create better support for Vue.js within your new ASP.NET Core project.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2019-05-03-mics-camera-action</id>
 		<title>Mics, Camera, Action!</title>
