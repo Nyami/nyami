@@ -15,7 +15,7 @@ Whilst it’s relatively easy to [find and follow a guide]( http://lmgtfy.com/?q
 
 Before we get started creating our own stuff for Vue lets look at creating an Angular project using the [Microsoft's template](https://www.nuget.org/packages/Microsoft.DotNet.Web.Spa.ProjectTemplates/) and see what it gives us.
 
-Assuming you have the [.NET Core SDK](https://dotnet.microsoft.com/download) installed (tested with 2.2), at a location of your choosing, drop to your prefered terminal and type `dotnet new angular`. We now have a fairly sparse, and if you've worked with ASP.NET, familiar, project created. Let's break it down a little:
+Assuming you have the [.NET Core SDK](https://dotnet.microsoft.com/download) installed (tested with 2.2), at a location of your choosing, drop to your preferred terminal and type `dotnet new angular`. We now have a fairly sparse, and if you've worked with ASP.NET, familiar, project created. Let's break it down a little:
 
 - ClientApp folder - a Hello World Angular app
 - Controllers folder - contains a simple api to 'fetch' weather data
@@ -84,3 +84,5 @@ The project file has a couple of extra targets when compared to a vanilla MVC pr
 ## But what about Vue? ##
 
 Looking at what Microsoft's template provides this is the exact experience we are hoping to achieve but for Vue. There are really two parts to the Angular and ASP.NET Core story, the SPA middleware that hooks up Webpack at development time and serves the SPA’s static files, and the template getting us up and running ensuring a consistent experience. In the next part we'll take a look at the middleware and see how far it can take us for Vue.
+
+[Part 2](/posts/2019-05-21-VueWithAspNetPart2)
