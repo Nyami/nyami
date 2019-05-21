@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Nyami - Identity Provider</title>
+        <title>Nyami - VueJs and ASP.NET Core - Part 2</title>
         <meta name="description" content="Something interesting for sure..." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Nyami" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Nyami - Identity Provider" />
+        <meta property="og:title" content="Nyami - VueJs and ASP.NET Core - Part 2" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.nyami.uk/tags/Identity-Provider" />
+        <meta property="og:url" content="https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -84,10 +84,22 @@
                 </nav>
                 
                 <!-- Page Header -->
-                <header class="intro-header" id="intro-header">
+                <header class="intro-header" id="intro-header" style="background-image: url(&quot;images/VueLogo.png&quot;)">
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>VueJs and ASP.NET Core - Part 2</h1>
+    <div class="meta">        
+Published on Tuesday, May 21, 2019<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/aspnet" class="btn btn-default btn-xs">aspnet</a>
+                    <a role="button" href="/tags/dotnet" class="btn btn-default btn-xs">dotnet</a>
+                    <a role="button" href="/tags/VueJs" class="btn btn-default btn-xs">VueJs</a>
+        </div>     
+</div>
                                         </div>
                                 </div>
                         </div>
@@ -97,55 +109,47 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider">
-                <h3 class="post-title">Creating a Self-Signed Certificate for Identity Provider</h3>
-            </a>
-            <p class="post-meta">Posted on Saturday, November 18, 2017</p>      
-        </div>   
+                                        
+
+<p>In <a href="/posts/2019-05-10-VueWithAspNetPart1">Part 1</a> we looked at the Angular project template with ASP.NET Core and its pretty much what we want to achieve for VueJs. In this part we'll dig a little deeper into <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices?view=aspnetcore-2.2">Microsoft.AspNetCore.SpaServices</a>, specifically <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli?view=aspnetcore-2.2">Microsoft.AspNetCore.SpaServices.AngularCli</a> and look to take inspiration for our Vue solution.</p>
+<!--more-->
+<h2 id="vue-create">vue create</h2>
+<p>Let's start out by trying to use the template created for Angular and swap out the ClientApp for our VueJs app and see what happens.
+First we'll create our VueJs application, to do this we'll use the <a href="https://cli.vuejs.org/">Vue CLI</a>, I've used npm to install this as a global tool (<code>npm install -g &#64;vue/cli</code>), so it just a case of typing <code>vue create hello-world</code>, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:</p>
+<ol>
+<li>Babel, TypeScript, Linter/Formatter</li>
+<li>Yes to Use class-style component syntax</li>
+<li>Yes  to Use Babel alongside TypeScript for auto-detected polyfills</li>
+<li>TSLint as linter/formatter config</li>
+<li>Lint on save</li>
+<li>Config in dedicated config files</li>
+</ol>
+<p>We can have a look at our newly created site if we navigate into the folder and perform an <code>npm install</code> before running <code>npm run serve</code>, nothing exciting but it should all work.</p>
+<h2 id="dotnet-new">dotnet new</h2>
+<p>Next, we'll create an ASP.NET app using the Angular project template, again, at a suitable location in your favourite command prompt, type <code>dotnet new angular</code>. We can open the project and run this in Visual Studio, and as if by magic we have an Angular app running from our ASP.NET project. If we take a look at the build output we should be able to see that an 'npm install' was initiated, this was from the additional target 'DebugEnsureNodeEnv’ in our project file, and if you look though the output for “ASP.NET Core Web Server” you should see that 'ng serve' was called, this call was initiated by the <code>spa.UseAngularCliServer(npmScript: &quot;start&quot;)</code> call in our startup.cs.</p>
+<h2 id="bait-and-switch">bait and switch</h2>
+<p>Now let's replace the Angular ClientApp folder with the contents from the VueJs app created above, and the change the npmScript called by <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli.angularclimiddlewareextensions.useangularcliserver?view=aspnetcore-2.2">spa.UseAngularCliServer</a> in Startup.cs from &quot;start&quot; to &quot;serve&quot; and see what happens when we run the ASP.NET app.</p>
+<h2 id="fail">fail</h2>
+<p>Hmmmm.... not much, just the following exception:</p>
+<pre><code>TimeoutException: The Angular CLI process did not start listening for requests within the timeout period of 50 seconds.
+</code></pre>
+<p>But if we take another look at the outputs, we can see that our project has installed the npm packages and has actually started our Vue application on a random port, it would appear that the middleware just hasn't hooked everything up. Thankfully Microsoft has open sourced ASP.NET Core and much of the supporting packages so it doesn’t take much to rummage around the source code for <a href="https://github.com/aspnet/AspNetCore/tree/master/src/Middleware/SpaServices.Extensions/src/AngularCli">AngularCliMiddleware</a> to realise that the magic to hook everything up is simply a regular expression looking for the confirmation from the Angular CLI output.</p>
+<h2 id="vueclimiddleware">VueCliMiddleware</h2>
+<p>So let's create our own middleware for Vue, looking though the source code it should be just a case of cloning the AngularCliMiddleware along with the internal supporting classes (unless of course you want to get creative with reflection) and use an appropriate regular expression to capture the Vue CLI start up.</p>
+<ol>
+<li>Create a new, empty class lib project</li>
+<li>Add a package reference to <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions/2.2.0">Microsoft.AspNetCore.SpaServices.Extensions (2.2.0)</a></li>
+<li>Copy AngularCliBuilder.cs, AngularCliMiddleware.cs and AngularCliMiddlewareExtensions.cs and supporting internal classes from <a href="https://github.com/aspnet/AspNetCore">https://github.com/aspnet/AspNetCore</a></li>
+<li>Rename all the things</li>
+<li>Replace openBrowserLine Regex with a suitable Vue alternative, I went for <code>&quot; - Local: (http\\S+)&quot;</code></li>
+</ol>
+<p>You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the <code>spa.UseAngularCliServer(npmScript: &quot;start&quot;)</code> with <code>spa.UseVueCliServer(npmScript: &quot;serve&quot;);</code></p>
+<h2 id="heres-one-i-made-earlier">Here's one I made earlier</h2>
+<p>You can check out the version I knocked up <a href="https://github.com/Nyami/AspNetCore.VueCliServices">here</a>, this has also been uploaded to <a href="https://www.nuget.org/packages/Nyami.AspNetCore.VueCliServices">NuGet</a> so you can get started by pulling this into your own project via the package manager UI or the package manager console using <code>Install-Package Nyami.AspNetCore.VueCliServices</code>.</p>
+<p>In the next part we'll take a look at creating a project template to get us up and running even quicker.</p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/dotnet" class="btn btn-default btn-xs">dotnet (4)</a>
-                <a role="button" href="/tags/Tips" class="btn btn-default btn-xs">Tips (3)</a>
-                <a role="button" href="/tags/aspnet" class="btn btn-default btn-xs">aspnet (3)</a>
-                <a role="button" href="/tags/HowTo" class="btn btn-default btn-xs">HowTo (2)</a>
-                <a role="button" href="/tags/ASPNET" class="btn btn-default btn-xs">ASP.NET (2)</a>
-                <a role="button" href="/tags/VueJs" class="btn btn-default btn-xs">VueJs (2)</a>
-                <a role="button" href="/tags/dotnet-core" class="btn btn-default btn-xs">dotnet core (1)</a>
-                <a role="button" href="/tags/Middleware" class="btn btn-default btn-xs">Middleware (1)</a>
-                <a role="button" href="/tags/Identity-Provider" class="btn btn-primary btn-xs">Identity Provider (1)</a>
-                <a role="button" href="/tags/PowerShell" class="btn btn-default btn-xs">PowerShell (1)</a>
-                <a role="button" href="/tags/Telerik" class="btn btn-default btn-xs">Telerik (1)</a>
-                <a role="button" href="/tags/Web" class="btn btn-default btn-xs">Web (1)</a>
-                <a role="button" href="/tags/Development" class="btn btn-default btn-xs">Development (1)</a>
-                <a role="button" href="/tags/TFS" class="btn btn-default btn-xs">TFS (1)</a>
-                <a role="button" href="/tags/ADNUG" class="btn btn-default btn-xs">ADNUG (1)</a>
-                <a role="button" href="/tags/Twitch" class="btn btn-default btn-xs">Twitch (1)</a>
-                <a role="button" href="/tags/YouTube" class="btn btn-default btn-xs">YouTube (1)</a>
-                <a role="button" href="/tags/blog" class="btn btn-default btn-xs">blog (1)</a>
-                <a role="button" href="/tags/wyam" class="btn btn-default btn-xs">wyam (1)</a>
-                <a role="button" href="/tags/tips" class="btn btn-default btn-xs">tips (1)</a>
-                <a role="button" href="/tags/Azure" class="btn btn-default btn-xs">Azure (1)</a>
-                <a role="button" href="/tags/RGUHack" class="btn btn-default btn-xs">RGUHack (1)</a>
-        </div>
-    </div>
-</div>
+
                                 </div>
                         </div>
                 </div>
@@ -203,20 +207,6 @@
 
                 <script>hljs.initHighlightingOnLoad();</script>
 
-                        <script type="text/javascript">                
-                                // Header background                        
-                                var colors = Please.make_color({
-                                        colors_returned: 3,
-                                        saturation: .6
-                                });
-                                var t = new Trianglify({
-                                        x_gradient: colors,
-                                        y_gradient: ["#FFFFFF"]
-                                });
-                                var header = document.getElementById("intro-header");
-                                var pattern = t.generate(header.clientWidth, header.clientHeight);
-                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
-                        </script>
 
                 <script>
                         BackgroundCheck.init({

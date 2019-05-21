@@ -115,7 +115,7 @@ Published on Friday, May 10, 2019<br>    </div>
 <!--more-->
 <h2 id="dotnet-new-angular">dotnet new angular</h2>
 <p>Before we get started creating our own stuff for Vue lets look at creating an Angular project using the <a href="https://www.nuget.org/packages/Microsoft.DotNet.Web.Spa.ProjectTemplates/">Microsoft's template</a> and see what it gives us.</p>
-<p>Assuming you have the <a href="https://dotnet.microsoft.com/download">.NET Core SDK</a> installed (tested with 2.2), at a location of your choosing, drop to your prefered terminal and type <code>dotnet new angular</code>. We now have a fairly sparse, and if you've worked with ASP.NET, familiar, project created. Let's break it down a little:</p>
+<p>Assuming you have the <a href="https://dotnet.microsoft.com/download">.NET Core SDK</a> installed (tested with 2.2), at a location of your choosing, drop to your preferred terminal and type <code>dotnet new angular</code>. We now have a fairly sparse, and if you've worked with ASP.NET, familiar, project created. Let's break it down a little:</p>
 <ul>
 <li>ClientApp folder - a Hello World Angular app</li>
 <li>Controllers folder - contains a simple api to 'fetch' weather data</li>
@@ -172,6 +172,7 @@ public void ConfigureServices(IServiceCollection services)
 <p>The project file has a couple of extra targets when compared to a vanilla MVC project file, these are used to assert that npm has been installed when the project is being built and another target is used to add our Angular application to the published output. The project also ensures the ClientApp folder is not handled as part of the default build and publish behaviour.</p>
 <h2 id="but-what-about-vue">But what about Vue?</h2>
 <p>Looking at what Microsoft's template provides this is the exact experience we are hoping to achieve but for Vue. There are really two parts to the Angular and ASP.NET Core story, the SPA middleware that hooks up Webpack at development time and serves the SPA’s static files, and the template getting us up and running ensuring a consistent experience. In the next part we'll take a look at the middleware and see how far it can take us for Vue.</p>
+<p><a href="/posts/2019-05-21-VueWithAspNetPart2">Part 2</a></p>
 
 
 

@@ -5,8 +5,53 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>2019</copyright>
-		<pubDate>Fri, 10 May 2019 11:57:18 GMT</pubDate>
-		<lastBuildDate>Fri, 10 May 2019 11:57:18 GMT</lastBuildDate>
+		<pubDate>Tue, 21 May 2019 14:47:46 GMT</pubDate>
+		<lastBuildDate>Tue, 21 May 2019 14:47:46 GMT</lastBuildDate>
+		<item>
+			<title>VueJs and ASP.NET Core - Part 2</title>
+			<link>https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2</link>
+			<description>&lt;p&gt;In &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;Part 1&lt;/a&gt; we looked at the Angular project template with ASP.NET Core and its pretty much what we want to achieve for VueJs. In this part we'll dig a little deeper into &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices&lt;/a&gt;, specifically &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices.AngularCli&lt;/a&gt; and look to take inspiration for our Vue solution.&lt;/p&gt;</description>
+			<enclosure url="https://www.nyami.uk/images/VueLogo.png" length="0" type="image" />
+			<guid>https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2</guid>
+			<pubDate>Tue, 21 May 2019 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;In &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;Part 1&lt;/a&gt; we looked at the Angular project template with ASP.NET Core and its pretty much what we want to achieve for VueJs. In this part we'll dig a little deeper into &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices&lt;/a&gt;, specifically &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices.AngularCli&lt;/a&gt; and look to take inspiration for our Vue solution.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h2 id="vue-create"&gt;vue create&lt;/h2&gt;
+&lt;p&gt;Let's start out by trying to use the template created for Angular and swap out the ClientApp for our VueJs app and see what happens.
+First we'll create our VueJs application, to do this we'll use the &lt;a href="https://cli.vuejs.org/"&gt;Vue CLI&lt;/a&gt;, I've used npm to install this as a global tool (&lt;code&gt;npm install -g &amp;#64;vue/cli&lt;/code&gt;), so it just a case of typing &lt;code&gt;vue create hello-world&lt;/code&gt;, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Babel, TypeScript, Linter/Formatter&lt;/li&gt;
+&lt;li&gt;Yes to Use class-style component syntax&lt;/li&gt;
+&lt;li&gt;Yes  to Use Babel alongside TypeScript for auto-detected polyfills&lt;/li&gt;
+&lt;li&gt;TSLint as linter/formatter config&lt;/li&gt;
+&lt;li&gt;Lint on save&lt;/li&gt;
+&lt;li&gt;Config in dedicated config files&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We can have a look at our newly created site if we navigate into the folder and perform an &lt;code&gt;npm install&lt;/code&gt; before running &lt;code&gt;npm run serve&lt;/code&gt;, nothing exciting but it should all work.&lt;/p&gt;
+&lt;h2 id="dotnet-new"&gt;dotnet new&lt;/h2&gt;
+&lt;p&gt;Next, we'll create an ASP.NET app using the Angular project template, again, at a suitable location in your favourite command prompt, type &lt;code&gt;dotnet new angular&lt;/code&gt;. We can open the project and run this in Visual Studio, and as if by magic we have an Angular app running from our ASP.NET project. If we take a look at the build output we should be able to see that an 'npm install' was initiated, this was from the additional target 'DebugEnsureNodeEnv’ in our project file, and if you look though the output for “ASP.NET Core Web Server” you should see that 'ng serve' was called, this call was initiated by the &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt; call in our startup.cs.&lt;/p&gt;
+&lt;h2 id="bait-and-switch"&gt;bait and switch&lt;/h2&gt;
+&lt;p&gt;Now let's replace the Angular ClientApp folder with the contents from the VueJs app created above, and the change the npmScript called by &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli.angularclimiddlewareextensions.useangularcliserver?view=aspnetcore-2.2"&gt;spa.UseAngularCliServer&lt;/a&gt; in Startup.cs from &amp;quot;start&amp;quot; to &amp;quot;serve&amp;quot; and see what happens when we run the ASP.NET app.&lt;/p&gt;
+&lt;h2 id="fail"&gt;fail&lt;/h2&gt;
+&lt;p&gt;Hmmmm.... not much, just the following exception:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TimeoutException: The Angular CLI process did not start listening for requests within the timeout period of 50 seconds.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But if we take another look at the outputs, we can see that our project has installed the npm packages and has actually started our Vue application on a random port, it would appear that the middleware just hasn't hooked everything up. Thankfully Microsoft has open sourced ASP.NET Core and much of the supporting packages so it doesn’t take much to rummage around the source code for &lt;a href="https://github.com/aspnet/AspNetCore/tree/master/src/Middleware/SpaServices.Extensions/src/AngularCli"&gt;AngularCliMiddleware&lt;/a&gt; to realise that the magic to hook everything up is simply a regular expression looking for the confirmation from the Angular CLI output.&lt;/p&gt;
+&lt;h2 id="vueclimiddleware"&gt;VueCliMiddleware&lt;/h2&gt;
+&lt;p&gt;So let's create our own middleware for Vue, looking though the source code it should be just a case of cloning the AngularCliMiddleware along with the internal supporting classes (unless of course you want to get creative with reflection) and use an appropriate regular expression to capture the Vue CLI start up.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new, empty class lib project&lt;/li&gt;
+&lt;li&gt;Add a package reference to &lt;a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions/2.2.0"&gt;Microsoft.AspNetCore.SpaServices.Extensions (2.2.0)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Copy AngularCliBuilder.cs, AngularCliMiddleware.cs and AngularCliMiddlewareExtensions.cs and supporting internal classes from &lt;a href="https://github.com/aspnet/AspNetCore"&gt;https://github.com/aspnet/AspNetCore&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rename all the things&lt;/li&gt;
+&lt;li&gt;Replace openBrowserLine Regex with a suitable Vue alternative, I went for &lt;code&gt;&amp;quot; - Local: (http\\S+)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt; with &lt;code&gt;spa.UseVueCliServer(npmScript: &amp;quot;serve&amp;quot;);&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="heres-one-i-made-earlier"&gt;Here's one I made earlier&lt;/h2&gt;
+&lt;p&gt;You can check out the version I knocked up &lt;a href="https://github.com/Nyami/AspNetCore.VueCliServices"&gt;here&lt;/a&gt;, this has also been uploaded to &lt;a href="https://www.nuget.org/packages/Nyami.AspNetCore.VueCliServices"&gt;NuGet&lt;/a&gt; so you can get started by pulling this into your own project via the package manager UI or the package manager console using &lt;code&gt;Install-Package Nyami.AspNetCore.VueCliServices&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In the next part we'll take a look at creating a project template to get us up and running even quicker.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>VueJs and ASP.NET Core - Part 1</title>
 			<link>https://www.nyami.uk/posts/2019-05-10-VueWithAspNetPart1</link>
@@ -18,7 +63,7 @@
 &lt;!--more--&gt;
 &lt;h2 id="dotnet-new-angular"&gt;dotnet new angular&lt;/h2&gt;
 &lt;p&gt;Before we get started creating our own stuff for Vue lets look at creating an Angular project using the &lt;a href="https://www.nuget.org/packages/Microsoft.DotNet.Web.Spa.ProjectTemplates/"&gt;Microsoft's template&lt;/a&gt; and see what it gives us.&lt;/p&gt;
-&lt;p&gt;Assuming you have the &lt;a href="https://dotnet.microsoft.com/download"&gt;.NET Core SDK&lt;/a&gt; installed (tested with 2.2), at a location of your choosing, drop to your prefered terminal and type &lt;code&gt;dotnet new angular&lt;/code&gt;. We now have a fairly sparse, and if you've worked with ASP.NET, familiar, project created. Let's break it down a little:&lt;/p&gt;
+&lt;p&gt;Assuming you have the &lt;a href="https://dotnet.microsoft.com/download"&gt;.NET Core SDK&lt;/a&gt; installed (tested with 2.2), at a location of your choosing, drop to your preferred terminal and type &lt;code&gt;dotnet new angular&lt;/code&gt;. We now have a fairly sparse, and if you've worked with ASP.NET, familiar, project created. Let's break it down a little:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ClientApp folder - a Hello World Angular app&lt;/li&gt;
 &lt;li&gt;Controllers folder - contains a simple api to 'fetch' weather data&lt;/li&gt;
@@ -75,6 +120,7 @@ public void ConfigureServices(IServiceCollection services)
 &lt;p&gt;The project file has a couple of extra targets when compared to a vanilla MVC project file, these are used to assert that npm has been installed when the project is being built and another target is used to add our Angular application to the published output. The project also ensures the ClientApp folder is not handled as part of the default build and publish behaviour.&lt;/p&gt;
 &lt;h2 id="but-what-about-vue"&gt;But what about Vue?&lt;/h2&gt;
 &lt;p&gt;Looking at what Microsoft's template provides this is the exact experience we are hoping to achieve but for Vue. There are really two parts to the Angular and ASP.NET Core story, the SPA middleware that hooks up Webpack at development time and serves the SPA’s static files, and the template getting us up and running ensuring a consistent experience. In the next part we'll take a look at the middleware and see how far it can take us for Vue.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/posts/2019-05-21-VueWithAspNetPart2"&gt;Part 2&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 		<item>
