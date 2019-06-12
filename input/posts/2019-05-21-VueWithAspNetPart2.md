@@ -58,4 +58,4 @@ You can now reference this project in any project created from the Angular templ
 
 You can check out the version I knocked up [here](https://github.com/Nyami/AspNetCore.VueCliServices), this has also been uploaded to [NuGet](https://www.nuget.org/packages/Nyami.AspNetCore.VueCliServices) so you can get started by pulling this into your own project via the package manager UI or the package manager console using `Install-Package Nyami.AspNetCore.VueCliServices`.
 
-In the next part we'll take a look at creating a project template to get us up and running even quicker.
+In the [next part](/posts/2019-06-11-VueWithAspNetPart3) we'll take a look at creating a project template to get us up and running even quicker.
