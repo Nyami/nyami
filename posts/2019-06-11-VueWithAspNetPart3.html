@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Nyami - Archive</title>
+        <title>Nyami - VueJs and ASP.NET Core - Part 3</title>
         <meta name="description" content="Something interesting for sure..." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Nyami" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Nyami - Archive" />
+        <meta property="og:title" content="Nyami - VueJs and ASP.NET Core - Part 3" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.nyami.uk/posts" />
+        <meta property="og:url" content="https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -84,10 +84,22 @@
                 </nav>
                 
                 <!-- Page Header -->
-                <header class="intro-header" id="intro-header">
+                <header class="intro-header" id="intro-header" style="background-image: url(&quot;images/VueLogo.png&quot;)">
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>VueJs and ASP.NET Core - Part 3</h1>
+    <div class="meta">        
+Published on Tuesday, June 11, 2019<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/aspnet" class="btn btn-default btn-xs">aspnet</a>
+                    <a role="button" href="/tags/dotnet" class="btn btn-default btn-xs">dotnet</a>
+                    <a role="button" href="/tags/VueJs" class="btn btn-default btn-xs">VueJs</a>
+        </div>     
+</div>
                                         </div>
                                 </div>
                         </div>
@@ -98,120 +110,40 @@
                         <div class="row">
                                 <div id="content" class="col-md-12">
                                         
-        <h1>2019</h1>
-        <hr />
 
-        <div class="post-list">
-            <a href="/posts/2019-06-11-VueWithAspNetPart3">
-                <h3 class="post-title">VueJs and ASP.NET Core - Part 3</h3>
-            </a>
-            <p class="post-meta">Posted on Tuesday, June 11, 2019</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2019-05-21-VueWithAspNetPart2">
-                <h3 class="post-title">VueJs and ASP.NET Core - Part 2</h3>
-            </a>
-            <p class="post-meta">Posted on Tuesday, May 21, 2019</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2019-05-10-VueWithAspNetPart1">
-                <h3 class="post-title">VueJs and ASP.NET Core - Part 1</h3>
-            </a>
-            <p class="post-meta">Posted on Friday, May 10, 2019</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2019-05-03-mics-camera-action">
-                <h3 class="post-title">Mics, Camera, Action!</h3>
-            </a>
-            <p class="post-meta">Posted on Friday, May 3, 2019</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2019-03-03-custom-http-verb">
-                <h3 class="post-title">Custom HTTP Verb</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, March 3, 2019</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2019-03-02-blog-2_0">
-                <h3 class="post-title">Blog 2.0</h3>
-            </a>
-            <p class="post-meta">Posted on Saturday, March 2, 2019</p>      
-        </div>   
-        <h1>2018</h1>
-        <hr />
+<p>In parts <a href="/posts/2019-05-10-VueWithAspNetPart1">1</a> and <a href="/posts/2019-05-21-VueWithAspNetPart2">2</a> we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.</p>
+<!--more-->
+<h2 id="creating-a-template">Creating a Template</h2>
+<p>Newer versions of the .NET SDK has really simplified template creation, rather than detailing the whole experience here you are probably best referring to the <a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/create-custom-template">official documentation</a> however here is an overview of what I've done with a few handy pointers.</p>
+<ol>
+<li>Create an empty project based on the webapi template</li>
+<li>Added the package created in Part 2 using <code>Install-Package Nyami.AspNetCore.VueCliServices</code></li>
+<li>Created a ClientApp using the Vue CLI</li>
+<li>Added the custom targets into the project file</li>
+<li>Created the template configuration described <a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/create-custom-template#create-a-template-from-a-project">here</a>
+<ol>
+<li>When creating the template specify <code>sourceName</code>, this should match your root namespace and project file name, when a project is created from the template this will be replaced with the name</li>
+<li><code>preferNameDirectory</code> was set to <code>true</code>, if no name is provided when the project is created the folder name will be used as the default name</li>
+</ol>
+</li>
+<li>Made some minor changes to the wiring everything up in a more realistic way
+<ol>
+<li>Place holders for config</li>
+<li>Add a call to the API from the Vue component</li>
+</ol>
+</li>
+<li>Created nuspec file
+<ol>
+<li>Ensure the generated files (bin, obj, node_modules etc) were excluded from the package</li>
+</ol>
+</li>
+<li>Published to NuGet</li>
+</ol>
+<p>This template can be pulled down from NuGet and installed using the command <code>dotnet new -i Nyami.AspNetCore.Vue.Template</code>, once installed you can create a new project using <code>dotnet new vue</code>.</p>
+<h2 id="summary">Summary</h2>
+<p>There are a number of ways to get Vue.js and ASP.NET working together but this approach to works really well allowing you to get up and running with minimal effort and take advantage of Vue's CLI along side Visual Studio's developer experience. I'm not expecting either packages to get a lot of use, they were mainly proving the concept, but if you end up using them and have problems or questions just reach out to me.</p>
 
-        <div class="post-list">
-            <a href="/posts/2018-08-17-dotnet-sln-add">
-                <h3 class="post-title">dotnet sln add</h3>
-            </a>
-            <p class="post-meta">Posted on Friday, August 17, 2018</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2018-04-10-rguhack-2018">
-                <h3 class="post-title">RGUHack 2018</h3>
-            </a>
-            <p class="post-meta">Posted on Tuesday, April 10, 2018</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2018-02-09-simple-ping-middleware">
-                <h3 class="post-title">Simple ping Middleware</h3>
-            </a>
-            <p class="post-meta">Posted on Friday, February 9, 2018</p>      
-        </div>   
-        <h1>2017</h1>
-        <hr />
 
-        <div class="post-list">
-            <a href="/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider">
-                <h3 class="post-title">Creating a Self-Signed Certificate for Identity Provider</h3>
-            </a>
-            <p class="post-meta">Posted on Saturday, November 18, 2017</p>      
-        </div>   
-        <h1>2016</h1>
-        <hr />
-
-        <div class="post-list">
-            <a href="/posts/2016-10-06-bash-i-forgot-sudo">
-                <h3 class="post-title">Bash - I forgot sudo</h3>
-            </a>
-            <p class="post-meta">Posted on Thursday, October 6, 2016</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2016-07-13-radbutton-single-click">
-                <h3 class="post-title">RadButton Single Click</h3>
-            </a>
-            <p class="post-meta">Posted on Wednesday, July 13, 2016</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2016-07-09-a-blog-is-reborn">
-                <h3 class="post-title">A Blog Is Reborn</h3>
-            </a>
-            <p class="post-meta">Posted on Saturday, July 9, 2016</p>      
-        </div>   
-        <h1>2015</h1>
-        <hr />
-
-        <div class="post-list">
-            <a href="/posts/2015-01-07-tfvc-and-nuget-updates">
-                <h3 class="post-title">TFVC and NuGet Updates</h3>
-            </a>
-            <p class="post-meta">Posted on Wednesday, January 7, 2015</p>      
-        </div>   
-        <h1>2014</h1>
-        <hr />
-
-        <div class="post-list">
-            <a href="/posts/2014-12-14-a-blog-is-born">
-                <h3 class="post-title">A Blog Is Born</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, December 14, 2014</p>      
-        </div>   
-    <ul class="pager">
-        <li class="previous">                
-        </li>
-        <li class="next">
-        </li>
-    </ul>
 
                                 </div>
                         </div>
@@ -270,20 +202,6 @@
 
                 <script>hljs.initHighlightingOnLoad();</script>
 
-                        <script type="text/javascript">                
-                                // Header background                        
-                                var colors = Please.make_color({
-                                        colors_returned: 3,
-                                        saturation: .6
-                                });
-                                var t = new Trianglify({
-                                        x_gradient: colors,
-                                        y_gradient: ["#FFFFFF"]
-                                });
-                                var header = document.getElementById("intro-header");
-                                var pattern = t.generate(header.clientWidth, header.clientHeight);
-                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
-                        </script>
 
                 <script>
                         BackgroundCheck.init({

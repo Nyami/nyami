@@ -5,8 +5,48 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>2019</copyright>
-		<pubDate>Tue, 21 May 2019 14:47:46 GMT</pubDate>
-		<lastBuildDate>Tue, 21 May 2019 14:47:46 GMT</lastBuildDate>
+		<pubDate>Wed, 12 Jun 2019 10:36:20 GMT</pubDate>
+		<lastBuildDate>Wed, 12 Jun 2019 10:36:20 GMT</lastBuildDate>
+		<item>
+			<title>VueJs and ASP.NET Core - Part 3</title>
+			<link>https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3</link>
+			<description>&lt;p&gt;In parts &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;1&lt;/a&gt; and &lt;a href="/posts/2019-05-21-VueWithAspNetPart2"&gt;2&lt;/a&gt; we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.&lt;/p&gt;</description>
+			<enclosure url="https://www.nyami.uk/images/VueLogo.png" length="0" type="image" />
+			<guid>https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3</guid>
+			<pubDate>Tue, 11 Jun 2019 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;In parts &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;1&lt;/a&gt; and &lt;a href="/posts/2019-05-21-VueWithAspNetPart2"&gt;2&lt;/a&gt; we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h2 id="creating-a-template"&gt;Creating a Template&lt;/h2&gt;
+&lt;p&gt;Newer versions of the .NET SDK has really simplified template creation, rather than detailing the whole experience here you are probably best referring to the &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/create-custom-template"&gt;official documentation&lt;/a&gt; however here is an overview of what I've done with a few handy pointers.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create an empty project based on the webapi template&lt;/li&gt;
+&lt;li&gt;Added the package created in Part 2 using &lt;code&gt;Install-Package Nyami.AspNetCore.VueCliServices&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Created a ClientApp using the Vue CLI&lt;/li&gt;
+&lt;li&gt;Added the custom targets into the project file&lt;/li&gt;
+&lt;li&gt;Created the template configuration described &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/create-custom-template#create-a-template-from-a-project"&gt;here&lt;/a&gt;
+&lt;ol&gt;
+&lt;li&gt;When creating the template specify &lt;code&gt;sourceName&lt;/code&gt;, this should match your root namespace and project file name, when a project is created from the template this will be replaced with the name&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;preferNameDirectory&lt;/code&gt; was set to &lt;code&gt;true&lt;/code&gt;, if no name is provided when the project is created the folder name will be used as the default name&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Made some minor changes to the wiring everything up in a more realistic way
+&lt;ol&gt;
+&lt;li&gt;Place holders for config&lt;/li&gt;
+&lt;li&gt;Add a call to the API from the Vue component&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Created nuspec file
+&lt;ol&gt;
+&lt;li&gt;Ensure the generated files (bin, obj, node_modules etc) were excluded from the package&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Published to NuGet&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This template can be pulled down from NuGet and installed using the command &lt;code&gt;dotnet new -i Nyami.AspNetCore.Vue.Template&lt;/code&gt;, once installed you can create a new project using &lt;code&gt;dotnet new vue&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;There are a number of ways to get Vue.js and ASP.NET working together but this approach to works really well allowing you to get up and running with minimal effort and take advantage of Vue's CLI along side Visual Studio's developer experience. I'm not expecting either packages to get a lot of use, they were mainly proving the concept, but if you end up using them and have problems or questions just reach out to me.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>VueJs and ASP.NET Core - Part 2</title>
 			<link>https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2</link>
@@ -49,7 +89,7 @@ First we'll create our VueJs application, to do this we'll use the &lt;a href="h
 &lt;p&gt;You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt; with &lt;code&gt;spa.UseVueCliServer(npmScript: &amp;quot;serve&amp;quot;);&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="heres-one-i-made-earlier"&gt;Here's one I made earlier&lt;/h2&gt;
 &lt;p&gt;You can check out the version I knocked up &lt;a href="https://github.com/Nyami/AspNetCore.VueCliServices"&gt;here&lt;/a&gt;, this has also been uploaded to &lt;a href="https://www.nuget.org/packages/Nyami.AspNetCore.VueCliServices"&gt;NuGet&lt;/a&gt; so you can get started by pulling this into your own project via the package manager UI or the package manager console using &lt;code&gt;Install-Package Nyami.AspNetCore.VueCliServices&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;In the next part we'll take a look at creating a project template to get us up and running even quicker.&lt;/p&gt;
+&lt;p&gt;In the &lt;a href="/posts/2019-06-11-VueWithAspNetPart3"&gt;next part&lt;/a&gt; we'll take a look at creating a project template to get us up and running even quicker.&lt;/p&gt;
 </content:encoded>
 		</item>
 		<item>
