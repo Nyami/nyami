@@ -115,7 +115,7 @@ Published on Tuesday, May 21, 2019<br>    </div>
 <!--more-->
 <h2 id="vue-create">vue create</h2>
 <p>Let's start out by trying to use the template created for Angular and swap out the ClientApp for our VueJs app and see what happens.
-First we'll create our VueJs application, to do this we'll use the <a href="https://cli.vuejs.org/">Vue CLI</a>, I've used npm to install this as a global tool (<code>npm install -g &#64;vue/cli</code>), so it just a case of typing <code>vue create hello-world</code>, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:</p>
+First we'll create our VueJs application, to do this we'll use the <a href="https://cli.vuejs.org/">Vue CLI</a>, I've used npm to install this as a global tool (<code>npm install -g &#64;vue/cli</code>), so it just a case of typing <code> vue create hello-world</code>, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:</p>
 <ol>
 <li>Babel, TypeScript, Linter/Formatter</li>
 <li>Yes to Use class-style component syntax</li>
@@ -141,7 +141,7 @@ First we'll create our VueJs application, to do this we'll use the <a href="http
 <li>Add a package reference to <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions/2.2.0">Microsoft.AspNetCore.SpaServices.Extensions (2.2.0)</a></li>
 <li>Copy AngularCliBuilder.cs, AngularCliMiddleware.cs and AngularCliMiddlewareExtensions.cs and supporting internal classes from <a href="https://github.com/aspnet/AspNetCore">https://github.com/aspnet/AspNetCore</a></li>
 <li>Rename all the things</li>
-<li>Replace openBrowserLine Regex with a suitable Vue alternative, I went for <code>&quot; - Local: (http\\S+)&quot;</code></li>
+<li>Replace openBrowserLine Regex with a suitable Vue alternative, I went for <code>&quot;  - Local:   (http\\S+)&quot;</code></li>
 </ol>
 <p>You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the <code>spa.UseAngularCliServer(npmScript: &quot;start&quot;)</code> with <code>spa.UseVueCliServer(npmScript: &quot;serve&quot;);</code></p>
 <h2 id="heres-one-i-made-earlier">Here's one I made earlier</h2>

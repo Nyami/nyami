@@ -5,8 +5,8 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>2019</copyright>
-		<pubDate>Wed, 12 Jun 2019 10:36:20 GMT</pubDate>
-		<lastBuildDate>Wed, 12 Jun 2019 10:36:20 GMT</lastBuildDate>
+		<pubDate>Mon, 30 Sep 2019 09:11:34 GMT</pubDate>
+		<lastBuildDate>Mon, 30 Sep 2019 09:11:34 GMT</lastBuildDate>
 		<item>
 			<title>VueJs and ASP.NET Core - Part 3</title>
 			<link>https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3</link>
@@ -58,7 +58,7 @@
 &lt;!--more--&gt;
 &lt;h2 id="vue-create"&gt;vue create&lt;/h2&gt;
 &lt;p&gt;Let's start out by trying to use the template created for Angular and swap out the ClientApp for our VueJs app and see what happens.
-First we'll create our VueJs application, to do this we'll use the &lt;a href="https://cli.vuejs.org/"&gt;Vue CLI&lt;/a&gt;, I've used npm to install this as a global tool (&lt;code&gt;npm install -g &amp;#64;vue/cli&lt;/code&gt;), so it just a case of typing &lt;code&gt;vue create hello-world&lt;/code&gt;, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:&lt;/p&gt;
+First we'll create our VueJs application, to do this we'll use the &lt;a href="https://cli.vuejs.org/"&gt;Vue CLI&lt;/a&gt;, I've used npm to install this as a global tool (&lt;code&gt;npm install -g &amp;#64;vue/cli&lt;/code&gt;), so it just a case of typing &lt;code&gt; vue create hello-world&lt;/code&gt;, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Babel, TypeScript, Linter/Formatter&lt;/li&gt;
 &lt;li&gt;Yes to Use class-style component syntax&lt;/li&gt;
@@ -84,7 +84,7 @@ First we'll create our VueJs application, to do this we'll use the &lt;a href="h
 &lt;li&gt;Add a package reference to &lt;a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions/2.2.0"&gt;Microsoft.AspNetCore.SpaServices.Extensions (2.2.0)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Copy AngularCliBuilder.cs, AngularCliMiddleware.cs and AngularCliMiddlewareExtensions.cs and supporting internal classes from &lt;a href="https://github.com/aspnet/AspNetCore"&gt;https://github.com/aspnet/AspNetCore&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Rename all the things&lt;/li&gt;
-&lt;li&gt;Replace openBrowserLine Regex with a suitable Vue alternative, I went for &lt;code&gt;&amp;quot; - Local: (http\\S+)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Replace openBrowserLine Regex with a suitable Vue alternative, I went for &lt;code&gt;&amp;quot;  - Local:   (http\\S+)&amp;quot;&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt; with &lt;code&gt;spa.UseVueCliServer(npmScript: &amp;quot;serve&amp;quot;);&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="heres-one-i-made-earlier"&gt;Here's one I made earlier&lt;/h2&gt;
@@ -181,7 +181,7 @@ public void ConfigureServices(IServiceCollection services)
 &lt;li&gt;A good selection of cables, USB, HDMI and power cables as well as a USB hub to keep thing tidy&lt;/li&gt;
 &lt;/ul&gt;
 &lt;img src="images/ADNUGRecordingGear.jpg" alt="A selection of stuff" style="width:250px;"/&gt;
-&lt;p&gt;As mentioned above OBS provides much of the magic, each of the input sources above can be toggled in OBS. We have 3 different scenes; presentation, web cam directed at the speaker, and a composite of the two, which we can cycle through depending on how the presentation is going, we can also toggle each of the microphones as required. OBS can record and stream via two separate controls within the application, we have OBS setup to stream to &lt;a href="https://www.twitch.tv/adnug"&gt;Twitch&lt;/a&gt; and record to disc, thankfully both have worked well on the night. Once recorded we only have to put the recording though ffmpeg trimming as required before uploading to our &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As mentioned above OBS provides much of the magic, each of the input sources above can be toggled in OBS. We have 3 different scenes; presentation, web cam directed at the speaker, and a composite of the two, which we can cycle through depending on how the presentation is going, we can also toggle each of the microphones as required. OBS can record and stream via two separate controls within the application, we have OBS setup to stream to &lt;a href="https://www.twitch.tv/adnuguk"&gt;Twitch&lt;/a&gt; and record to disc, thankfully both have worked well on the night. Once recorded we only have to put the recording though ffmpeg trimming as required before uploading to our &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;We'll hopefully get a few more sessions recorded so make sure subscribe to &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt; so you don't miss out. If you are interested in setting something similar up and have questions please reach out if I can be of any help.&lt;/p&gt;
 </content:encoded>
 		</item>
