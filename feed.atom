@@ -3,9 +3,82 @@
 	<id>https://www.nyami.uk/</id>
 	<title>Nyami</title>
 	<link rel="self" href="https://www.nyami.uk/" />
-	<rights>2019</rights>
-	<updated>2019-09-30T09:11:34Z</updated>
+	<rights>2020</rights>
+	<updated>2020-05-04T13:56:40Z</updated>
 	<subtitle>Something interesting for sure...</subtitle>
+	<entry>
+		<id>https://www.nyami.uk/posts/2020-05-04-UnitTestEntityBuilder</id>
+		<title>Entity Builder for Unit Tests</title>
+		<link href="https://www.nyami.uk/posts/2020-05-04-UnitTestEntityBuilder" />
+		<updated>2020-05-04T00:00:00Z</updated>
+		<content>&lt;p&gt;If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;Typically you might find yourself creating opinionated constructors or getter only properties that will assert or support rules for an entity or business logic, but these can sometimes present a challenge when it comes to creating unit tests. Consider the following class:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class Foo
+{
+  public enum StatusEnum
+  {
+    New = 0,
+    Open = 1,
+    Closed = 2
+  }
+
+  // Private constructor used by Entity Framework
+  private Foo() { }
+
+  // Used to create a new Foo
+  public Foo(string name)
+  {
+    if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException(&amp;quot;Name must not be empty&amp;quot;, nameof(name));
+    this.Name = name;
+    this.Status = StatusEnum.New;
+  }
+
+  public string Name { get; private set; }
+  public StatusEnum Status { get; private set; }
+  
+  public void Close() {
+    if (this.Status != StatusEnum.Open) throw new Exception($&amp;quot;{this.Name} must be open for it to be closed.&amp;quot;);
+
+    this.Status = StatusEnum.Closed;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here we have our Foo entity designed to assert a couple of things, firstly we can only set the name when creating the instance, and secondly we can only change the status to Closed if the status is currently Open. If we wanted to write a unit test around our &lt;code&gt;Close&lt;/code&gt; method we might be tempted to change the accessability of our &lt;code&gt;Status&lt;/code&gt; property, or even change the private constructor to allow us to create a usable entity in our test project, however both these actions might well lead to an API open to misuse.&lt;/p&gt;
+&lt;p&gt;A much better option would be to create a builder in our test project which can easily get round the constructor and property accessability and ensure some sort of consistency and reusability in our unit tests. Our builder for the class above might look a little like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class FooBuilder
+{
+  private readonly Type entityType = typeof(Foo);
+  private readonly Foo foo;
+
+  public FooBuilder(string name)
+  {
+    var entity = Activator.CreateInstance(entityType, true) as Foo;
+    foo = entity ?? throw new ArgumentNullException(nameof(entity));
+    entityType.GetProperty(nameof(foo.Name)).SetValue(foo, name);
+  }
+
+  public FooBuilder WithStatus(StatusEnum status)
+  {
+    entityType.GetProperty(nameof(foo.Status)).SetValue(foo, status);
+    return this;
+  }
+
+  public Foo Build()
+  {
+    return foo;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can now use this builder to create and bypass our assertions without compromising the design of our entity:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var testFoo = new FooBuilder(&amp;quot;wibble&amp;quot;) 
+  .WithStatus(StatusEnum.Open)
+  .Build();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is not fool proof and still open for misuse, but at least most of the damage will confined to your test projects so it's a much better option compared to 'compromising' your API design.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3</id>
 		<title>VueJs and ASP.NET Core - Part 3</title>

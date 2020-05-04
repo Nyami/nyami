@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Nyami - RadButton Single Click</title>
+        <title>Nyami - Entity Builder for Unit Tests</title>
         <meta name="description" content="Something interesting for sure..." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Nyami" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Nyami - RadButton Single Click" />
+        <meta property="og:title" content="Nyami - Entity Builder for Unit Tests" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.nyami.uk/posts/2016-07-13-radbutton-single-click" />
+        <meta property="og:url" content="https://www.nyami.uk/posts/2020-05-04-UnitTestEntityBuilder" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,14 +75,13 @@
 
     
 <div class="post-heading">
-    <h1>RadButton Single Click</h1>
+    <h1>Entity Builder for Unit Tests</h1>
     <div class="meta">        
-Published on Wednesday, July 13, 2016<br>    </div>
+Published on Monday, May 4, 2020<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/ASPNET" class="btn btn-default btn-xs">ASP.NET</a>
-                    <a role="button" href="/tags/Telerik" class="btn btn-default btn-xs">Telerik</a>
+                    <a role="button" href="/tags/dotnet" class="btn btn-default btn-xs">dotnet</a>
                     <a role="button" href="/tags/Tips" class="btn btn-default btn-xs">Tips</a>
-                    <a role="button" href="/tags/Web" class="btn btn-default btn-xs">Web</a>
+                    <a role="button" href="/tags/unit-testing" class="btn btn-default btn-xs">unit testing</a>
         </div>     
 </div>
                                         </div>
@@ -96,11 +95,71 @@ Published on Wednesday, July 13, 2016<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>
-<pre><code>&lt;telerik:RadButton runat=&quot;server&quot; ID=&quot;btnSend&quot; Text=&quot;Send&quot; OnClick=&quot;btnSend_Click&quot; SingleClick=&quot;true&quot; SingleClickText=&quot;Sending...&quot;&gt;
-&lt;/telerik:RadButton&gt;
+<p>If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.</p>
+<!--more-->
+<p>Typically you might find yourself creating opinionated constructors or getter only properties that will assert or support rules for an entity or business logic, but these can sometimes present a challenge when it comes to creating unit tests. Consider the following class:</p>
+<pre><code>public class Foo
+{
+  public enum StatusEnum
+  {
+    New = 0,
+    Open = 1,
+    Closed = 2
+  }
+
+  // Private constructor used by Entity Framework
+  private Foo() { }
+
+  // Used to create a new Foo
+  public Foo(string name)
+  {
+    if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException(&quot;Name must not be empty&quot;, nameof(name));
+    this.Name = name;
+    this.Status = StatusEnum.New;
+  }
+
+  public string Name { get; private set; }
+  public StatusEnum Status { get; private set; }
+  
+  public void Close() {
+    if (this.Status != StatusEnum.Open) throw new Exception($&quot;{this.Name} must be open for it to be closed.&quot;);
+
+    this.Status = StatusEnum.Closed;
+  }
+}
 </code></pre>
-<p>I've no idea how I've not encountered this RadButton setting before now, saves wiring up custom OnClientClick events...</p>
+<p>Here we have our Foo entity designed to assert a couple of things, firstly we can only set the name when creating the instance, and secondly we can only change the status to Closed if the status is currently Open. If we wanted to write a unit test around our <code>Close</code> method we might be tempted to change the accessability of our <code>Status</code> property, or even change the private constructor to allow us to create a usable entity in our test project, however both these actions might well lead to an API open to misuse.</p>
+<p>A much better option would be to create a builder in our test project which can easily get round the constructor and property accessability and ensure some sort of consistency and reusability in our unit tests. Our builder for the class above might look a little like this:</p>
+<pre><code>public class FooBuilder
+{
+  private readonly Type entityType = typeof(Foo);
+  private readonly Foo foo;
+
+  public FooBuilder(string name)
+  {
+    var entity = Activator.CreateInstance(entityType, true) as Foo;
+    foo = entity ?? throw new ArgumentNullException(nameof(entity));
+    entityType.GetProperty(nameof(foo.Name)).SetValue(foo, name);
+  }
+
+  public FooBuilder WithStatus(StatusEnum status)
+  {
+    entityType.GetProperty(nameof(foo.Status)).SetValue(foo, status);
+    return this;
+  }
+
+  public Foo Build()
+  {
+    return foo;
+  }
+}
+</code></pre>
+<p>We can now use this builder to create and bypass our assertions without compromising the design of our entity:</p>
+<pre><code>var testFoo = new FooBuilder(&quot;wibble&quot;) 
+  .WithStatus(StatusEnum.Open)
+  .Build();
+</code></pre>
+<p>This is not fool proof and still open for misuse, but at least most of the damage will confined to your test projects so it's a much better option compared to 'compromising' your API design.</p>
 
 
 
