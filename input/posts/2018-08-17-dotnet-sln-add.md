@@ -2,7 +2,7 @@ Title: "dotnet sln add"
 Published: 2018-08-17 10:02:03 +0100
 Tags:
 - dotnet
-- tips
+- Tips
 RedirectFrom: blog/2018/08/17/dotnet-sln-add/index.html
 ---
 
