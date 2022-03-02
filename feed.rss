@@ -5,8 +5,8 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>Copyright © 2022</copyright>
-		<pubDate>Wed, 02 Mar 2022 23:04:46 GMT</pubDate>
-		<lastBuildDate>Wed, 02 Mar 2022 23:04:46 GMT</lastBuildDate>
+		<pubDate>Wed, 02 Mar 2022 23:29:21 GMT</pubDate>
+		<lastBuildDate>Wed, 02 Mar 2022 23:29:21 GMT</lastBuildDate>
 		<item>
 			<title>Entity Builder for Unit Tests</title>
 			<link>https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder</link>
@@ -257,7 +257,7 @@ public void ConfigureServices(IServiceCollection services)
 &lt;li&gt;&lt;a href="https://www.amazon.co.uk/gp/product/B06W2KLM3S"&gt;Elgato Stream Deck&lt;/a&gt; to make scene selection nice and simple&lt;/li&gt;
 &lt;li&gt;A good selection of cables, USB, HDMI and power cables as well as a USB hub to keep thing tidy&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src="images/ADNUGRecordingGear.jpg" alt="A selection of stuff" style="width:250px;"/&gt;
+&lt;img src="/images/ADNUGRecordingGear.jpg" alt="A selection of stuff" style="width:250px;"/&gt;
 &lt;p&gt;As mentioned above OBS provides much of the magic, each of the input sources above can be toggled in OBS. We have 3 different scenes; presentation, web cam directed at the speaker, and a composite of the two, which we can cycle through depending on how the presentation is going, we can also toggle each of the microphones as required. OBS can record and stream via two separate controls within the application, we have OBS setup to stream to &lt;a href="https://www.twitch.tv/adnuguk"&gt;Twitch&lt;/a&gt; and record to disc, thankfully both have worked well on the night. Once recorded we only have to put the recording though ffmpeg trimming as required before uploading to our &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;We'll hopefully get a few more sessions recorded so make sure subscribe to &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt; so you don't miss out. If you are interested in setting something similar up and have questions please reach out if I can be of any help.&lt;/p&gt;
 </content:encoded>
