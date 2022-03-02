@@ -1,9 +1,13 @@
 Title: "Entity Builder for Unit Tests"
 Published: 2020-05-04
 Tags:
+
 - dotnet
 - Tips
 - unit testing
+
+RedirectFrom: posts/2020-05-04-UnitTestEntityBuilder
+
 ---
 
 If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.
@@ -35,7 +39,7 @@ public class Foo
 
   public string Name { get; private set; }
   public StatusEnum Status { get; private set; }
-  
+
   public void Close() {
     if (this.Status != StatusEnum.Open) throw new Exception($"{this.Name} must be open for it to be closed.");
 
@@ -77,7 +81,7 @@ public class FooBuilder
 We can now use this builder to create and bypass our assertions without compromising the design of our entity:
 
 ```
-var testFoo = new FooBuilder("wibble") 
+var testFoo = new FooBuilder("wibble")
   .WithStatus(StatusEnum.Open)
   .Build();
 ```
