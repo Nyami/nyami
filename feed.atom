@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://www.nyami.uk/</id>
-	<title>Nyami</title>
+	<title />
 	<link rel="self" href="https://www.nyami.uk/" />
-	<rights>2020</rights>
-	<updated>2020-05-04T13:56:40Z</updated>
+	<rights>Copyright © 2022</rights>
+	<updated>2022-03-02T21:52:20Z</updated>
 	<subtitle>Something interesting for sure...</subtitle>
 	<entry>
-		<id>https://www.nyami.uk/posts/2020-05-04-UnitTestEntityBuilder</id>
+		<id>https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder</id>
 		<title>Entity Builder for Unit Tests</title>
-		<link href="https://www.nyami.uk/posts/2020-05-04-UnitTestEntityBuilder" />
+		<link href="https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder" />
 		<updated>2020-05-04T00:00:00Z</updated>
 		<content>&lt;p&gt;If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.&lt;/p&gt;
 &lt;!--more--&gt;
@@ -77,15 +77,15 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is not fool proof and still open for misuse, but at least most of the damage will confined to your test projects so it's a much better option compared to 'compromising' your API design.&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
-		<id>https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3</id>
+		<id>https://www.nyami.uk/posts/2019-06-11-vuewithaspnetpart3</id>
 		<title>VueJs and ASP.NET Core - Part 3</title>
-		<link href="https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3" />
+		<link href="https://www.nyami.uk/posts/2019-06-11-vuewithaspnetpart3" />
 		<link rel="enclosure" type="image" href="https://www.nyami.uk/images/VueLogo.png" />
 		<updated>2019-06-11T00:00:00Z</updated>
-		<content>&lt;p&gt;In parts &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;1&lt;/a&gt; and &lt;a href="/posts/2019-05-21-VueWithAspNetPart2"&gt;2&lt;/a&gt; we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.&lt;/p&gt;
+		<content>&lt;p&gt;In parts &lt;a href="https://www.nyami.uk/posts/2019-05-10-VueWithAspNetPart1"&gt;1&lt;/a&gt; and &lt;a href="https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2"&gt;2&lt;/a&gt; we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.&lt;/p&gt;
 &lt;!--more--&gt;
 &lt;h2 id="creating-a-template"&gt;Creating a Template&lt;/h2&gt;
 &lt;p&gt;Newer versions of the .NET SDK has really simplified template creation, rather than detailing the whole experience here you are probably best referring to the &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/create-custom-template"&gt;official documentation&lt;/a&gt; however here is an overview of what I've done with a few handy pointers.&lt;/p&gt;
@@ -117,19 +117,19 @@
 &lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
 &lt;p&gt;There are a number of ways to get Vue.js and ASP.NET working together but this approach to works really well allowing you to get up and running with minimal effort and take advantage of Vue's CLI along side Visual Studio's developer experience. I'm not expecting either packages to get a lot of use, they were mainly proving the concept, but if you end up using them and have problems or questions just reach out to me.&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;In parts &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;1&lt;/a&gt; and &lt;a href="/posts/2019-05-21-VueWithAspNetPart2"&gt;2&lt;/a&gt; we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
-		<id>https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2</id>
+		<id>https://www.nyami.uk/posts/2019-05-21-vuewithaspnetpart2</id>
 		<title>VueJs and ASP.NET Core - Part 2</title>
-		<link href="https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2" />
+		<link href="https://www.nyami.uk/posts/2019-05-21-vuewithaspnetpart2" />
 		<link rel="enclosure" type="image" href="https://www.nyami.uk/images/VueLogo.png" />
 		<updated>2019-05-21T00:00:00Z</updated>
-		<content>&lt;p&gt;In &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;Part 1&lt;/a&gt; we looked at the Angular project template with ASP.NET Core and its pretty much what we want to achieve for VueJs. In this part we'll dig a little deeper into &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices&lt;/a&gt;, specifically &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices.AngularCli&lt;/a&gt; and look to take inspiration for our Vue solution.&lt;/p&gt;
+		<content>&lt;p&gt;In &lt;a href="https://www.nyami.uk/posts/2019-05-10-VueWithAspNetPart1"&gt;Part 1&lt;/a&gt; we looked at the Angular project template with ASP.NET Core and its pretty much what we want to achieve for VueJs. In this part we'll dig a little deeper into &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices&lt;/a&gt;, specifically &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices.AngularCli&lt;/a&gt; and look to take inspiration for our Vue solution.&lt;/p&gt;
 &lt;!--more--&gt;
 &lt;h2 id="vue-create"&gt;vue create&lt;/h2&gt;
 &lt;p&gt;Let's start out by trying to use the template created for Angular and swap out the ClientApp for our VueJs app and see what happens.
-First we'll create our VueJs application, to do this we'll use the &lt;a href="https://cli.vuejs.org/"&gt;Vue CLI&lt;/a&gt;, I've used npm to install this as a global tool (&lt;code&gt;npm install -g &amp;#64;vue/cli&lt;/code&gt;), so it just a case of typing &lt;code&gt; vue create hello-world&lt;/code&gt;, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:&lt;/p&gt;
+First we'll create our VueJs application, to do this we'll use the &lt;a href="https://cli.vuejs.org/"&gt;Vue CLI&lt;/a&gt;, I've used npm to install this as a global tool (&lt;code&gt;npm install -g @vue/cli&lt;/code&gt;), so it just a case of typing &lt;code&gt; vue create hello-world&lt;/code&gt;, where hello-world is the name of your project, at a suitable location in your favourite command prompt. You'll then be prompted a present, I opted for manually selecting feature and chose:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Babel, TypeScript, Linter/Formatter&lt;/li&gt;
 &lt;li&gt;Yes to Use class-style component syntax&lt;/li&gt;
@@ -140,9 +140,9 @@ First we'll create our VueJs application, to do this we'll use the &lt;a href="h
 &lt;/ol&gt;
 &lt;p&gt;We can have a look at our newly created site if we navigate into the folder and perform an &lt;code&gt;npm install&lt;/code&gt; before running &lt;code&gt;npm run serve&lt;/code&gt;, nothing exciting but it should all work.&lt;/p&gt;
 &lt;h2 id="dotnet-new"&gt;dotnet new&lt;/h2&gt;
-&lt;p&gt;Next, we'll create an ASP.NET app using the Angular project template, again, at a suitable location in your favourite command prompt, type &lt;code&gt;dotnet new angular&lt;/code&gt;. We can open the project and run this in Visual Studio, and as if by magic we have an Angular app running from our ASP.NET project. If we take a look at the build output we should be able to see that an 'npm install' was initiated, this was from the additional target 'DebugEnsureNodeEnv’ in our project file, and if you look though the output for “ASP.NET Core Web Server” you should see that 'ng serve' was called, this call was initiated by the &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt; call in our startup.cs.&lt;/p&gt;
+&lt;p&gt;Next, we'll create an ASP.NET app using the Angular project template, again, at a suitable location in your favourite command prompt, type &lt;code&gt;dotnet new angular&lt;/code&gt;. We can open the project and run this in Visual Studio, and as if by magic we have an Angular app running from our ASP.NET project. If we take a look at the build output we should be able to see that an 'npm install' was initiated, this was from the additional target 'DebugEnsureNodeEnv’ in our project file, and if you look though the output for “ASP.NET Core Web Server” you should see that 'ng serve' was called, this call was initiated by the &lt;code&gt;spa.UseAngularCliServer(npmScript: "start")&lt;/code&gt; call in our startup.cs.&lt;/p&gt;
 &lt;h2 id="bait-and-switch"&gt;bait and switch&lt;/h2&gt;
-&lt;p&gt;Now let's replace the Angular ClientApp folder with the contents from the VueJs app created above, and the change the npmScript called by &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli.angularclimiddlewareextensions.useangularcliserver?view=aspnetcore-2.2"&gt;spa.UseAngularCliServer&lt;/a&gt; in Startup.cs from &amp;quot;start&amp;quot; to &amp;quot;serve&amp;quot; and see what happens when we run the ASP.NET app.&lt;/p&gt;
+&lt;p&gt;Now let's replace the Angular ClientApp folder with the contents from the VueJs app created above, and the change the npmScript called by &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli.angularclimiddlewareextensions.useangularcliserver?view=aspnetcore-2.2"&gt;spa.UseAngularCliServer&lt;/a&gt; in Startup.cs from "start" to "serve" and see what happens when we run the ASP.NET app.&lt;/p&gt;
 &lt;h2 id="fail"&gt;fail&lt;/h2&gt;
 &lt;p&gt;Hmmmm.... not much, just the following exception:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;TimeoutException: The Angular CLI process did not start listening for requests within the timeout period of 50 seconds.
@@ -155,19 +155,19 @@ First we'll create our VueJs application, to do this we'll use the &lt;a href="h
 &lt;li&gt;Add a package reference to &lt;a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions/2.2.0"&gt;Microsoft.AspNetCore.SpaServices.Extensions (2.2.0)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Copy AngularCliBuilder.cs, AngularCliMiddleware.cs and AngularCliMiddlewareExtensions.cs and supporting internal classes from &lt;a href="https://github.com/aspnet/AspNetCore"&gt;https://github.com/aspnet/AspNetCore&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Rename all the things&lt;/li&gt;
-&lt;li&gt;Replace openBrowserLine Regex with a suitable Vue alternative, I went for &lt;code&gt;&amp;quot;  - Local:   (http\\S+)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Replace openBrowserLine Regex with a suitable Vue alternative, I went for &lt;code&gt;"  - Local:   (http\\S+)"&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt; with &lt;code&gt;spa.UseVueCliServer(npmScript: &amp;quot;serve&amp;quot;);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the &lt;code&gt;spa.UseAngularCliServer(npmScript: "start")&lt;/code&gt; with &lt;code&gt;spa.UseVueCliServer(npmScript: "serve");&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="heres-one-i-made-earlier"&gt;Here's one I made earlier&lt;/h2&gt;
 &lt;p&gt;You can check out the version I knocked up &lt;a href="https://github.com/Nyami/AspNetCore.VueCliServices"&gt;here&lt;/a&gt;, this has also been uploaded to &lt;a href="https://www.nuget.org/packages/Nyami.AspNetCore.VueCliServices"&gt;NuGet&lt;/a&gt; so you can get started by pulling this into your own project via the package manager UI or the package manager console using &lt;code&gt;Install-Package Nyami.AspNetCore.VueCliServices&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;In the &lt;a href="/posts/2019-06-11-VueWithAspNetPart3"&gt;next part&lt;/a&gt; we'll take a look at creating a project template to get us up and running even quicker.&lt;/p&gt;
+&lt;p&gt;In the &lt;a href="https://www.nyami.uk/posts/2019-06-11-VueWithAspNetPart3"&gt;next part&lt;/a&gt; we'll take a look at creating a project template to get us up and running even quicker.&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;In &lt;a href="/posts/2019-05-10-VueWithAspNetPart1"&gt;Part 1&lt;/a&gt; we looked at the Angular project template with ASP.NET Core and its pretty much what we want to achieve for VueJs. In this part we'll dig a little deeper into &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices&lt;/a&gt;, specifically &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli?view=aspnetcore-2.2"&gt;Microsoft.AspNetCore.SpaServices.AngularCli&lt;/a&gt; and look to take inspiration for our Vue solution.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
-		<id>https://www.nyami.uk/posts/2019-05-10-VueWithAspNetPart1</id>
+		<id>https://www.nyami.uk/posts/2019-05-10-vuewithaspnetpart1</id>
 		<title>VueJs and ASP.NET Core - Part 1</title>
-		<link href="https://www.nyami.uk/posts/2019-05-10-VueWithAspNetPart1" />
+		<link href="https://www.nyami.uk/posts/2019-05-10-vuewithaspnetpart1" />
 		<link rel="enclosure" type="image" href="https://www.nyami.uk/images/VueLogo.png" />
 		<updated>2019-05-10T00:00:00Z</updated>
 		<content>&lt;p&gt;Whilst it’s relatively easy to &lt;a href="http://lmgtfy.com/?q=asp.net+core+2+with+vue"&gt;find and follow a guide&lt;/a&gt; to get up and running with Vue and ASP.NET Core, you’ll probably find there are a number techniques, methods, and opinions and there isn’t really the ‘first class’ support and 'simple' method of getting started as there is with Angular. In the following series of posts we’ll take a look at repurposing and using some of Microsoft’s SpaServices to create better support for Vue.js within your new ASP.NET Core project.&lt;/p&gt;
@@ -198,11 +198,11 @@ public void ConfigureServices(IServiceCollection services)
     // In production, the Angular files will be served from this directory
     services.AddSpaStaticFiles(configuration =&amp;gt;
     {
-        configuration.RootPath = &amp;quot;ClientApp/dist&amp;quot;;
+        configuration.RootPath = "ClientApp/dist";
     });
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In this next block we can see there are two points of interest for our application, &lt;code&gt;app.UseSpaStaticFiles()&lt;/code&gt;, which uses the configuration above to serve the static files for the SPA and &lt;code&gt;app.UseSpa&lt;/code&gt; which will return the default SPA page for any unhandled requests, its important this is the last middleware in our pipeline as it essentially acts as a 'catch all' on the assumption the route will be matched by our client side app. You can also see that when in development there is a call &lt;code&gt;spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;)&lt;/code&gt;, this will call the npm script specified, wait for it to start successfully, and will 'proxy' calls in to the webpack web server started, and is what we'll go on to replicate for our Vue implementaion.&lt;/p&gt;
+&lt;p&gt;In this next block we can see there are two points of interest for our application, &lt;code&gt;app.UseSpaStaticFiles()&lt;/code&gt;, which uses the configuration above to serve the static files for the SPA and &lt;code&gt;app.UseSpa&lt;/code&gt; which will return the default SPA page for any unhandled requests, its important this is the last middleware in our pipeline as it essentially acts as a 'catch all' on the assumption the route will be matched by our client side app. You can also see that when in development there is a call &lt;code&gt;spa.UseAngularCliServer(npmScript: "start")&lt;/code&gt;, this will call the npm script specified, wait for it to start successfully, and will 'proxy' calls in to the webpack web server started, and is what we'll go on to replicate for our Vue implementaion.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-csharp"&gt;public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     // Code removed for brevity
@@ -218,11 +218,11 @@ public void ConfigureServices(IServiceCollection services)
         // To learn more about options for serving an Angular SPA from ASP.NET Core,
         // see https://go.microsoft.com/fwlink/?linkid=864501
 
-        spa.Options.SourcePath = &amp;quot;ClientApp&amp;quot;;
+        spa.Options.SourcePath = "ClientApp";
 
         if (env.IsDevelopment())
         {
-            spa.UseAngularCliServer(npmScript: &amp;quot;start&amp;quot;);
+            spa.UseAngularCliServer(npmScript: "start");
         }
     });
 }
@@ -231,9 +231,9 @@ public void ConfigureServices(IServiceCollection services)
 &lt;p&gt;The project file has a couple of extra targets when compared to a vanilla MVC project file, these are used to assert that npm has been installed when the project is being built and another target is used to add our Angular application to the published output. The project also ensures the ClientApp folder is not handled as part of the default build and publish behaviour.&lt;/p&gt;
 &lt;h2 id="but-what-about-vue"&gt;But what about Vue?&lt;/h2&gt;
 &lt;p&gt;Looking at what Microsoft's template provides this is the exact experience we are hoping to achieve but for Vue. There are really two parts to the Angular and ASP.NET Core story, the SPA middleware that hooks up Webpack at development time and serves the SPA’s static files, and the template getting us up and running ensuring a consistent experience. In the next part we'll take a look at the middleware and see how far it can take us for Vue.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/posts/2019-05-21-VueWithAspNetPart2"&gt;Part 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.nyami.uk/posts/2019-05-21-VueWithAspNetPart2"&gt;Part 2&lt;/a&gt;&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;Whilst it’s relatively easy to &lt;a href="http://lmgtfy.com/?q=asp.net+core+2+with+vue"&gt;find and follow a guide&lt;/a&gt; to get up and running with Vue and ASP.NET Core, you’ll probably find there are a number techniques, methods, and opinions and there isn’t really the ‘first class’ support and 'simple' method of getting started as there is with Angular. In the following series of posts we’ll take a look at repurposing and using some of Microsoft’s SpaServices to create better support for Vue.js within your new ASP.NET Core project.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2019-05-03-mics-camera-action</id>
@@ -255,7 +255,7 @@ public void ConfigureServices(IServiceCollection services)
 &lt;p&gt;As mentioned above OBS provides much of the magic, each of the input sources above can be toggled in OBS. We have 3 different scenes; presentation, web cam directed at the speaker, and a composite of the two, which we can cycle through depending on how the presentation is going, we can also toggle each of the microphones as required. OBS can record and stream via two separate controls within the application, we have OBS setup to stream to &lt;a href="https://www.twitch.tv/adnuguk"&gt;Twitch&lt;/a&gt; and record to disc, thankfully both have worked well on the night. Once recorded we only have to put the recording though ffmpeg trimming as required before uploading to our &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;We'll hopefully get a few more sessions recorded so make sure subscribe to &lt;a href="https://www.youtube.com/channel/UCRnxcmrSrc4TWKqakE4EViw"&gt;YouTube channel&lt;/a&gt; so you don't miss out. If you are interested in setting something similar up and have questions please reach out if I can be of any help.&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;At the end of last year we ran a successful &lt;a href="https://www.gofundme.com/aberdeen-developers-net-user-group"&gt;funding campaign&lt;/a&gt; at Aberdeen Developers .NET User Group to purchase some gear to allow us to record some of our sessions. We had a good idea of what we were wanting to achieve, essentially, we wanted to be able to publish recordings of our sessions and we weren’t wanting to spend hours processing the content after the recording. With a couple of events successfully in the bag I thought it might be worth sharing our setup, so here it is...&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2019-03-03-custom-http-verb</id>
@@ -288,18 +288,18 @@ public ActionResult&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt; Search([Fro
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A fully working, simple example is located over at &lt;a href="https://github.com/Nyami/WebApiSearchMethod"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;There are server reasons you might look to implement a custom HTTP Verb in you ASP.NET application, and thankfully with ASP.NET Core it’s incredibly simple.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
-		<id>https://www.nyami.uk/posts/2019-03-02-blog-2_0</id>
+		<id>https://www.nyami.uk/posts/2019-03-02-blog-20</id>
 		<title>Blog 2.0</title>
-		<link href="https://www.nyami.uk/posts/2019-03-02-blog-2_0" />
+		<link href="https://www.nyami.uk/posts/2019-03-02-blog-20" />
 		<updated>2019-03-02T00:00:00Z</updated>
 		<content>&lt;p&gt;I think I have more blog post about setting up blogs than I have on anything else, and its been a while since the last one so I thought it about time for another one. I like the concept of static generation for blogs and first incarnations used Octopress, a blogging framework based on Jekyll, but the workflow and content produced wasn’t really working for me so it was time for a change.&lt;/p&gt;
 &lt;!--more--&gt;
 &lt;p&gt;I decided to look at &lt;a href="https://wyam.io/"&gt;Wyam&lt;/a&gt;, I knew of a few folks using it and as it using .NET and Razor much of it had a familiar feel I was comfortable with. I’m not going to go into detail on setting it up, their site has comprehensive coverage on &lt;a href="https://wyam.io/docs/usage/"&gt;getting started&lt;/a&gt;, using &lt;a href="https://wyam.io/docs/deployment/appveyor"&gt;Github Pages and AppVeyor&lt;/a&gt; for deployment. I did start off trying to be smart and automate the markdown conversion but the reality was I didn’t have much so opted for the manual approach. Hopefully I’ll have a couple of useful posts before the next blog post and blogs posts.&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;I think I have more blog post about setting up blogs than I have on anything else, and its been a while since the last one so I thought it about time for another one. I like the concept of static generation for blogs and first incarnations used Octopress, a blogging framework based on Jekyll, but the workflow and content produced wasn’t really working for me so it was time for a change.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2018-08-17-dotnet-sln-add</id>
@@ -310,14 +310,14 @@ public ActionResult&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt; Search([Fro
 &lt;!--more--&gt;
 &lt;p&gt;However, when I ran &lt;code&gt;dotnet sln Foo.sln add **/*.csproj&lt;/code&gt; I was presented with the error &lt;code&gt;Could not find project or directory **/*.csproj&lt;/code&gt;. It turns out that globbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn't expanding the glob. Luckly as dotnet is cross platform and I have &lt;a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10"&gt;Windows Subsystem for Linux&lt;/a&gt; installed with all the dotnet goodness I could switch to &lt;code&gt;bash&lt;/code&gt;, ensure globbing was enabled using &lt;code&gt;shopt -s globstar&lt;/code&gt;, and then run &lt;code&gt;dotnet sln Foo.sln add **/*.csproj&lt;/code&gt; to add all my new projects, job done...&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;It's been a while since I'd created a number dotnet projects and supporting solution using the command line so I had to refer to the &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet"&gt;documentation&lt;/a&gt; to keep me right. As I had just created a number of projects adding each one to the solution is a little tedious so when I'd spotted I could use &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;globbing patterns&lt;/a&gt; I thought this would save time and a few key presses.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2018-04-10-rguhack-2018</id>
 		<title>RGUHack 2018</title>
 		<link href="https://www.nyami.uk/posts/2018-04-10-rguhack-2018" />
 		<updated>2018-04-10T18:21:49Z</updated>
-		<content>&lt;p&gt;I'll be helping out at &lt;a href="https://rguhack.uk"&gt;RGUHack&lt;/a&gt; this coming weekend so I thought I'd pull together a few links from &lt;a href="https://docs.microsoft.com/en-gb/azure/index#pivot=products&amp;amp;panel=all"&gt;some of the Azure services&lt;/a&gt; available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github's &lt;a href="https://education.github.com/pack"&gt;Student Developer Pack&lt;/a&gt; to pick up some free Azure credit, but if they haven't, its easy to get started for free at &lt;a href="https://azure.microsoft.com/en-us/free/"&gt;https://azure.microsoft.com/en-us/free/&lt;/a&gt;&lt;/p&gt;
+		<content>&lt;p&gt;I'll be helping out at &lt;a href="https://rguhack.uk/"&gt;RGUHack&lt;/a&gt; this coming weekend so I thought I'd pull together a few links from &lt;a href="https://docs.microsoft.com/en-gb/azure/index#pivot=products&amp;amp;panel=all"&gt;some of the Azure services&lt;/a&gt; available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github's &lt;a href="https://education.github.com/pack"&gt;Student Developer Pack&lt;/a&gt; to pick up some free Azure credit, but if they haven't, its easy to get started for free at &lt;a href="https://azure.microsoft.com/en-us/free/"&gt;https://azure.microsoft.com/en-us/free/&lt;/a&gt;&lt;/p&gt;
 &lt;!--more--&gt;
 &lt;h2 id="hosting"&gt;Hosting&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://docs.microsoft.com/azure/app-service/"&gt;Azure Web Apps&lt;/a&gt; will let you host your web application without having to manage infrastructure and you can be live in minuets. As you might expect Azure Web supports web applications created using &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet-framework"&gt;.NET&lt;/a&gt; (including &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet"&gt;Core&lt;/a&gt;) and &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-html"&gt;Static HTML&lt;/a&gt; but it also supports &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-php"&gt;PHP&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-nodejs"&gt;Node.js&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-python"&gt;Python&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-java"&gt;Java&lt;/a&gt;.&lt;/p&gt;
@@ -337,7 +337,7 @@ public ActionResult&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt; Search([Fro
 &lt;h3 id="video"&gt;Video&lt;/h3&gt;
 &lt;p&gt;You are not limited to analysing images or speech, you can analyse video as well. Cognitive Services includes &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Vision APIs for videos&lt;/a&gt;. With these APIs you can perform face detection and tracking, motion detection, image stabilisation and video thumbnail generation. It's also possible to use the &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Video Indexer&lt;/a&gt; to get an audio transcript, track faces, map and understand which speaker spoke which words and when, determine when a scene changes and a whole lot more!&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;I'll be helping out at &lt;a href="https://rguhack.uk"&gt;RGUHack&lt;/a&gt; this coming weekend so I thought I'd pull together a few links from &lt;a href="https://docs.microsoft.com/en-gb/azure/index#pivot=products&amp;amp;panel=all"&gt;some of the Azure services&lt;/a&gt; available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github's &lt;a href="https://education.github.com/pack"&gt;Student Developer Pack&lt;/a&gt; to pick up some free Azure credit, but if they haven't, its easy to get started for free at &lt;a href="https://azure.microsoft.com/en-us/free/"&gt;https://azure.microsoft.com/en-us/free/&lt;/a&gt;&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware</id>
@@ -352,169 +352,6 @@ public ActionResult&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt; Search([Fro
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For more information on Middleware check out &lt;a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#writing-middleware"&gt;ASP.NET Core Middleware&lt;/a&gt;&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://www.nyami.uk/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider</id>
-		<title>Creating a Self-Signed Certificate for Identity Provider</title>
-		<link href="https://www.nyami.uk/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider" />
-		<updated>2017-11-18T09:54:16Z</updated>
-		<content>&lt;p&gt;I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options with New-SelfSignedCertificate PS module.&lt;/p&gt;
-&lt;p&gt;Identity Server was throwing &amp;quot;CryptographicException: Invalid provider type specified&amp;quot; and I had ensured the user account had access so it should have been all good. After a little bit of digging it turned out the private keys were not accessible from .NET. David Christiansen’s &lt;a href="http://blog.davidchristiansen.com/2016/05/521/"&gt;blog post&lt;/a&gt; helped me track down the issue but with a little more research I ended up with the following PowerShell to create a working certificate avoiding additional steps I didnt understand ;).&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;pre&gt;&lt;code&gt;$idSrvCertificate = New-SelfSignedCertificate `
-    -Subject &amp;quot;CN=MyIdentityProviderCert&amp;quot; `
-    -FriendlyName &amp;quot;Identity Server Token Signing&amp;quot; `
-    -CertStoreLocation &amp;quot;cert:LocalMachine\My&amp;quot; `
-    -KeyAlgorithm RSA `
-    -KeySpec Signature `
-    -KeyLength 2048 `
-    -KeyUsage DigitalSignature, KeyEncipherment, DataEncipherment, CertSign `
-    -NotBefore (Get-Date) `
-    -NotAfter (Get-Date).AddYears(5);
-
-$username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name;
-
-$keyname = (((Get-ChildItem cert:\LocalMachine\my | Where-Object {$_.thumbprint -like $idSrvCertificate.ThumbPrint}).PrivateKey).CspKeyContainerInfo).UniqueKeyContainerName;
-
-$keypath = $env:ProgramData + &amp;quot;\Microsoft\Crypto\RSA\MachineKeys\&amp;quot;;
-$fullpath = $keypath + $keyname;
-icacls $fullpath /grant $username`:RX;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In addition to creating the certificate it will also ensure the current user has read access to the private keys avoiding the need to run VS elevated when developing, this last part could obviously be extracted and reused for your application pool if running Identity Server in IIS.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options with New-SelfSignedCertificate PS module.&lt;/p&gt;
-&lt;p&gt;Identity Server was throwing "CryptographicException: Invalid provider type specified" and I had ensured the user account had access so it should have been all good. After a little bit of digging it turned out the private keys were not accessible from .NET. David Christiansen’s &lt;a href="http://blog.davidchristiansen.com/2016/05/521/"&gt;blog post&lt;/a&gt; helped me track down the issue but with a little more research I ended up with the following PowerShell to create a working certificate avoiding additional steps I didnt understand ;).&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://www.nyami.uk/posts/2016-10-06-bash-i-forgot-sudo</id>
-		<title>Bash - I forgot sudo</title>
-		<link href="https://www.nyami.uk/posts/2016-10-06-bash-i-forgot-sudo" />
-		<updated>2016-10-06T08:16:59Z</updated>
-		<content>&lt;p&gt;If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Edit bashrc (vi .bashrc)&lt;/li&gt;
-&lt;li&gt;Add the alias “ffs='sudo $(history -p !!)'”&lt;/li&gt;
-&lt;li&gt;Restart/open bash console&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And in case you struggle with vi here is a handy &lt;a href="http://www.lagmonster.org/docs/vi.html"&gt;cheat sheet&lt;/a&gt;.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://www.nyami.uk/posts/2016-07-13-radbutton-single-click</id>
-		<title>RadButton Single Click</title>
-		<link href="https://www.nyami.uk/posts/2016-07-13-radbutton-single-click" />
-		<updated>2016-07-13T20:55:47Z</updated>
-		<content>&lt;p&gt;A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the &lt;a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx"&gt;SingleClick&lt;/a&gt; property of the RadButton.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;telerik:RadButton runat=&amp;quot;server&amp;quot; ID=&amp;quot;btnSend&amp;quot; Text=&amp;quot;Send&amp;quot; OnClick=&amp;quot;btnSend_Click&amp;quot; SingleClick=&amp;quot;true&amp;quot; SingleClickText=&amp;quot;Sending...&amp;quot;&amp;gt;
-&amp;lt;/telerik:RadButton&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I've no idea how I've not encountered this RadButton setting before now, saves wiring up custom OnClientClick events...&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the &lt;a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx"&gt;SingleClick&lt;/a&gt; property of the RadButton.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://www.nyami.uk/posts/2016-07-09-a-blog-is-reborn</id>
-		<title>A Blog Is Reborn</title>
-		<link href="https://www.nyami.uk/posts/2016-07-09-a-blog-is-reborn" />
-		<updated>2016-07-09T20:08:33Z</updated>
-		<content>&lt;p&gt;Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in [&amp;quot;A Blog Is Born&amp;quot;] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;h2 id="bash-on-windows"&gt;Bash on Windows&lt;/h2&gt;
-&lt;p&gt;This year at Build Microsoft announced the ability to run native Bash on Ubuntu on Windows! Apart the obvious advantages of being able to use cmatrix or cowsay I was at first a little indifferent about the announcement until I realised that this might actually mean I could get Octopress working on Windows, so if all goes to plan this will be my fool proof guide to setting up Octopress using Bash in Windows 10.&lt;/p&gt;
-&lt;h3 id="installing-bash"&gt;Installing Bash&lt;/h3&gt;
-&lt;p&gt;In order to run Bash on Windows you’ll need to be running the Windows 10 Anniversary Update (currently available to Insiders) and then you will need to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Turn-on Developer Mode&lt;/li&gt;
-&lt;li&gt;Enable the &amp;quot;Windows Subsystem for Linux (beta)&amp;quot; feature&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And that’s it, for more information and a more in-depth guide check out &lt;a href="https://msdn.microsoft.com/en-us/commandline/wsl/about"&gt;https://msdn.microsoft.com/en-us/commandline/wsl/about&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="install-the-basics"&gt;Install the basics&lt;/h3&gt;
-&lt;p&gt;Once you are up and running with bash you’ll need to install the basic tools using apt-get, here’s the list that I used to get started:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;make&lt;/li&gt;
-&lt;li&gt;rake&lt;/li&gt;
-&lt;li&gt;nodejs&lt;/li&gt;
-&lt;li&gt;git&lt;/li&gt;
-&lt;li&gt;ruby1.9.1-dev&lt;/li&gt;
-&lt;li&gt;bundler&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I then pulled down everything from Github and picked up the usual Octopress workflow, and if all goes to plan this should be live within the hour.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in ["A Blog Is Born"] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://www.nyami.uk/posts/2015-01-07-tfvc-and-nuget-updates</id>
-		<title>TFVC and NuGet Updates</title>
-		<link href="https://www.nyami.uk/posts/2015-01-07-tfvc-and-nuget-updates" />
-		<updated>2015-01-07T12:00:04Z</updated>
-		<content>&lt;p&gt;At some point, for no obvious reason, I kept encountering an error when updating some NuGet packages, the error (TF14092) was basically telling me a file could not be modified as there was a pending delete. Experience has taught me that there is generally a reason for sudden changes in behaviour and after a little analysis I eventually worked it out.&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;p&gt;We currently use TFS2013 for version control, our main solution uses Visual Studio 2013 and we rely on a number of packages from &lt;a href="http://www.nuget.org/"&gt;NuGet&lt;/a&gt; as well as an internal repository for internal or licensed 3rd libraries. Historically this has not always been the case, we've upgraded the solution through various versions of Visual Studio and TFS has also been upgraded from TFS2010, but the occurrence of this problem didn't appear to tie in with either upgrade. What I eventually worked out was that I had been using a server workspace long after the primary project had been upgraded, it wasn't until I was free of some of our older projects that I upgraded to a &lt;a href="http://msdn.microsoft.com/en-us/library/bb892960.aspx"&gt;local workspace&lt;/a&gt; that had actually introduced this behaviour.&lt;/p&gt;
-&lt;p&gt;Once I realised the root cause the solution was simple, I created a new workspace on my PC but ensured it was a server workspace, opened the solution from this workspace and upgraded my NuGet packages, I could have alternatively changed the existing workspace from local to server but I think local workspaces work better for me.&lt;/p&gt;
-&lt;p&gt;For future reference the full error is:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1 error(s) encountered attempting to perform the add operation on 1 item(s) First error encountered:
-TF14092: The item $/SOMEITEM cannot be changed. A parent of this item has a pending delete which must be checked in first.
-See output tool window for information on any other errors.
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-		<summary>&lt;p&gt;At some point, for no obvious reason, I kept encountering an error when updating some NuGet packages, the error (TF14092) was basically telling me a file could not be modified as there was a pending delete. Experience has taught me that there is generally a reason for sudden changes in behaviour and after a little analysis I eventually worked it out.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://www.nyami.uk/posts/2014-12-14-a-blog-is-born</id>
-		<title>A Blog Is Born</title>
-		<link href="https://www.nyami.uk/posts/2014-12-14-a-blog-is-born" />
-		<updated>2014-12-14T11:23:47Z</updated>
-		<content>&lt;p&gt;So I've decided to start a blog, not for the first time, I've had a few attempts on a couple of different platforms from a custom web app to &lt;a href="http://umbraco.com/"&gt;Umbraco&lt;/a&gt; and I've probably got stuff on Geeks with Blogs and Blogger too. This time I'm going for an Octopress and GitHub Pages combo and I know little of either! Thankfully both are fairly well documented and hopefully be able to learn a few things along the way.&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;p&gt;This first post will hopefully detail how to get started, &lt;strong&gt;[SPOILER ALERT]&lt;/strong&gt; I guess if you are reading this then this has proven to be successful. I'm using my trusty Surface Pro running Windows 10 Tech Preview so a good starting point looks to be &lt;a href="http://thaiat.github.io/blog/2014/03/13/how-to-install-and-use-octopress-on-windows/"&gt;How to Install and Use Octopress on Windows&lt;/a&gt; so let's see how this goes.&lt;/p&gt;
-&lt;h2 id="getting-the-basics-installed"&gt;1. Getting the basics installed&lt;/h2&gt;
-&lt;p&gt;To get started we'll need a couple of things installed and &lt;a href="https://chocolatey.org"&gt;Chocolatey&lt;/a&gt; is the best place to start this process! Once installed (or updated in my case) the following packages should be installed:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;choco install git&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;choco install ruby -version 1.9.3.54500&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;choco install ruby.devkit&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;choco install python&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="install-octopress"&gt;2. Install Octopress&lt;/h2&gt;
-&lt;p&gt;Once everything is installed and the command prompt is restarted lets get Octopress installed, configured and deployed.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git clone git://github.com/imathis/octopress.git nyami.github.io&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;cd nyami.github.io&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;gem install bundler&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;bundle install&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;rake install&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;notepad .\_config.yml&lt;/code&gt; and update properties and save&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;echo www.nyami.uk &amp;gt;&amp;gt; source/CNAME&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;rake new_post[&amp;quot;A Blog Is Born&amp;quot;]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;rake generate&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;rake preview&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;rake setup_github_pages[https://github.com/Nyami/nyami.github.io.git]&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;at this point I got the following error:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## Set the codepage to 65001 for Windows machines
-** Invoke setup_github_pages (first_time)
-** Execute setup_github_pages
-rake aborted!
-ArgumentError: invalid byte sequence in UTF-8
-C:/GitHub/nyami.github.io/Rakefile:393:in `strip'
-C:/GitHub/nyami.github.io/Rakefile:393:in `blog_url'
-C:/GitHub/nyami.github.io/Rakefile:344:in `block in &amp;lt;top (required)&amp;gt;'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;using the command &lt;code&gt;chcp 65001&lt;/code&gt; at this point didn't help so I had a quick peek at &amp;quot;Rakefile&amp;quot; not really knowing what it is but the problem looked to be around the CNAME file created above so I changed the encoding to ANSI and tried again and this time it was successful.&lt;/p&gt;
-&lt;p&gt;Now I'm going to try get this up on Github... lets see what happens...&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;
-So looks like everything worked using the following workflow:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git add .&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git commit -m &amp;quot;first commit of Octopress blog&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;rake deploy&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git push origin source&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This was surprisingly easy, hopefully over the next few months I'll get some new posts up...&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;So I've decided to start a blog, not for the first time, I've had a few attempts on a couple of different platforms from a custom web app to &lt;a href="http://umbraco.com/"&gt;Umbraco&lt;/a&gt; and I've probably got stuff on Geeks with Blogs and Blogger too. This time I'm going for an Octopress and GitHub Pages combo and I know little of either! Thankfully both are fairly well documented and hopefully be able to learn a few things along the way.&lt;/p&gt;</summary>
+		<summary>Something interesting for sure...</summary>
 	</entry>
 </feed>
