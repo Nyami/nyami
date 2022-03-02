@@ -1,9 +1,0 @@
-#recipe Blog
-
-// Customize your settings and add new ones here
-Settings[Keys.Host] = "www.nyami.uk";
-Settings[BlogKeys.Title] = "Nyami";
-Settings[BlogKeys.Description] = "Something interesting for sure...";
-Settings[Keys.LinksUseHttps] = true;
-
-// Add any pipeline customizations here
