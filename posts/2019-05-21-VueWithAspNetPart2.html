@@ -65,9 +65,6 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/about">About Me</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/posts">Posts</a>
             </li>
             <li class="nav-item">
@@ -75,6 +72,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/tags">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About Me</a>
             </li>
 </ul>
     </div>
@@ -115,7 +115,7 @@ First we'll create our VueJs application, to do this we'll use the <a href="http
 <ol>
 <li>Babel, TypeScript, Linter/Formatter</li>
 <li>Yes to Use class-style component syntax</li>
-<li>Yes  to Use Babel alongside TypeScript for auto-detected polyfills</li>
+<li>Yes to Use Babel alongside TypeScript for auto-detected polyfills</li>
 <li>TSLint as linter/formatter config</li>
 <li>Lint on save</li>
 <li>Config in dedicated config files</li>
@@ -137,7 +137,7 @@ First we'll create our VueJs application, to do this we'll use the <a href="http
 <li>Add a package reference to <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions/2.2.0">Microsoft.AspNetCore.SpaServices.Extensions (2.2.0)</a></li>
 <li>Copy AngularCliBuilder.cs, AngularCliMiddleware.cs and AngularCliMiddlewareExtensions.cs and supporting internal classes from <a href="https://github.com/aspnet/AspNetCore">https://github.com/aspnet/AspNetCore</a></li>
 <li>Rename all the things</li>
-<li>Replace openBrowserLine Regex with a suitable Vue alternative, I went for <code>&quot;  - Local:   (http\\S+)&quot;</code></li>
+<li>Replace openBrowserLine Regex with a suitable Vue alternative, I went for <code>&quot; - Local: (http\\S+)&quot;</code></li>
 </ol>
 <p>You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the <code>spa.UseAngularCliServer(npmScript: &quot;start&quot;)</code> with <code>spa.UseVueCliServer(npmScript: &quot;serve&quot;);</code></p>
 <h2 id="heres-one-i-made-earlier">Here's one I made earlier</h2>

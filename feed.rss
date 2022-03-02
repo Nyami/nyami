@@ -5,8 +5,8 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>Copyright © 2022</copyright>
-		<pubDate>Wed, 02 Mar 2022 22:15:44 GMT</pubDate>
-		<lastBuildDate>Wed, 02 Mar 2022 22:15:44 GMT</lastBuildDate>
+		<pubDate>Wed, 02 Mar 2022 22:52:17 GMT</pubDate>
+		<lastBuildDate>Wed, 02 Mar 2022 22:52:17 GMT</lastBuildDate>
 		<item>
 			<title>Entity Builder for Unit Tests</title>
 			<link>https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder</link>
@@ -38,7 +38,7 @@
 
   public string Name { get; private set; }
   public StatusEnum Status { get; private set; }
-  
+
   public void Close() {
     if (this.Status != StatusEnum.Open) throw new Exception($&amp;quot;{this.Name} must be open for it to be closed.&amp;quot;);
 
@@ -73,7 +73,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can now use this builder to create and bypass our assertions without compromising the design of our entity:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var testFoo = new FooBuilder(&amp;quot;wibble&amp;quot;) 
+&lt;pre&gt;&lt;code&gt;var testFoo = new FooBuilder(&amp;quot;wibble&amp;quot;)
   .WithStatus(StatusEnum.Open)
   .Build();
 &lt;/code&gt;&lt;/pre&gt;
@@ -137,7 +137,7 @@ First we'll create our VueJs application, to do this we'll use the &lt;a href="h
 &lt;ol&gt;
 &lt;li&gt;Babel, TypeScript, Linter/Formatter&lt;/li&gt;
 &lt;li&gt;Yes to Use class-style component syntax&lt;/li&gt;
-&lt;li&gt;Yes  to Use Babel alongside TypeScript for auto-detected polyfills&lt;/li&gt;
+&lt;li&gt;Yes to Use Babel alongside TypeScript for auto-detected polyfills&lt;/li&gt;
 &lt;li&gt;TSLint as linter/formatter config&lt;/li&gt;
 &lt;li&gt;Lint on save&lt;/li&gt;
 &lt;li&gt;Config in dedicated config files&lt;/li&gt;
@@ -159,7 +159,7 @@ First we'll create our VueJs application, to do this we'll use the &lt;a href="h
 &lt;li&gt;Add a package reference to &lt;a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions/2.2.0"&gt;Microsoft.AspNetCore.SpaServices.Extensions (2.2.0)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Copy AngularCliBuilder.cs, AngularCliMiddleware.cs and AngularCliMiddlewareExtensions.cs and supporting internal classes from &lt;a href="https://github.com/aspnet/AspNetCore"&gt;https://github.com/aspnet/AspNetCore&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Rename all the things&lt;/li&gt;
-&lt;li&gt;Replace openBrowserLine Regex with a suitable Vue alternative, I went for &lt;code&gt;"  - Local:   (http\\S+)"&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Replace openBrowserLine Regex with a suitable Vue alternative, I went for &lt;code&gt;" - Local: (http\\S+)"&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;You can now reference this project in any project created from the Angular template after swapping out the Angular ClientApp with you Vue ClientApp and simply change the &lt;code&gt;spa.UseAngularCliServer(npmScript: "start")&lt;/code&gt; with &lt;code&gt;spa.UseVueCliServer(npmScript: "serve");&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="heres-one-i-made-earlier"&gt;Here's one I made earlier&lt;/h2&gt;

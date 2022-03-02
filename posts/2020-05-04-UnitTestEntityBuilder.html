@@ -64,9 +64,6 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/about">About Me</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/posts">Posts</a>
             </li>
             <li class="nav-item">
@@ -74,6 +71,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/tags">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About Me</a>
             </li>
 </ul>
     </div>
@@ -131,7 +131,7 @@
 
   public string Name { get; private set; }
   public StatusEnum Status { get; private set; }
-  
+
   public void Close() {
     if (this.Status != StatusEnum.Open) throw new Exception($&quot;{this.Name} must be open for it to be closed.&quot;);
 
@@ -166,7 +166,7 @@
 }
 </code></pre>
 <p>We can now use this builder to create and bypass our assertions without compromising the design of our entity:</p>
-<pre><code>var testFoo = new FooBuilder(&quot;wibble&quot;) 
+<pre><code>var testFoo = new FooBuilder(&quot;wibble&quot;)
   .WithStatus(StatusEnum.Open)
   .Build();
 </code></pre>
