@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Something interesting for sure...">
 
-  <title>Nyami</title>
+  <title>Nyami - VueJs and ASP.NET Core - Part 3</title>
 
-  <link rel="canonical" href="https://www.nyami.uk/page/5">
+  <link rel="canonical" href="https://www.nyami.uk/posts/2019-06-11-vuewithaspnetpart3">
 
       <link type="application/rss+xml" rel="alternate" href="/feed.rss" />
       <link type="application/atom+xml" rel="alternate" href="/feed.atom" />
@@ -18,9 +18,10 @@
   <meta name="msapplication-tooltip" content="Nyami" />
   <meta name="msapplication-starturl" content="/" />
 
-  <meta property="og:title" content="Nyami" />
+  <meta property="og:title" content="Nyami - VueJs and ASP.NET Core - Part 3" />
+    <meta property="og:image" content="/images/VueLogo.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nyami.uk/page/5" />
+  <meta property="og:url" content="https://www.nyami.uk/posts/2019-06-11-vuewithaspnetpart3" />
   
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -81,16 +82,21 @@
 </nav>
 
   <!-- Page Header -->
-  <header class="masthead">
+  <header class="masthead" style="background-image: url(&quot;/images/VueLogo.png&quot;)">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="site-heading">
+        <div class="post-heading">
           <h1>
-            Nyami
-              <small>(Page 5)</small>
+            VueJs and ASP.NET Core - Part 3
           </h1>
+              <div class="meta">Published on Tuesday, 11 June 2019</div>
+                <div class="mt-3">
+                      <a href="/tags/aspnet" class="badge badge-light"> aspnet</a>
+                      <a href="/tags/dotnet" class="badge badge-light"> dotnet</a>
+                      <a href="/tags/vuejs" class="badge badge-light"> VueJs</a>
+                </div>
         </div>
       </div>
     </div>
@@ -101,66 +107,39 @@
   <div class="container"> 
     <div class="row">
       <div id="content" class="col-md-12">  
-        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-md-6 right-border col-sm-height">
-            
+        <p>In parts <a href="/posts/2019-05-10-VueWithAspNetPart1">1</a> and <a href="/posts/2019-05-21-VueWithAspNetPart2">2</a> we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.</p>
+<!--more-->
+<h2 id="creating-a-template">Creating a Template</h2>
+<p>Newer versions of the .NET SDK has really simplified template creation, rather than detailing the whole experience here you are probably best referring to the <a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/create-custom-template">official documentation</a> however here is an overview of what I've done with a few handy pointers.</p>
+<ol>
+<li>Create an empty project based on the webapi template</li>
+<li>Added the package created in Part 2 using <code>Install-Package Nyami.AspNetCore.VueCliServices</code></li>
+<li>Created a ClientApp using the Vue CLI</li>
+<li>Added the custom targets into the project file</li>
+<li>Created the template configuration described <a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/create-custom-template#create-a-template-from-a-project">here</a>
+<ol>
+<li>When creating the template specify <code>sourceName</code>, this should match your root namespace and project file name, when a project is created from the template this will be replaced with the name</li>
+<li><code>preferNameDirectory</code> was set to <code>true</code>, if no name is provided when the project is created the folder name will be used as the default name</li>
+</ol>
+</li>
+<li>Made some minor changes to the wiring everything up in a more realistic way
+<ol>
+<li>Place holders for config</li>
+<li>Add a call to the API from the Vue component</li>
+</ol>
+</li>
+<li>Created nuspec file
+<ol>
+<li>Ensure the generated files (bin, obj, node_modules etc) were excluded from the package</li>
+</ol>
+</li>
+<li>Published to NuGet</li>
+</ol>
+<p>This template can be pulled down from NuGet and installed using the command <code>dotnet new -i Nyami.AspNetCore.Vue.Template</code>, once installed you can create a new project using <code>dotnet new vue</code>.</p>
+<h2 id="summary">Summary</h2>
+<p>There are a number of ways to get Vue.js and ASP.NET working together but this approach to works really well allowing you to get up and running with minimal effort and take advantage of Vue's CLI along side Visual Studio's developer experience. I'm not expecting either packages to get a lot of use, they were mainly proving the concept, but if you end up using them and have problems or questions just reach out to me.</p>
 
 
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2016-07-13-radbutton-single-click">RadButton Single Click</a></h2>
-    <p class="post-meta">Published on Wednesday, 13 July 2016</p>
-<p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>        <p class="small"><a href="/posts/2016-07-13-radbutton-single-click">Read more...</a></p>
-</div>
-
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2016-07-09-a-blog-is-reborn">A Blog Is Reborn</a></h2>
-    <p class="post-meta">Published on Saturday, 09 July 2016</p>
-<p>Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in [&quot;A Blog Is Born&quot;] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.</p>        <p class="small"><a href="/posts/2016-07-09-a-blog-is-reborn">Read more...</a></p>
-</div>
-
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2015-01-07-tfvc-and-nuget-updates">TFVC and NuGet Updates</a></h2>
-    <p class="post-meta">Published on Wednesday, 07 January 2015</p>
-<p>At some point, for no obvious reason, I kept encountering an error when updating some NuGet packages, the error (TF14092) was basically telling me a file could not be modified as there was a pending delete. Experience has taught me that there is generally a reason for sudden changes in behaviour and after a little analysis I eventually worked it out.</p>        <p class="small"><a href="/posts/2015-01-07-tfvc-and-nuget-updates">Read more...</a></p>
-</div>
-    <div>
-        <div class="float-sm-left">
-                <a class="btn btn-primary" href="/page/4" role="button"><i class="fas fa-angle-double-left"></i> Newer</a>
-        </div>
-        <div class="float-sm-right">
-                <a class="btn btn-primary" href="/page/6" role="button">Older <i class="fas fa-angle-double-right"></i></a>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-
-        </div>
-        <div class="col-md-4 mt-4 mt-md-0 col-sm-height">
-                    <div>
-                        <h5>Tags</h5>
-                            <a href="/tags/dotnet" class="badge badge-light"> dotnet (6)</a>
-                            <a href="/tags/tips" class="badge badge-light"> Tips (5)</a>
-                            <a href="/tags/aspnet" class="badge badge-light"> aspnet (4)</a>
-                            <a href="/tags/vuejs" class="badge badge-light"> VueJs (3)</a>
-                            <a href="/tags" class="badge badge-light">  (3)</a>
-                            <a href="/tags/howto" class="badge badge-light"> HowTo (2)</a>
-                            <a href="/tags/asp.net" class="badge badge-light"> ASP.NET (2)</a>
-                            <a href="/tags/unit-testing" class="badge badge-light"> unit testing (1)</a>
-                            <a href="/tags/adnug" class="badge badge-light"> ADNUG (1)</a>
-                            <a href="/tags/twitch" class="badge badge-light"> Twitch (1)</a>
-                        <div class="mt-3">
-                            <div class="float-sm-right">
-                                <a class="btn btn-sm btn-primary" href="/tags" role="button">All Tags <i class="fas fa-angle-double-right"></i></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-            
-            
-
-        </div>
-    </div>
-</div>
       </div>
     </div>
   </div>

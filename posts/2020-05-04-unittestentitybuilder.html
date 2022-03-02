@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Something interesting for sure...">
 
-  <title>Nyami</title>
+  <title>Nyami - Entity Builder for Unit Tests</title>
 
-  <link rel="canonical" href="https://www.nyami.uk/page/2">
+  <link rel="canonical" href="https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder">
 
       <link type="application/rss+xml" rel="alternate" href="/feed.rss" />
       <link type="application/atom+xml" rel="alternate" href="/feed.atom" />
@@ -18,9 +18,9 @@
   <meta name="msapplication-tooltip" content="Nyami" />
   <meta name="msapplication-starturl" content="/" />
 
-  <meta property="og:title" content="Nyami" />
+  <meta property="og:title" content="Nyami - Entity Builder for Unit Tests" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nyami.uk/page/2" />
+  <meta property="og:url" content="https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder" />
   
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -86,11 +86,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="site-heading">
+        <div class="post-heading">
           <h1>
-            Nyami
-              <small>(Page 2)</small>
+            Entity Builder for Unit Tests
           </h1>
+              <div class="meta">Published on Monday, 04 May 2020</div>
+                <div class="mt-3">
+                      <a href="/tags/dotnet" class="badge badge-light"> dotnet</a>
+                      <a href="/tags/tips" class="badge badge-light"> Tips</a>
+                      <a href="/tags/unit-testing" class="badge badge-light"> unit testing</a>
+                </div>
         </div>
       </div>
     </div>
@@ -101,66 +106,73 @@
   <div class="container"> 
     <div class="row">
       <div id="content" class="col-md-12">  
-        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-md-6 right-border col-sm-height">
-            
+        <p>If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.</p>
+<!--more-->
+<p>Typically you might find yourself creating opinionated constructors or getter only properties that will assert or support rules for an entity or business logic, but these can sometimes present a challenge when it comes to creating unit tests. Consider the following class:</p>
+<pre><code>public class Foo
+{
+  public enum StatusEnum
+  {
+    New = 0,
+    Open = 1,
+    Closed = 2
+  }
+
+  // Private constructor used by Entity Framework
+  private Foo() { }
+
+  // Used to create a new Foo
+  public Foo(string name)
+  {
+    if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException(&quot;Name must not be empty&quot;, nameof(name));
+    this.Name = name;
+    this.Status = StatusEnum.New;
+  }
+
+  public string Name { get; private set; }
+  public StatusEnum Status { get; private set; }
+
+  public void Close() {
+    if (this.Status != StatusEnum.Open) throw new Exception($&quot;{this.Name} must be open for it to be closed.&quot;);
+
+    this.Status = StatusEnum.Closed;
+  }
+}
+</code></pre>
+<p>Here we have our Foo entity designed to assert a couple of things, firstly we can only set the name when creating the instance, and secondly we can only change the status to Closed if the status is currently Open. If we wanted to write a unit test around our <code>Close</code> method we might be tempted to change the accessability of our <code>Status</code> property, or even change the private constructor to allow us to create a usable entity in our test project, however both these actions might well lead to an API open to misuse.</p>
+<p>A much better option would be to create a builder in our test project which can easily get round the constructor and property accessability and ensure some sort of consistency and reusability in our unit tests. Our builder for the class above might look a little like this:</p>
+<pre><code>public class FooBuilder
+{
+  private readonly Type entityType = typeof(Foo);
+  private readonly Foo foo;
+
+  public FooBuilder(string name)
+  {
+    var entity = Activator.CreateInstance(entityType, true) as Foo;
+    foo = entity ?? throw new ArgumentNullException(nameof(entity));
+    entityType.GetProperty(nameof(foo.Name)).SetValue(foo, name);
+  }
+
+  public FooBuilder WithStatus(StatusEnum status)
+  {
+    entityType.GetProperty(nameof(foo.Status)).SetValue(foo, status);
+    return this;
+  }
+
+  public Foo Build()
+  {
+    return foo;
+  }
+}
+</code></pre>
+<p>We can now use this builder to create and bypass our assertions without compromising the design of our entity:</p>
+<pre><code>var testFoo = new FooBuilder(&quot;wibble&quot;)
+  .WithStatus(StatusEnum.Open)
+  .Build();
+</code></pre>
+<p>This is not fool proof and still open for misuse, but at least most of the damage will confined to your test projects so it's a much better option compared to 'compromising' your API design.</p>
 
 
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2019-05-10-vuewithaspnetpart1">VueJs and ASP.NET Core - Part 1</a></h2>
-    <p class="post-meta">Published on Friday, 10 May 2019</p>
-<p>Whilst it’s relatively easy to <a href="http://lmgtfy.com/?q=asp.net+core+2+with+vue">find and follow a guide</a> to get up and running with Vue and ASP.NET Core, you’ll probably find there are a number techniques, methods, and opinions and there isn’t really the ‘first class’ support and 'simple' method of getting started as there is with Angular. In the following series of posts we’ll take a look at repurposing and using some of Microsoft’s SpaServices to create better support for Vue.js within your new ASP.NET Core project.</p>        <p class="small"><a href="/posts/2019-05-10-vuewithaspnetpart1">Read more...</a></p>
-</div>
-
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2019-05-03-mics-camera-action">Mics, Camera, Action!</a></h2>
-    <p class="post-meta">Published on Friday, 03 May 2019</p>
-<p>At the end of last year we ran a successful <a href="https://www.gofundme.com/aberdeen-developers-net-user-group">funding campaign</a> at Aberdeen Developers .NET User Group to purchase some gear to allow us to record some of our sessions. We had a good idea of what we were wanting to achieve, essentially, we wanted to be able to publish recordings of our sessions and we weren’t wanting to spend hours processing the content after the recording. With a couple of events successfully in the bag I thought it might be worth sharing our setup, so here it is...</p>        <p class="small"><a href="/posts/2019-05-03-mics-camera-action">Read more...</a></p>
-</div>
-
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2019-03-03-custom-http-verb">Custom HTTP Verb</a></h2>
-    <p class="post-meta">Published on Sunday, 03 March 2019</p>
-<p>There are server reasons you might look to implement a custom HTTP Verb in you ASP.NET application, and thankfully with ASP.NET Core it’s incredibly simple.</p>        <p class="small"><a href="/posts/2019-03-03-custom-http-verb">Read more...</a></p>
-</div>
-    <div>
-        <div class="float-sm-left">
-                <a class="btn btn-primary" href="/" role="button"><i class="fas fa-angle-double-left"></i> Newer</a>
-        </div>
-        <div class="float-sm-right">
-                <a class="btn btn-primary" href="/page/3" role="button">Older <i class="fas fa-angle-double-right"></i></a>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-
-        </div>
-        <div class="col-md-4 mt-4 mt-md-0 col-sm-height">
-                    <div>
-                        <h5>Tags</h5>
-                            <a href="/tags/dotnet" class="badge badge-light"> dotnet (6)</a>
-                            <a href="/tags/tips" class="badge badge-light"> Tips (5)</a>
-                            <a href="/tags/aspnet" class="badge badge-light"> aspnet (4)</a>
-                            <a href="/tags/vuejs" class="badge badge-light"> VueJs (3)</a>
-                            <a href="/tags" class="badge badge-light">  (3)</a>
-                            <a href="/tags/howto" class="badge badge-light"> HowTo (2)</a>
-                            <a href="/tags/asp.net" class="badge badge-light"> ASP.NET (2)</a>
-                            <a href="/tags/unit-testing" class="badge badge-light"> unit testing (1)</a>
-                            <a href="/tags/adnug" class="badge badge-light"> ADNUG (1)</a>
-                            <a href="/tags/twitch" class="badge badge-light"> Twitch (1)</a>
-                        <div class="mt-3">
-                            <div class="float-sm-right">
-                                <a class="btn btn-sm btn-primary" href="/tags" role="button">All Tags <i class="fas fa-angle-double-right"></i></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-            
-            
-
-        </div>
-    </div>
-</div>
       </div>
     </div>
   </div>
