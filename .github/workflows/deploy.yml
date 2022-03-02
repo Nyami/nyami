@@ -1,11 +1,13 @@
 name: Deploy Site
-on: [push]
+on:
+  push:
+    branches: [main]
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
         with:
           submodules: recursive
       - uses: actions/setup-dotnet@v1
