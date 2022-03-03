@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,16 +8,16 @@
 
   <link rel="canonical" href="https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder">
 
-      <link type="application/rss+xml" rel="alternate" href="/feed.rss" />
-      <link type="application/atom+xml" rel="alternate" href="/feed.atom" />
+      <link type="application/rss+xml" rel="alternate" href="/feed.rss">
+      <link type="application/atom+xml" rel="alternate" href="/feed.atom">
   
-  <meta name="application-name" content="Nyami" />
-  <meta name="msapplication-tooltip" content="Nyami" />
-  <meta name="msapplication-starturl" content="/" />
+  <meta name="application-name" content="Nyami">
+  <meta name="msapplication-tooltip" content="Nyami">
+  <meta name="msapplication-starturl" content="/">
 
-  <meta property="og:title" content="Nyami - Entity Builder for Unit Tests" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder" />
+  <meta property="og:title" content="Nyami - Entity Builder for Unit Tests">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder">
   
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -31,14 +28,14 @@
   <!-- Custom fonts for this template -->
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="/vendor/fontawesome-free/css/brands.min.css" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css' data-no-mirror>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' data-no-mirror>
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" data-no-mirror="">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" data-no-mirror="">
   
   <!-- Custom styles for this template -->
   <link href="/scss/clean-blog.css" rel="stylesheet">
   
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
   <script src="https://cdn.jsdelivr.net/npm/quicklink@2.0.0/dist/quicklink.umd.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css">
 
@@ -109,67 +106,67 @@
         <p>If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.</p>
 <!--more-->
 <p>Typically you might find yourself creating opinionated constructors or getter only properties that will assert or support rules for an entity or business logic, but these can sometimes present a challenge when it comes to creating unit tests. Consider the following class:</p>
-<pre><code>public class Foo
+<pre><code class="language-cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>
 {
-  public enum StatusEnum
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> StatusEnum
   {
-    New = 0,
-    Open = 1,
-    Closed = 2
+    New = <span class="hljs-number">0</span>,
+    Open = <span class="hljs-number">1</span>,
+    Closed = <span class="hljs-number">2</span>
   }
 
-  // Private constructor used by Entity Framework
-  private Foo() { }
+  <span class="hljs-comment">// Private constructor used by Entity Framework</span>
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Foo</span>(<span class="hljs-params"></span>) </span>{ }
 
-  // Used to create a new Foo
-  public Foo(string name)
-  {
-    if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException(&quot;Name must not be empty&quot;, nameof(name));
-    this.Name = name;
-    this.Status = StatusEnum.New;
+  <span class="hljs-comment">// Used to create a new Foo</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Foo</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> name</span>)
+  </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrWhiteSpace(name)) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArgumentException(&quot;Name must not be empty&quot;, <span class="hljs-keyword">nameof</span>(name));
+    <span class="hljs-keyword">this</span>.Name = name;
+    <span class="hljs-keyword">this</span>.Status = StatusEnum.New;
   }
 
-  public string Name { get; private set; }
-  public StatusEnum Status { get; private set; }
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>; }
+  <span class="hljs-keyword">public</span> StatusEnum Status { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>; }
 
-  public void Close() {
-    if (this.Status != StatusEnum.Open) throw new Exception($&quot;{this.Name} must be open for it to be closed.&quot;);
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Close</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.Status != StatusEnum.Open) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception($&quot;{<span class="hljs-keyword">this</span>.Name} must be open <span class="hljs-keyword">for</span> it to be closed.&quot;);
 
-    this.Status = StatusEnum.Closed;
+    <span class="hljs-keyword">this</span>.Status = StatusEnum.Closed;
   }
 }
 </code></pre>
 <p>Here we have our Foo entity designed to assert a couple of things, firstly we can only set the name when creating the instance, and secondly we can only change the status to Closed if the status is currently Open. If we wanted to write a unit test around our <code>Close</code> method we might be tempted to change the accessability of our <code>Status</code> property, or even change the private constructor to allow us to create a usable entity in our test project, however both these actions might well lead to an API open to misuse.</p>
 <p>A much better option would be to create a builder in our test project which can easily get round the constructor and property accessability and ensure some sort of consistency and reusability in our unit tests. Our builder for the class above might look a little like this:</p>
-<pre><code>public class FooBuilder
+<pre><code class="language-cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">FooBuilder</span>
 {
-  private readonly Type entityType = typeof(Foo);
-  private readonly Foo foo;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> Type entityType = <span class="hljs-keyword">typeof</span>(Foo);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> Foo foo;
 
-  public FooBuilder(string name)
-  {
-    var entity = Activator.CreateInstance(entityType, true) as Foo;
-    foo = entity ?? throw new ArgumentNullException(nameof(entity));
-    entityType.GetProperty(nameof(foo.Name)).SetValue(foo, name);
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FooBuilder</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> name</span>)
+  </span>{
+    <span class="hljs-keyword">var</span> entity = Activator.CreateInstance(entityType, <span class="hljs-literal">true</span>) <span class="hljs-keyword">as</span> Foo;
+    foo = entity ?? <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArgumentNullException(<span class="hljs-keyword">nameof</span>(entity));
+    entityType.GetProperty(<span class="hljs-keyword">nameof</span>(foo.Name)).SetValue(foo, name);
   }
 
-  public FooBuilder WithStatus(StatusEnum status)
-  {
-    entityType.GetProperty(nameof(foo.Status)).SetValue(foo, status);
-    return this;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> FooBuilder <span class="hljs-title">WithStatus</span>(<span class="hljs-params">StatusEnum status</span>)
+  </span>{
+    entityType.GetProperty(<span class="hljs-keyword">nameof</span>(foo.Status)).SetValue(foo, status);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
   }
 
-  public Foo Build()
-  {
-    return foo;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Foo <span class="hljs-title">Build</span>(<span class="hljs-params"></span>)
+  </span>{
+    <span class="hljs-keyword">return</span> foo;
   }
 }
 </code></pre>
 <p>We can now use this builder to create and bypass our assertions without compromising the design of our entity:</p>
-<pre><code>var testFoo = new FooBuilder(&quot;wibble&quot;)
-  .WithStatus(StatusEnum.Open)
-  .Build();
-</code></pre>
+<pre><code class="language-pony hljs"><span class="hljs-keyword">var</span> testFoo = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">FooBuilder</span>(&quot;wibble&quot;)
+  .<span class="hljs-title">WithStatus</span>(<span class="hljs-type">StatusEnum</span>.<span class="hljs-type">Open</span>)
+  .<span class="hljs-title">Build</span>();
+</span></code></pre>
 <p>This is not fool proof and still open for misuse, but at least most of the damage will confined to your test projects so it's a much better option compared to 'compromising' your API design.</p>
 
 
@@ -187,22 +184,22 @@
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
                         <a href="https://twitter.com/nyami" class="pr-2 mr-1">
-                            <span class='fa-stack fa-md'>
-                                <i class='fas fa-circle fa-stack-2x'></i>
-                                <i class='fab fa-twitter fa-stack-1x fa-inverse'></i>
+                            <span class="fa-stack fa-md">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <a href="https://www.linkedin.com/in/nyami/" class="pr-2 mr-1">
-                            <span class='fa-stack fa-md'>
-                                <i class='fas fa-circle fa-stack-2x'></i>
-                                <i class='fab fa-linkedin-in fa-stack-1x fa-inverse'></i>
+                            <span class="fa-stack fa-md">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
                 </ul>
-                <br />
+                <br>
                 <p class="copyright text-muted m-0">Copyright &#xA9; 2022</p>
                 <ul class="list-inline text-center small">
                         <li class="list-inline-item">
@@ -224,7 +221,7 @@
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-57354598-1"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-57354598-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -238,6 +235,7 @@
   <!-- Custom scripts for this template -->
   <script src="/js/clean-blog.js"></script>
 
-</body>
 
-</html>
+
+
+</body></html>

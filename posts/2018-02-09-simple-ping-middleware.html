@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,16 +8,16 @@
 
   <link rel="canonical" href="https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware">
 
-      <link type="application/rss+xml" rel="alternate" href="/feed.rss" />
-      <link type="application/atom+xml" rel="alternate" href="/feed.atom" />
+      <link type="application/rss+xml" rel="alternate" href="/feed.rss">
+      <link type="application/atom+xml" rel="alternate" href="/feed.atom">
   
-  <meta name="application-name" content="Nyami" />
-  <meta name="msapplication-tooltip" content="Nyami" />
-  <meta name="msapplication-starturl" content="/" />
+  <meta name="application-name" content="Nyami">
+  <meta name="msapplication-tooltip" content="Nyami">
+  <meta name="msapplication-starturl" content="/">
 
-  <meta property="og:title" content="Nyami - Simple ping Middleware" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware" />
+  <meta property="og:title" content="Nyami - Simple ping Middleware">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware">
   
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -31,14 +28,14 @@
   <!-- Custom fonts for this template -->
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="/vendor/fontawesome-free/css/brands.min.css" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css' data-no-mirror>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' data-no-mirror>
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" data-no-mirror="">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" data-no-mirror="">
   
   <!-- Custom styles for this template -->
   <link href="/scss/clean-blog.css" rel="stylesheet">
   
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror=""></script>
   <script src="https://cdn.jsdelivr.net/npm/quicklink@2.0.0/dist/quicklink.umd.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css">
 
@@ -111,8 +108,8 @@
         <p>If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.</p>
 <!--more-->
 <p>The ASP.NET Core request pipeline consists of a sequence of request delegates, these delegates are configured using <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RunExtensions?view=aspnetcore-2.0">Run</a>, <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.MapExtensions?view=aspnetcore-2.0">Map</a> and <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.UseExtensions?view=aspnetcore-2.0">Use</a>, and for our simple ping endpoint Map is a perfect fit. Map will create a branch in the pipeline allowing you to break out of the normal flow which could have the advantage as it can keep this as lightweight as you need. The following can be used to return a 200 response to indicate our site should be good to go, if you need to add some health checks or additional logic you could create more complex middleware.</p>
-<pre><code>app.Map(&quot;/ping&quot;,
-  ping =&gt; ping.Run(async conext =&gt; await conext.Response.WriteAsync(&quot;ok&quot;)));
+<pre><code class="language-dts hljs">app.Map(<span class="hljs-variable">&quot</span>;/ping<span class="hljs-variable">&quot</span>;,
+  ping =<span class="hljs-variable">&gt</span>; ping.Run(async conext =<span class="hljs-variable">&gt</span>; await conext.Response.WriteAsync(<span class="hljs-variable">&quot</span>;ok<span class="hljs-variable">&quot</span>;)));
 </code></pre>
 <p>For more information on Middleware check out <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#writing-middleware">ASP.NET Core Middleware</a></p>
 
@@ -131,22 +128,22 @@
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
                         <a href="https://twitter.com/nyami" class="pr-2 mr-1">
-                            <span class='fa-stack fa-md'>
-                                <i class='fas fa-circle fa-stack-2x'></i>
-                                <i class='fab fa-twitter fa-stack-1x fa-inverse'></i>
+                            <span class="fa-stack fa-md">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <a href="https://www.linkedin.com/in/nyami/" class="pr-2 mr-1">
-                            <span class='fa-stack fa-md'>
-                                <i class='fas fa-circle fa-stack-2x'></i>
-                                <i class='fab fa-linkedin-in fa-stack-1x fa-inverse'></i>
+                            <span class="fa-stack fa-md">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
                 </ul>
-                <br />
+                <br>
                 <p class="copyright text-muted m-0">Copyright &#xA9; 2022</p>
                 <ul class="list-inline text-center small">
                         <li class="list-inline-item">
@@ -168,7 +165,7 @@
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-57354598-1"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-57354598-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -182,6 +179,7 @@
   <!-- Custom scripts for this template -->
   <script src="/js/clean-blog.js"></script>
 
-</body>
 
-</html>
+
+
+</body></html>
