@@ -2,4 +2,4 @@ Host: www.nyami.uk
 SiteTitle: Nyami
 Description: Something interesting for sure...
 LinksUseHttps: true
-LinkLowercase: false
+HighlightCode: true
