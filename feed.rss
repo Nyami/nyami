@@ -5,14 +5,14 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>Copyright © 2022</copyright>
-		<pubDate>Fri, 04 Mar 2022 11:24:42 GMT</pubDate>
-		<lastBuildDate>Fri, 04 Mar 2022 11:24:42 GMT</lastBuildDate>
+		<pubDate>Fri, 04 Mar 2022 11:41:56 GMT</pubDate>
+		<lastBuildDate>Fri, 04 Mar 2022 11:41:56 GMT</lastBuildDate>
 		<item>
 			<title>Solution Wide Project Settings</title>
 			<link>https://www.nyami.uk/posts/2022/2022-03-04-sln-wide-project-settings</link>
 			<description>Something interesting for sure...</description>
 			<guid>https://www.nyami.uk/posts/2022/2022-03-04-sln-wide-project-settings</guid>
-			<pubDate>Mon, 04 May 2020 00:00:00 GMT</pubDate>
+			<pubDate>Fri, 04 Mar 2022 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;When working with larger solutions in Visual Studio there often common properties you want to set across the board for all your project, for example &lt;code&gt;Copyright&lt;/code&gt; or &lt;code&gt;TreatWarningsAsErrors&lt;/code&gt;. It can be a little tedious to set these for all the projects, particularly for bigger solutions, and when you add new projects to your solution it's easily missed resulting in undesired differences between projects. A nice simple way to set common properties is to use &lt;code&gt;Directory.Build.props&lt;/code&gt;.&lt;/p&gt;
 &lt;!--more--&gt;
 &lt;p&gt;Simply create a new file, &lt;code&gt;Directory.Build.props&lt;/code&gt;, at the root of your solution and populate it with the properties you wish to set, for example:&lt;/p&gt;
