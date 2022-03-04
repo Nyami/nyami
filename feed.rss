@@ -5,8 +5,29 @@
 		<link>https://www.nyami.uk/</link>
 		<description>Something interesting for sure...</description>
 		<copyright>Copyright © 2022</copyright>
-		<pubDate>Thu, 03 Mar 2022 10:30:45 GMT</pubDate>
-		<lastBuildDate>Thu, 03 Mar 2022 10:30:45 GMT</lastBuildDate>
+		<pubDate>Fri, 04 Mar 2022 11:24:42 GMT</pubDate>
+		<lastBuildDate>Fri, 04 Mar 2022 11:24:42 GMT</lastBuildDate>
+		<item>
+			<title>Solution Wide Project Settings</title>
+			<link>https://www.nyami.uk/posts/2022/2022-03-04-sln-wide-project-settings</link>
+			<description>Something interesting for sure...</description>
+			<guid>https://www.nyami.uk/posts/2022/2022-03-04-sln-wide-project-settings</guid>
+			<pubDate>Mon, 04 May 2020 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;When working with larger solutions in Visual Studio there often common properties you want to set across the board for all your project, for example &lt;code&gt;Copyright&lt;/code&gt; or &lt;code&gt;TreatWarningsAsErrors&lt;/code&gt;. It can be a little tedious to set these for all the projects, particularly for bigger solutions, and when you add new projects to your solution it's easily missed resulting in undesired differences between projects. A nice simple way to set common properties is to use &lt;code&gt;Directory.Build.props&lt;/code&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;Simply create a new file, &lt;code&gt;Directory.Build.props&lt;/code&gt;, at the root of your solution and populate it with the properties you wish to set, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-xml"&gt;&amp;lt;Project&amp;gt;
+  &amp;lt;PropertyGroup&amp;gt;
+    &amp;lt;TreatWarningsAsErrors&amp;gt;True&amp;lt;/TreatWarningsAsErrors&amp;gt;
+    &amp;lt;Copyright&amp;gt;Douglas Cameron&amp;lt;/Copyright&amp;gt;
+  &amp;lt;/PropertyGroup&amp;gt;
+&amp;lt;/Project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now all projects under this folder will take on these properties, and they can be overridden, or indeed expanded with another &lt;code&gt;Directory.Build.props&lt;/code&gt; within any subfolder (for example if your unit tests are under a test folder, you could create properties pertaining to these projects there), or via the actual project file.&lt;/p&gt;
+&lt;p&gt;You could also this file to add common NuGet packages to all your projects, for example if you used &lt;a href="https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview#third-party-analyzers"&gt;3rd party analyzers&lt;/a&gt; you could add these here along with any custom rules as required, however you will need to manage the version here and avoid using the NuGet package manager in Visual Studio as this will affect the actual project files.&lt;/p&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
 		<item>
 			<title>Entity Builder for Unit Tests</title>
 			<link>https://www.nyami.uk/posts/2020-05-04-unittestentitybuilder</link>
@@ -346,22 +367,6 @@ public ActionResult&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt; Search([Fro
 &lt;p&gt;Microsoft Azure provides &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speaker-recognition/home"&gt;Speaker Recognition&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#speech-to-text-speech-recognition"&gt;Speech to Text&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#text-to-speech-speech-synthesis"&gt;Text to Speech&lt;/a&gt; and &lt;a href="https://azure.microsoft.com/en-us/services/cognitive-services/translator-speech-api/"&gt;Translation to and from 10 languages&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id="video"&gt;Video&lt;/h3&gt;
 &lt;p&gt;You are not limited to analysing images or speech, you can analyse video as well. Cognitive Services includes &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Vision APIs for videos&lt;/a&gt;. With these APIs you can perform face detection and tracking, motion detection, image stabilisation and video thumbnail generation. It's also possible to use the &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Video Indexer&lt;/a&gt; to get an audio transcript, track faces, map and understand which speaker spoke which words and when, determine when a scene changes and a whole lot more!&lt;/p&gt;
-</content:encoded>
-			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
-		</item>
-		<item>
-			<title>Simple ping Middleware</title>
-			<link>https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware</link>
-			<description>Something interesting for sure...</description>
-			<guid>https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware</guid>
-			<pubDate>Fri, 09 Feb 2018 16:18:39 GMT</pubDate>
-			<content:encoded>&lt;p&gt;If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;p&gt;The ASP.NET Core request pipeline consists of a sequence of request delegates, these delegates are configured using &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RunExtensions?view=aspnetcore-2.0"&gt;Run&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.MapExtensions?view=aspnetcore-2.0"&gt;Map&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.UseExtensions?view=aspnetcore-2.0"&gt;Use&lt;/a&gt;, and for our simple ping endpoint Map is a perfect fit. Map will create a branch in the pipeline allowing you to break out of the normal flow which could have the advantage as it can keep this as lightweight as you need. The following can be used to return a 200 response to indicate our site should be good to go, if you need to add some health checks or additional logic you could create more complex middleware.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;app.Map(&amp;quot;/ping&amp;quot;,
-  ping =&amp;gt; ping.Run(async conext =&amp;gt; await conext.Response.WriteAsync(&amp;quot;ok&amp;quot;)));
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For more information on Middleware check out &lt;a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#writing-middleware"&gt;ASP.NET Core Middleware&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
 			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
 		</item>

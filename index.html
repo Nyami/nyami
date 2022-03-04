@@ -64,9 +64,6 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/about">About Me</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/posts">Posts</a>
             </li>
             <li class="nav-item">
@@ -74,6 +71,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/tags">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About Me</a>
             </li>
 </ul>
     </div>
@@ -107,6 +107,12 @@
 
 
 <div class="post-preview">
+    <h2 class="post-title"><a href="/posts/2022/2022-03-04-sln-wide-project-settings">Solution Wide Project Settings</a></h2>
+    <p class="post-meta">Published on Monday, 04 May 2020</p>
+<p>When working with larger solutions in Visual Studio there often common properties you want to set across the board for all your project, for example <code>Copyright</code> or <code>TreatWarningsAsErrors</code>. It can be a little tedious to set these for all the projects, particularly for bigger solutions, and when you add new projects to your solution it's easily missed resulting in undesired differences between projects. A nice simple way to set common properties is to use <code>Directory.Build.props</code>.</p>        <p class="small"><a href="/posts/2022/2022-03-04-sln-wide-project-settings">Read more...</a></p>
+</div>
+
+<div class="post-preview">
     <h2 class="post-title"><a href="/posts/2020-05-04-unittestentitybuilder">Entity Builder for Unit Tests</a></h2>
     <p class="post-meta">Published on Monday, 04 May 2020</p>
 <p>If you find yourself needing to create an instance of a domain entity for unit testing, but having trouble getting round property or constructor accessability, using a builder is a great technique to get round this and provide a consistent, reusable method of creating the object for your tests.</p>        <p class="small"><a href="/posts/2020-05-04-unittestentitybuilder">Read more...</a></p>
@@ -116,12 +122,6 @@
     <h2 class="post-title"><a href="/posts/2019-06-11-vuewithaspnetpart3">VueJs and ASP.NET Core - Part 3</a></h2>
     <p class="post-meta">Published on Tuesday, 11 June 2019</p>
 <p>In parts <a href="/posts/2019-05-10-VueWithAspNetPart1">1</a> and <a href="/posts/2019-05-21-VueWithAspNetPart2">2</a> we looked at the experience of creating a new Angular app and some of the differences compared to what's required for Vue. We then went on to create middleware to add support for running the Vue CLI within our ASP.NET application, and then a new project enabling us to successfully run the Vue CLI in development and have the ability to package everything together when publishing our app. In this final part we are going to create a new project template allowing us a quick start for future projects.</p>        <p class="small"><a href="/posts/2019-06-11-vuewithaspnetpart3">Read more...</a></p>
-</div>
-
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2019-05-21-vuewithaspnetpart2">VueJs and ASP.NET Core - Part 2</a></h2>
-    <p class="post-meta">Published on Tuesday, 21 May 2019</p>
-<p>In <a href="/posts/2019-05-10-VueWithAspNetPart1">Part 1</a> we looked at the Angular project template with ASP.NET Core and its pretty much what we want to achieve for VueJs. In this part we'll dig a little deeper into <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices?view=aspnetcore-2.2">Microsoft.AspNetCore.SpaServices</a>, specifically <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.spaservices.angularcli?view=aspnetcore-2.2">Microsoft.AspNetCore.SpaServices.AngularCli</a> and look to take inspiration for our Vue solution.</p>        <p class="small"><a href="/posts/2019-05-21-vuewithaspnetpart2">Read more...</a></p>
 </div>
     <div>
         <div class="float-sm-left">
@@ -136,16 +136,16 @@
         <div class="col-md-4 mt-4 mt-md-0 col-sm-height">
                     <div>
                         <h5>Tags</h5>
-                            <a href="/tags/dotnet" class="badge badge-light"> dotnet (6)</a>
-                            <a href="/tags/tips" class="badge badge-light"> Tips (5)</a>
+                            <a href="/tags/dotnet" class="badge badge-light"> dotnet (7)</a>
+                            <a href="/tags/tips" class="badge badge-light"> Tips (6)</a>
                             <a href="/tags/aspnet" class="badge badge-light"> aspnet (4)</a>
                             <a href="/tags/vuejs" class="badge badge-light"> VueJs (3)</a>
                             <a href="/tags" class="badge badge-light">  (3)</a>
                             <a href="/tags/howto" class="badge badge-light"> HowTo (2)</a>
                             <a href="/tags/asp.net" class="badge badge-light"> ASP.NET (2)</a>
-                            <a href="/tags/unit-testing" class="badge badge-light"> unit testing (1)</a>
-                            <a href="/tags/adnug" class="badge badge-light"> ADNUG (1)</a>
-                            <a href="/tags/twitch" class="badge badge-light"> Twitch (1)</a>
+                            <a href="/tags/sln" class="badge badge-light"> sln (1)</a>
+                            <a href="/tags/proj" class="badge badge-light"> proj (1)</a>
+                            <a href="/tags/productivity" class="badge badge-light"> productivity (1)</a>
                         <div class="mt-3">
                             <div class="float-sm-right">
                                 <a class="btn btn-sm btn-primary" href="/tags" role="button">All Tags <i class="fas fa-angle-double-right"></i></a>
