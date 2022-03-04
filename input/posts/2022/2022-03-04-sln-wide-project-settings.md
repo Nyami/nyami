@@ -1,5 +1,5 @@
 Title: "Solution Wide Project Settings"
-Published: 2020-05-04
+Published: 2022-03-04
 Tags:
 
 - dotnet
