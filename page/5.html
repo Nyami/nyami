@@ -110,6 +110,13 @@
 
 
 <div class="post-preview">
+    <h2 class="post-title"><a href="/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider">Creating a Self-Signed Certificate for Identity Provider</a></h2>
+    <p class="post-meta">Published on Saturday, 18 November 2017</p>
+<p>I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options with New-SelfSignedCertificate PS module.</p>
+<p>Identity Server was throwing &quot;CryptographicException: Invalid provider type specified&quot; and I had ensured the user account had access so it should have been all good. After a little bit of digging it turned out the private keys were not accessible from .NET. David Christiansen’s <a href="http://blog.davidchristiansen.com/2016/05/521/">blog post</a> helped me track down the issue but with a little more research I ended up with the following PowerShell to create a working certificate avoiding additional steps I didnt understand ;).</p>        <p class="small"><a href="/posts/2017-11-18-creating-a-self-signed-certificate-for-identity-provider">Read more...</a></p>
+</div>
+
+<div class="post-preview">
     <h2 class="post-title"><a href="/posts/2016-10-06-bash-i-forgot-sudo">Bash - I forgot sudo</a></h2>
     <p class="post-meta">Published on Thursday, 06 October 2016</p>
 <p>If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:</p>        <p class="small"><a href="/posts/2016-10-06-bash-i-forgot-sudo">Read more...</a></p>
@@ -119,12 +126,6 @@
     <h2 class="post-title"><a href="/posts/2016-07-13-radbutton-single-click">RadButton Single Click</a></h2>
     <p class="post-meta">Published on Wednesday, 13 July 2016</p>
 <p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>        <p class="small"><a href="/posts/2016-07-13-radbutton-single-click">Read more...</a></p>
-</div>
-
-<div class="post-preview">
-    <h2 class="post-title"><a href="/posts/2016-07-09-a-blog-is-reborn">A Blog Is Reborn</a></h2>
-    <p class="post-meta">Published on Saturday, 09 July 2016</p>
-<p>Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in [&quot;A Blog Is Born&quot;] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.</p>        <p class="small"><a href="/posts/2016-07-09-a-blog-is-reborn">Read more...</a></p>
 </div>
     <div>
         <div class="float-sm-left">
@@ -140,16 +141,16 @@
         <div class="col-md-4 mt-4 mt-md-0 col-sm-height">
                     <div>
                         <h5>Tags</h5>
+                            <a href="/tags/tips" class="badge badge-light"> tips (7)</a>
                             <a href="/tags/dotnet" class="badge badge-light"> dotnet (7)</a>
-                            <a href="/tags/tips" class="badge badge-light"> Tips (6)</a>
                             <a href="/tags/aspnet" class="badge badge-light"> aspnet (4)</a>
                             <a href="/tags/vuejs" class="badge badge-light"> VueJs (3)</a>
                             <a href="/tags" class="badge badge-light">  (3)</a>
+                            <a href="/tags/unit-testing" class="badge badge-light"> unit testing (2)</a>
                             <a href="/tags/howto" class="badge badge-light"> HowTo (2)</a>
                             <a href="/tags/asp.net" class="badge badge-light"> ASP.NET (2)</a>
+                            <a href="/tags/nsubstitute" class="badge badge-light"> NSubstitute (1)</a>
                             <a href="/tags/sln" class="badge badge-light"> sln (1)</a>
-                            <a href="/tags/proj" class="badge badge-light"> proj (1)</a>
-                            <a href="/tags/productivity" class="badge badge-light"> productivity (1)</a>
                         <div class="mt-3">
                             <div class="float-sm-right">
                                 <a class="btn btn-sm btn-primary" href="/tags" role="button">All Tags <i class="fas fa-angle-double-right"></i></a>

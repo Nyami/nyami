@@ -4,9 +4,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Something interesting for sure...">
 
-  <title>Nyami - Simple ping Middleware</title>
+  <title>Nyami - Verifying calls with NSubstitute</title>
 
-  <link rel="canonical" href="https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware">
+  <link rel="canonical" href="https://www.nyami.uk/posts/2022/2022-03-31-verifying-calls-with-nsubstitute">
 
       <link type="application/rss+xml" rel="alternate" href="/feed.rss">
       <link type="application/atom+xml" rel="alternate" href="/feed.atom">
@@ -15,9 +15,9 @@
   <meta name="msapplication-tooltip" content="Nyami">
   <meta name="msapplication-starturl" content="/">
 
-  <meta property="og:title" content="Nyami - Simple ping Middleware">
+  <meta property="og:title" content="Nyami - Verifying calls with NSubstitute">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.nyami.uk/posts/2018-02-09-simple-ping-middleware">
+  <meta property="og:url" content="https://www.nyami.uk/posts/2022/2022-03-31-verifying-calls-with-nsubstitute">
   
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -85,15 +85,13 @@
       <div class="col-md-12">
         <div class="post-heading">
           <h1>
-            Simple ping Middleware
+            Verifying calls with NSubstitute
           </h1>
-              <div class="meta">Published on Friday, 09 February 2018</div>
+              <div class="meta">Published on Thursday, 31 March 2022</div>
                 <div class="mt-3">
-                      <a href="/tags/howto" class="badge badge-light"> HowTo</a>
+                      <a href="/tags/unit-testing" class="badge badge-light"> unit testing</a>
                       <a href="/tags/tips" class="badge badge-light"> tips</a>
-                      <a href="/tags/dotnet-core" class="badge badge-light"> dotnet core</a>
-                      <a href="/tags/asp.net" class="badge badge-light"> ASP.NET</a>
-                      <a href="/tags/middleware" class="badge badge-light"> Middleware</a>
+                      <a href="/tags/nsubstitute" class="badge badge-light"> NSubstitute</a>
                 </div>
         </div>
       </div>
@@ -105,13 +103,60 @@
   <div class="container"> 
     <div class="row">
       <div id="content" class="col-md-12">  
-        <p>If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.</p>
+        <p>This one came up recently so I thought I would do a post for my future self, so I have something to come back to. Being a conscientious developer <a id="fnref:1" href="#fn:1" class="footnote-ref"><sup>1</sup></a> I was creating unit tests and I found a situation where I wanted to verify the call to a method was the expected call, in this case the functionality being tested was creating an object and then calling a repository to persist this, I needed to check the object being persisted was as I expected.</p>
 <!--more-->
-<p>The ASP.NET Core request pipeline consists of a sequence of request delegates, these delegates are configured using <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RunExtensions?view=aspnetcore-2.0">Run</a>, <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.MapExtensions?view=aspnetcore-2.0">Map</a> and <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.UseExtensions?view=aspnetcore-2.0">Use</a>, and for our simple ping endpoint Map is a perfect fit. Map will create a branch in the pipeline allowing you to break out of the normal flow which could have the advantage as it can keep this as lightweight as you need. The following can be used to return a 200 response to indicate our site should be good to go, if you need to add some health checks or additional logic you could create more complex middleware.</p>
-<pre><code class="language-dts hljs">app.Map(<span class="hljs-variable">&quot</span>;/ping<span class="hljs-variable">&quot</span>;,
-  ping =<span class="hljs-variable">&gt</span>; ping.Run(async conext =<span class="hljs-variable">&gt</span>; await conext.Response.WriteAsync(<span class="hljs-variable">&quot</span>;ok<span class="hljs-variable">&quot</span>;)));
+<p>Here is a rather simplified example of what we want to test:</p>
+<pre><code class="language-CSharp hljs"><span class="hljs-keyword">class</span> <span class="hljs-title">MyThing</span> {
+    <span class="hljs-keyword">readonly</span> IFoo foo;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyThing</span>(<span class="hljs-params">IFoo foo</span>) </span>{
+        <span class="hljs-keyword">this</span>.foo = foo;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task&lt;<span class="hljs-keyword">bool</span>&gt; DoTheThing(<span class="hljs-keyword">int</span> howManyTimes) {
+        <span class="hljs-keyword">var</span> x = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-keyword">int</span>&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= howManyTimes; i++) {
+            x.Add(i);
+        }
+
+        foo.DoSomething(x);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> Task.FromResult(<span class="hljs-literal">true</span>);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">IFoo</span> {
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DoSomething</span>(<span class="hljs-params">IList&lt;<span class="hljs-keyword">int</span>&gt; list</span>)</span>;
+}
 </code></pre>
-<p>For more information on Middleware check out <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#writing-middleware">ASP.NET Core Middleware</a></p>
+<p>Using NSubstitute we can create a mock for IFoo using <code>NSubstitute.Substitute.For&lt;IFoo&gt;()</code>, and now this can be used to verify calls using <code>Received()</code>:</p>
+<pre><code class="language-CSharp hljs"><span class="hljs-comment">// Arrange</span>
+<span class="hljs-keyword">var</span> foo = NSubstitute.Substitute.For&lt;IFoo&gt;();
+
+<span class="hljs-comment">// Act</span>
+<span class="hljs-keyword">var</span> sut = <span class="hljs-keyword">new</span> MyThing(foo);
+<span class="hljs-keyword">await</span> sut.DoTheThing(<span class="hljs-number">3</span>);
+
+<span class="hljs-comment">// Assert</span>
+foo.Received().DoSomething(Arg.Is&lt;IList&lt;<span class="hljs-keyword">int</span>&gt;&gt;(l =&gt; l.Count() == <span class="hljs-number">3</span>));
+foo.Received().DoSomething(Arg.Is&lt;IList&lt;<span class="hljs-keyword">int</span>&gt;&gt;(l =&gt; l.First() == <span class="hljs-number">1</span>));
+foo.Received().DoSomething(Arg.Is&lt;IList&lt;<span class="hljs-keyword">int</span>&gt;&gt;(l =&gt; l.Last() == <span class="hljs-number">3</span>));
+</code></pre>
+<p>We could alternatively pass in a function that could do some more complex checks, eg:</p>
+<pre><code class="language-CSharp hljs">Func&lt;IList&lt;<span class="hljs-keyword">int</span>&gt;, <span class="hljs-keyword">bool</span>&gt; expectedResult = (list) =&gt; { <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;};
+foo.Received().DoSomething(Arg.Is&lt;IList&lt;<span class="hljs-keyword">int</span>&gt;&gt;(l =&gt; expectedResult(l)));
+</code></pre>
+<p>or we could even capture the arguments used using <code>Do</code> by setting this up during our arrangement:</p>
+<pre><code class="language-CSharp hljs">IList&lt;<span class="hljs-keyword">int</span>&gt; captured = <span class="hljs-literal">null</span>!;
+foo.When(substitute =&gt; substitute.DoSomething(Arg.Any&lt;IList&lt;<span class="hljs-keyword">int</span>&gt;&gt;())).Do(info =&gt; captured = info.ArgAt&lt;IList&lt;<span class="hljs-keyword">int</span>&gt;&gt;(<span class="hljs-number">0</span>));
+</code></pre>
+<p>NSubstitute can do a whole lot more and you could really go to town with some of the functionality, if you are not familiar with it I would encourage you to check it out - <a href="https://nsubstitute.github.io/">https://nsubstitute.github.io/</a></p>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I do try most of the time<a href="#fnref:1" class="footnote-back-ref">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
       </div>

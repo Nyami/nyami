@@ -4,8 +4,70 @@
 	<title />
 	<link rel="self" href="https://www.nyami.uk/" />
 	<rights>Copyright © 2022</rights>
-	<updated>2022-03-04T22:05:08Z</updated>
+	<updated>2022-03-31T09:35:27Z</updated>
 	<subtitle>Something interesting for sure...</subtitle>
+	<entry>
+		<id>https://www.nyami.uk/posts/2022/2022-03-31-verifying-calls-with-nsubstitute</id>
+		<title>Verifying calls with NSubstitute</title>
+		<link href="https://www.nyami.uk/posts/2022/2022-03-31-verifying-calls-with-nsubstitute" />
+		<updated>2022-03-31T00:00:00Z</updated>
+		<content>&lt;p&gt;This one came up recently so I thought I would do a post for my future self, so I have something to come back to. Being a conscientious developer &lt;a id="fnref:1" href="https://www.nyami.uk/#fn:1" class="footnote-ref"&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; I was creating unit tests and I found a situation where I wanted to verify the call to a method was the expected call, in this case the functionality being tested was creating an object and then calling a repository to persist this, I needed to check the object being persisted was as I expected.&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;Here is a rather simplified example of what we want to test:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-CSharp"&gt;class MyThing {
+    readonly IFoo foo;
+    public MyThing(IFoo foo) {
+        this.foo = foo;
+    }
+
+    public async Task&amp;lt;bool&amp;gt; DoTheThing(int howManyTimes) {
+        var x = new List&amp;lt;int&amp;gt;();
+        for (int i = 1; i &amp;lt;= howManyTimes; i++) {
+            x.Add(i);
+        }
+
+        foo.DoSomething(x);
+        return await Task.FromResult(true);
+    }
+}
+
+public interface IFoo {
+    void DoSomething(IList&amp;lt;int&amp;gt; list);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using NSubstitute we can create a mock for IFoo using &lt;code&gt;NSubstitute.Substitute.For&amp;lt;IFoo&amp;gt;()&lt;/code&gt;, and now this can be used to verify calls using &lt;code&gt;Received()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-CSharp"&gt;// Arrange
+var foo = NSubstitute.Substitute.For&amp;lt;IFoo&amp;gt;();
+
+// Act
+var sut = new MyThing(foo);
+await sut.DoTheThing(3);
+
+// Assert
+foo.Received().DoSomething(Arg.Is&amp;lt;IList&amp;lt;int&amp;gt;&amp;gt;(l =&amp;gt; l.Count() == 3));
+foo.Received().DoSomething(Arg.Is&amp;lt;IList&amp;lt;int&amp;gt;&amp;gt;(l =&amp;gt; l.First() == 1));
+foo.Received().DoSomething(Arg.Is&amp;lt;IList&amp;lt;int&amp;gt;&amp;gt;(l =&amp;gt; l.Last() == 3));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We could alternatively pass in a function that could do some more complex checks, eg:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-CSharp"&gt;Func&amp;lt;IList&amp;lt;int&amp;gt;, bool&amp;gt; expectedResult = (list) =&amp;gt; { return false;};
+foo.Received().DoSomething(Arg.Is&amp;lt;IList&amp;lt;int&amp;gt;&amp;gt;(l =&amp;gt; expectedResult(l)));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or we could even capture the arguments used using &lt;code&gt;Do&lt;/code&gt; by setting this up during our arrangement:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-CSharp"&gt;IList&amp;lt;int&amp;gt; captured = null!;
+foo.When(substitute =&amp;gt; substitute.DoSomething(Arg.Any&amp;lt;IList&amp;lt;int&amp;gt;&amp;gt;())).Do(info =&amp;gt; captured = info.ArgAt&amp;lt;IList&amp;lt;int&amp;gt;&amp;gt;(0));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NSubstitute can do a whole lot more and you could really go to town with some of the functionality, if you are not familiar with it I would encourage you to check it out - &lt;a href="https://nsubstitute.github.io/"&gt;https://nsubstitute.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;I do try most of the time&lt;a href="https://www.nyami.uk/#fnref:1" class="footnote-back-ref"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+		<summary>Something interesting for sure...</summary>
+	</entry>
 	<entry>
 		<id>https://www.nyami.uk/posts/2022/2022-03-04-sln-wide-project-settings</id>
 		<title>Solution Wide Project Settings</title>
@@ -329,33 +391,6 @@ public ActionResult&amp;lt;IEnumerable&amp;lt;string&amp;gt;&amp;gt; Search([Fro
 		<content>&lt;p&gt;It's been a while since I'd created a number dotnet projects and supporting solution using the command line so I had to refer to the &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet"&gt;documentation&lt;/a&gt; to keep me right. As I had just created a number of projects adding each one to the solution is a little tedious so when I'd spotted I could use &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;globbing patterns&lt;/a&gt; I thought this would save time and a few key presses.&lt;/p&gt;
 &lt;!--more--&gt;
 &lt;p&gt;However, when I ran &lt;code&gt;dotnet sln Foo.sln add **/*.csproj&lt;/code&gt; I was presented with the error &lt;code&gt;Could not find project or directory **/*.csproj&lt;/code&gt;. It turns out that globbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn't expanding the glob. Luckly as dotnet is cross platform and I have &lt;a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10"&gt;Windows Subsystem for Linux&lt;/a&gt; installed with all the dotnet goodness I could switch to &lt;code&gt;bash&lt;/code&gt;, ensure globbing was enabled using &lt;code&gt;shopt -s globstar&lt;/code&gt;, and then run &lt;code&gt;dotnet sln Foo.sln add **/*.csproj&lt;/code&gt; to add all my new projects, job done...&lt;/p&gt;
-</content>
-		<summary>Something interesting for sure...</summary>
-	</entry>
-	<entry>
-		<id>https://www.nyami.uk/posts/2018-04-10-rguhack-2018</id>
-		<title>RGUHack 2018</title>
-		<link href="https://www.nyami.uk/posts/2018-04-10-rguhack-2018" />
-		<updated>2018-04-10T18:21:49Z</updated>
-		<content>&lt;p&gt;I'll be helping out at &lt;a href="https://rguhack.uk/"&gt;RGUHack&lt;/a&gt; this coming weekend so I thought I'd pull together a few links from &lt;a href="https://docs.microsoft.com/en-gb/azure/index#pivot=products&amp;amp;panel=all"&gt;some of the Azure services&lt;/a&gt; available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github's &lt;a href="https://education.github.com/pack"&gt;Student Developer Pack&lt;/a&gt; to pick up some free Azure credit, but if they haven't, its easy to get started for free at &lt;a href="https://azure.microsoft.com/en-us/free/"&gt;https://azure.microsoft.com/en-us/free/&lt;/a&gt;&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;h2 id="hosting"&gt;Hosting&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://docs.microsoft.com/azure/app-service/"&gt;Azure Web Apps&lt;/a&gt; will let you host your web application without having to manage infrastructure and you can be live in minuets. As you might expect Azure Web supports web applications created using &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet-framework"&gt;.NET&lt;/a&gt; (including &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet"&gt;Core&lt;/a&gt;) and &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-html"&gt;Static HTML&lt;/a&gt; but it also supports &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-php"&gt;PHP&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-nodejs"&gt;Node.js&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-python"&gt;Python&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-java"&gt;Java&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="compute"&gt;Compute&lt;/h2&gt;
-&lt;p&gt;One of the great features of Azure are &lt;a href="https://docs.microsoft.com/en-gb/azure/azure-functions/"&gt;Azure Functions&lt;/a&gt;, these allow you run your code on demand without having to consider the infrastructure, coupled with &lt;a href="https://docs.microsoft.com/en-us/azure/logic-apps/"&gt;Logic Apps&lt;/a&gt; Azure Functions can help build powerful workflows to solve many problems.&lt;/p&gt;
-&lt;p&gt;If you need a little more power or require to be a little closer to the actual OS you can spin up a virtual machine or two. Options include various flavours of &lt;a href="https://docs.microsoft.com/en-gb/azure/virtual-machines/linux/tutorial-create-vmss"&gt;Linux&lt;/a&gt; and of course &lt;a href="https://docs.microsoft.com/en-gb/azure/virtual-machines/windows/"&gt;Windows&lt;/a&gt;, alternatively you could create and use &lt;a href="https://docs.microsoft.com/en-gb/azure/container-instances/"&gt;Containers&lt;/a&gt; to get something up and running.&lt;/p&gt;
-&lt;h2 id="storage"&gt;Storage&lt;/h2&gt;
-&lt;p&gt;There are &lt;a href="https://docs.microsoft.com/en-us/azure/#pivot=products&amp;amp;panel=storage"&gt;lots of solutions&lt;/a&gt; for storing data in Azure, most commonly used are &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#blob-storage"&gt;Blob&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#azure-files"&gt;File&lt;/a&gt; storage, &lt;a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction"&gt;Cosmos DB&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview"&gt;SQL&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-us/azure/redis-cache/"&gt;Redis Cache&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="cognitive-services"&gt;Cognitive Services&lt;/h2&gt;
-&lt;p&gt;This is where things get interesting, the smart people at Microsoft have created a huge range of services that I have no doubt will help accelerate just about any idea at a Hackathon!&lt;/p&gt;
-&lt;h3 id="text"&gt;Text&lt;/h3&gt;
-&lt;p&gt;The internet is full of text, be it tweets, Facebook posts, news articles, emails, or much more. Azure have a range of services that can help analyze text content, so if any of the challenges call for some text analysis like detecting fake news, one of these features are going to make things a whole lot easier! &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/bing-spell-check/proof-text"&gt;Spell check&lt;/a&gt;; &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis"&gt;Sentiment Analysis&lt;/a&gt;; &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction"&gt;Key Phrase Extraction&lt;/a&gt;; &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection"&gt;Language Detection&lt;/a&gt;; &lt;a href="https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/"&gt;Text Translate Services&lt;/a&gt;;&lt;/p&gt;
-&lt;h3 id="images"&gt;Images&lt;/h3&gt;
-&lt;p&gt;Cameras are just about everywhere, web cams, phones, drones, dash cams and even door bells! If any of the challenges require you analyse the images from any of those devices Cognitive Services has a series of APIs and tools to help. You can &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/emotion/home"&gt;Detect Emotions&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/"&gt;Recognise Faces&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Custom-Vision-Service/home"&gt;Create a Custom Image Classifier&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/content-moderator/overview"&gt;Moderate Content&lt;/a&gt;,  &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#optical-character-recognition-ocr-with-computer-vision-api-using-ca-nameocr-a"&gt;Extract Text from images&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail"&gt;Generate Image Thumbnails&lt;/a&gt;, or even &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#analyze-an-image-with-computer-vision-api-using-c-a-nameanalyzeimage-a"&gt;Extract Visual Features&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id="speech"&gt;Speech&lt;/h3&gt;
-&lt;p&gt;Microsoft Azure provides &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speaker-recognition/home"&gt;Speaker Recognition&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#speech-to-text-speech-recognition"&gt;Speech to Text&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#text-to-speech-speech-synthesis"&gt;Text to Speech&lt;/a&gt; and &lt;a href="https://azure.microsoft.com/en-us/services/cognitive-services/translator-speech-api/"&gt;Translation to and from 10 languages&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id="video"&gt;Video&lt;/h3&gt;
-&lt;p&gt;You are not limited to analysing images or speech, you can analyse video as well. Cognitive Services includes &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Vision APIs for videos&lt;/a&gt;. With these APIs you can perform face detection and tracking, motion detection, image stabilisation and video thumbnail generation. It's also possible to use the &lt;a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview"&gt;Video Indexer&lt;/a&gt; to get an audio transcript, track faces, map and understand which speaker spoke which words and when, determine when a scene changes and a whole lot more!&lt;/p&gt;
 </content>
 		<summary>Something interesting for sure...</summary>
 	</entry>
